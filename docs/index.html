@@ -13,8 +13,9 @@
   <h1>📹 醫療影片資源列表</h1>
   <ul id="videoList">資料載入中…</ul>
 
-  <script>
-    fetch('https://flkuo.github.io/gericares/data/resource.json')
+  <script src="script.js">
+
+    fetch('data/resource.json')
       .then(res => res.json())
       .then(data => {
         const list = document.getElementById('videoList');
