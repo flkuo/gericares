@@ -1,4 +1,4 @@
-fetch('data/resource.json')
+fetch('docs/data/resource.json')
   .then(response => {
     if (!response.ok) {
       throw new Error(`HTTP error ${response.status}`);
