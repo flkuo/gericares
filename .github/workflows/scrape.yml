@@ -1,0 +1,36 @@
+name: Daily scrape from CMUH
+
+on:
+  schedule:
+    - cron: '0 1 * * *' # 每天 01:00 UTC (台灣時間 09:00)
+  workflow_dispatch:
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 最新檔案複製
+      uses: actions/checkout@v3
+
+    - name: 安裝 Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: 安裝相關契約
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4
+
+    - name: 執行爬蟲
+      run: python scraper/fetch_resources.py
+
+    - name: 提交更新 JSON
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "GitHub Action"
+        git add data/resource.json
+        git commit -m "📈 update scraped data"
+        git push
+      continue-on-error: true

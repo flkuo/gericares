@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>醫療影片資源清單</title>
+  <style>
+    body { font-family: 'Microsoft JhengHei', sans-serif; padding: 2em; background: #f9fdfc; color: #003c3c; }
+    h1 { font-size: 1.5em; margin-bottom: 0.2em; color: #00695c; }
+    p#loadingText { color: #b45f06; font-weight: bold; }
+    ul { line-height: 1.8; padding-left: 1.2em; }
+    li { margin-bottom: 0.2em; }
+    button { background: #00796b; color: white; padding: 0.6em 1em; border: none; border-radius: 5px; cursor: pointer; }
+    .btn-group { margin: 1.5em 0; }
+  </style>
+</head>
+<body>
+  <h1>📽 醫療影片資源清單（來自中國醫藥大學附設醫院）</h1>
+  <p id="loadingText">⏳ 資料載入中...</p>
+
+  <div class="btn-group">
+    <button onclick="fetchResources()">📁 載入最新衛教資源</button>
+    <button onclick="shareLine()">📤 分享此連結至 LINE</button>
+  </div>
+
+  <ul id="resourceList"></ul>
+
+  <script>
+    const target = "https://www2.bh.cmu.edu.tw/NewsInfo?type=2";
+    const proxyURL = `https://api.allorigins.win/get?url=${encodeURIComponent(target)}`;
+
+    function fetchResources() {
+      document.getElementById("loadingText").style.display = "block";
+
+      fetch(proxyURL)
+        .then(res => res.ok ? res.json() : Promise.reject("讀取失敗"))
+        .then(data => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(data.contents, "text/html");
+          const items = doc.querySelectorAll(".news-item a");
+          const list = document.getElementById("resourceList");
+          list.innerHTML = "";
+
+          if (items.length === 0) {
+            list.innerHTML = "<li>⚠️ 未擷取到任何影片資源。</li>";
+          } else {
+            items.forEach(a => {
+              const link = document.createElement("a");
+              link.href = a.href.startsWith("http") ? a.href : "https://www2.bh.cmu.edu.tw/" + a.getAttribute("href");
+              link.textContent = a.textContent.trim();
+              link.target = "_blank";
+              const li = document.createElement("li");
+              li.appendChild(link);
+              list.appendChild(li);
+            });
+          }
+
+          document.getElementById("loadingText").style.display = "none";
+        })
+        .catch(err => {
+          document.getElementById("resourceList").innerHTML = "<li>⚠️ 無法載入資料，可能被網站限制或網址錯誤。</li>";
+          document.getElementById("loadingText").style.display = "none";
+          console.error(err);
+        });
+    }
+
+    function shareLine() {
+      const msg = encodeURIComponent("醫療衛教資源清單（中醫附醫）：https://www2.bh.cmu.edu.tw/NewsInfo?type=2");
+      const url = `https://line.me/R/msg/text/?${msg}`;
+      window.open(url, "_blank");
+    }
+
+    // 自動載入
+    window.onload = fetchResources;
+  </script>
+</body>
+</html>
