@@ -1,12 +1,4 @@
-[
-  {
-    "title": "醫療影片一：跌倒預防指導",
-    "url": "https://example.com/video1",
-    "date": "2024-06-17"
-  },
-  {
-    "title": "醫療影片二：安全用藥",
-    "url": "https://example.com/video2",
-    "date": "2024-06-10"
-  }
-]
+{
+  "last_updated": "2025-06-18T00:14:14.187913",
+  "resources": []
+}
