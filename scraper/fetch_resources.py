@@ -38,7 +38,7 @@ if __name__ == "__main__":
             "last_updated": datetime.now().isoformat(),
             "resources": result
         }
-        with open("data/resource.json", "w", encoding="utf-8") as f:
+        with open("docs/data/resource.json", "w", encoding="utf-8") as f:
             json.dump(output, f, ensure_ascii=False, indent=2)
         print("✅ 資料已成功寫入 data/resource.json")
     except Exception as e:
