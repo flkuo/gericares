@@ -11,40 +11,10 @@
 </head>
 <body>
   <h1>📹 醫療影片資源列表</h1>
-<div id="resource-list">資料載入中...</div>
+  <div id="resource-list">資料載入中...</div>
+  <p id="error-message" style="color: red;"></p>
 
-<p id="error-message" style="color: red;"></p>
-  <script src="script.js">
-
-    fetch('data/resource.json')
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error ${response.status}`);
-    }
-    return response.json();
-  })
-  .then(data => {
-    console.log("✅ 成功載入 JSON：", data);
-    const list = document.getElementById("resource-list");
-    list.innerHTML = ''; // 清空
-    data.forEach(item => {
-      const div = document.createElement("div");
-      div.innerHTML = `
-        <p><strong>${item.title}</strong><br>
-        🔗 <a href="${item.url}" target="_blank">${item.url}</a><br>
-        📅 日期：${item.date}</p>
-        <hr>`;
-      list.appendChild(div);
-    });
-  })
-  .catch(error => {
-    console.error("❌ 無法載入資料：", error);
-    document.getElementById("resource-list").innerText = "⚠️ 資料載入失敗，請稍後再試";
-  });
-
-
-
-    
-  </script>
+  <!-- 僅保留 src，請勿同時寫 JS 程式碼 -->
+  <script src="script.js"></script>
 </body>
 </html>
