@@ -210,7 +210,9 @@ th {
 </div>
 <script>
 let people = JSON.parse(localStorage.getItem("people")) || [];
-updateTable(); updateGroupSummary();
+updateTable();
+updateGroupSummary();
+
 async function addPerson() {
   const name = document.getElementById("name").value;
   const age = document.getElementById("age").value;
@@ -221,31 +223,25 @@ async function addPerson() {
   const pain = document.getElementById("pain").value;
   const answers = Array.from(document.querySelectorAll("#personForm input[type='radio']:checked")).map(el => el.value);
 
-  // 把整包資料送去後端 App Script
   const requestData = {
-  TUG: 18,
-  Fall: 1,
-  Aid: "助行器",
-  Pain: "中度"
-};
+    TUG: tugSec,
+    Fall: fall,
+    Aid: aid,
+    Pain: pain
+  };
 
-fetch("https://script.google.com/macros/s/AKfycbxbfmwa6gGOZMwalglVsrkdRXqnJKB98wo9FZf8VwbmO4VF4tD3rkrf0x6awlh524m_cA/exec", {
-  method: "POST",
-  contentType: "application/json",
-  body: JSON.stringify(requestData)
-})
-  .then(res => res.json())
-  .then(data => {
-    console.log("分群結果：", data);
-  });
-
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbxbfmwa6gGOZMwalglVsrkdRXqnJKB98wo9FZf8VwbmO4VF4tD3rkrf0x6awlh524m_cA/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(requestData)
+    });
 
     const result = await response.json();
 
-    // 把後端計算好的結果加入 people 陣列
     people.push({
       name, age, tug: tugSec, fall: fall ? "是" : "否",
-      aid, pain, score: result.score, group: result.group, assessmentResult: result.safe
+      aid, pain, score: result.score, group: result.group, assessmentResult: result.safeAdvice
     });
 
     localStorage.setItem("people", JSON.stringify(people));
