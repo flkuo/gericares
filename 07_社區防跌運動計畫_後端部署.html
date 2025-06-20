@@ -222,14 +222,23 @@ async function addPerson() {
   const answers = Array.from(document.querySelectorAll("#personForm input[type='radio']:checked")).map(el => el.value);
 
   // 把整包資料送去後端 App Script
-  const payload = { name, age, tug: tugSec, fall, aid, pain, answers };
+  const requestData = {
+  TUG: 18,
+  Fall: 1,
+  Aid: "助行器",
+  Pain: "中度"
+};
 
-  try {
-    const response = await fetch("https://script.google.com/macros/s/AKfycbxbfmwa6gGOZMwalglVsrkdRXqnJKB98wo9FZf8VwbmO4VF4tD3rkrf0x6awlh524m_cA/exec", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
+fetch("https://script.google.com/macros/s/AKfycbxbfmwa6gGOZMwalglVsrkdRXqnJKB98wo9FZf8VwbmO4VF4tD3rkrf0x6awlh524m_cA/exec", {
+  method: "POST",
+  contentType: "application/json",
+  body: JSON.stringify(requestData)
+})
+  .then(res => res.json())
+  .then(data => {
+    console.log("分群結果：", data);
+  });
+
 
     const result = await response.json();
 
