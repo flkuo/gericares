@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"/>
+<title>社區跌倒預防團體運動計畫</title>
+<style>
+
+body { 
+  font-family: 'Microsoft JhengHei'; 
+  background: #eaf5f2;  
+  margin: 0; 
+  padding: 0;
+  display: flex; 
+  justify-content: center; 
+    footer { text-align: center; margin-top: 3em; padding-top: 1em; border-top: 1px solid #ccc; font-size: 0.9em; color: #555; }
+	.responsive-table {
+    overflow-x: auto;
+    width: 100%;
+}
+
+#attendanceSection {
+	  background: #fdfaf4; /* 米白色背景 */
+	  border: 2px solid #ffe082;
+	  padding: 1.5em;
+	  border-radius: 10px;
+	  margin-top: 2em;
+	}
+.container {
+  background: white; 
+  padding: 1.5em; 
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0,0,0,0.2); 
+  max-width: 700px;  /* 這裡我從原本 500 調整成 700 */
+  width: 100%;
+  margin: 1em;
+}
+
+h1 {
+  color: #004d40;
+  font-size: 2.2em;
+  font-weight: 700;
+  text-align: left;
+  border-left: 6px solid #004d40;
+  padding-left: 0.5em;
+  margin: 0.5em 0 0.5em 0;
+}
+
+h2 {
+  color: #00695c;
+  font-size: 1.4em;
+  font-weight: 600;
+  padding-left: 0.2em;
+  margin-top: 1em;
+}
+
+
+
+label { 
+  display: block; 
+  margin-top: 1em; 
+  font-weight: bold; 
+  font-size: 1em;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 0.5em;
+  margin-top: 0.3em;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+/* Checkbox alignment */
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5em;
+  font-weight: normal;
+}
+
+.checkbox-group input[type="checkbox"] {
+  margin-right: 0.5em;
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.section { 
+  margin-bottom: 2em; 
+  padding: 1em; 
+  background: #e0f2f1; 
+  border-radius: 8px; 
+}
+.section-yellow { 
+  margin-bottom: 2em; 
+  padding: 1em; 
+  background: #fff9e6; 
+  border-radius: 8px; 
+}
+.section-yellow { margin-bottom: 2em; padding: 1em; background: #fff9e6; border-radius: 8px; }
+.output { margin-bottom: 2em; padding: 1em; background: #fff9e6; border-radius: 8px; }
+
+
+.btn { 
+  background: #00897b; 
+  color: white; 
+  border: none; 
+  padding: 0.7em 1.5em; 
+  cursor: pointer; 
+  border-radius: 5px; 
+  margin-top: 1em; 
+  font-size: 1em;
+}
+
+/* Table Style */
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+  margin-top: 1em; 
+  font-size: 0.9em;
+}
+
+th, td { 
+  border: 1px solid #ccc; 
+  padding: 0.5em; 
+  text-align: left;
+  word-break: break-word;
+}
+
+th { 
+  background: #009688; 
+  color: white; 
+}
+
+@media (max-width: 400px) {
+  h1, h2 {
+    font-size: 1.2em;
+  }
+  input[type="text"], input[type="number"], select {
+    font-size: 0.9em;
+  }
+  .btn {
+    font-size: 0.9em;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="container">
+<h1>社區跌倒預防團體運動計畫</h1>
+<div id="Section">
+<h2>個案評估</h2>
+<form id="personForm">
+<label>姓名 <input id="name" required type="text"/></label>
+<label>年齡 <input id="age" required type="number"/></label>
+<label>TUG 測試（Timed Up and Go 秒數）<input id="tugSec" required type="number"/></label>
+<label>是否曾跌倒？<input id="fall" type="checkbox"/> 曾跌倒</label>
+<label>使用助行器（可複選）：<br/>
+<input name="aid" type="checkbox" value="助行器"/> 助行器
+<input name="aid" type="checkbox" value="四腳拐"/> 四腳拐
+<input name="aid" type="checkbox" value="單腳拐"/> 單腳拐
+<input name="aid" type="checkbox" value="其他"/> 其他</label>
+<label>疼痛程度：<select id="pain">
+<option value="無">無</option>
+<option value="輕度">輕度</option>
+<option value="中度">中度</option>
+<option value="重度">重度</option>
+</select></label>
+<h2>運動前評估表</h2>
+<table>
+<thead><tr><th>評量項目</th><th>是</th><th>否</th></tr></thead>
+<tbody>
+<tr><td>醫師告知心臟問題，只能做醫師建議運動？</td><td><input type="radio" name="q1" value="是"></td><td><input type="radio" name="q1" value="否"></td></tr>
+<tr><td>活動時會有胸痛的感覺？</td><td><input type="radio" name="q2" value="是"></td><td><input type="radio" name="q2" value="否"></td></tr>
+<tr><td>過去3個月內，未活動時也有胸痛的情形？</td><td><input type="radio" name="q3" value="是"></td><td><input type="radio" name="q3" value="否"></td></tr>
+<tr><td>曾有暈眩導致失去平衡或意識的情況？</td><td><input type="radio" name="q4" value="是"></td><td><input type="radio" name="q4" value="否"></td></tr>
+<tr><td>是否有骨骼或關節問題，可能因活動惡化？</td><td><input type="radio" name="q5" value="是"></td><td><input type="radio" name="q5" value="否"></td></tr>
+<tr><td>因高血壓或心臟疾病而需要服藥治療(醫師處方)？</td><td><input type="radio" name="q6" value="是"></td><td><input type="radio" name="q6" value="否"></td></tr>
+<tr><td>有任何不適合活動的原因？</td><td><input type="radio" name="q7" value="是"></td><td><input type="radio" name="q7" value="否"></td></tr>
+</tbody>
+</table>
+<button class="btn" type="button" onclick="addPerson()">➕ 加入個案</button>
+<button class="btn" type="button" onclick="shareToLINE()">📲 此位個案分享至 LINE</button>
+</form><br>
+<table id="personTable">
+<thead><tr><th>姓名</th><th>年齡</th><th>TUG（秒）</th><th>跌倒史</th><th>助行器</th><th>疼痛</th><th>分數</th><th>分群</th><th>安全評估建議</th><th>移除</th></tr></thead>
+<tbody></tbody>
+</table>
+<br><div class="output" id="groupSummary"></div>
+<button class="btn" onclick="exportExcel()">📥 群體評估資料匯出 Excel</button>
+</div>
+<div id="attendanceSection" class="section-yellow">
+<h2>📆 運動計畫週次記錄</h2>
+<p>請紀錄每位個案每週出席情況與訓練項目。</p>
+<table id="attendanceTable" >
+<thead><tr><th>週次或日期</th><th>出席人數</th><th>訓練內容</th><th>指導員</th><th>備註</th><th>移除</th></tr></thead> 
+<tbody><tr>
+<td><input placeholder="週次" type="text"/></td>
+<td><input placeholder="人數" type="number"/></td>
+<td><input placeholder="如 平衡訓練、拉筋等" type="text"/></td>
+<td><input placeholder="指導員" type="text"/></td>
+<td><input placeholder="備註" type="text"/></td>
+</tr></tbody></table>
+<button class="btn" onclick="addAttendanceRow()">➕ 新增週次記錄</button>
+<button class="btn" onclick="exportAttendance()">📤 匯出運動記錄 Excel</button>
+</div>
+<footer>由 Contrario Ish 設計與製作，版權所有 © 2024</footer>
+</div>
+<script>
+let people = JSON.parse(localStorage.getItem("people")) || [];
+updateTable(); updateGroupSummary();
+async function addPerson() {
+  const name = document.getElementById("name").value;
+  const age = document.getElementById("age").value;
+  const tugSec = parseFloat(document.getElementById("tugSec").value);
+  const fall = document.getElementById("fall").checked ? 1 : 0;
+  const aids = Array.from(document.querySelectorAll("input[name='aid']:checked")).map(cb => cb.value);
+  const aid = aids.length > 0 ? aids.join("、") : "無";
+  const pain = document.getElementById("pain").value;
+  const answers = Array.from(document.querySelectorAll("#personForm input[type='radio']:checked")).map(el => el.value);
+
+  // 把整包資料送去後端 App Script
+  const payload = { name, age, tug: tugSec, fall, aid, pain, answers };
+
+  try {
+    const response = await fetch("https://script.google.com/macros/s/AKfycbxbfmwa6gGOZMwalglVsrkdRXqnJKB98wo9FZf8VwbmO4VF4tD3rkrf0x6awlh524m_cA/exec", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    // 把後端計算好的結果加入 people 陣列
+    people.push({
+      name, age, tug: tugSec, fall: fall ? "是" : "否",
+      aid, pain, score: result.score, group: result.group, assessmentResult: result.safe
+    });
+
+    localStorage.setItem("people", JSON.stringify(people));
+    updateTable();
+    updateGroupSummary();
+    document.getElementById("personForm").reset();
+
+  } catch (error) {
+    console.error("後端呼叫失敗：", error);
+    alert("⚠️ 系統暫時無法取得建議，請稍後再試。");
+  }
+}
+
+function updateTable() {
+  const tbody = document.querySelector("#personTable tbody");
+  tbody.innerHTML = "";
+  people.forEach((p, index) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `<td>${p.name}</td><td>${p.age}</td><td>${p.tug}</td><td>${p.fall}</td><td>${p.aid}</td><td>${p.pain}</td><td>${p.score}</td><td>${p.group}</td><td>${p.assessmentResult}</td><td><button onclick="removePerson(${index})">❌</button></td>`;
+    tbody.appendChild(tr);
+  });
+}
+function removePerson(index) {
+  people.splice(index, 1);
+  localStorage.setItem("people", JSON.stringify(people));
+  updateTable(); updateGroupSummary();
+}
+function updateGroupSummary() {
+  const summary = {};
+  people.forEach(p => { if (!summary[p.group]) summary[p.group] = []; summary[p.group].push(p.name); });
+  let result = "👥 分群結果：\n";
+  for (const g in summary) { result += `【${g}】\n- ${summary[g].join("，")}\n`; }
+  result += "\n📌 客製化運動建議：\n體能較佳組：走路訓練、階梯訓練、動態平衡訓練\n體能較差組：椅上運動、簡化徒手運動、靜態平衡\n體能差且疼痛問題組：物理治療介入與輔具運用";
+  document.getElementById("groupSummary").innerText = result;
+}
+function exportExcel() {
+  let csv = "姓名,年齡,TUG(秒),跌倒史,助行器,疼痛,分數,分群,安全評估建議\n";
+  people.forEach(p => { csv += `${p.name},${p.age},${p.tug},${p.fall},${p.aid},${p.pain},${p.score},${p.group},${p.assessmentResult}\n`; });
+  downloadCSV(csv, '群體評估資料.csv');
+}
+function shareToLINE() {
+  if (people.length === 0) { alert("目前沒有個案資料可供傳送"); return; }
+  const p = people[people.length - 1];
+  const msg = encodeURIComponent(`📋 ${p.name} 分群：${p.group}\n建議：${p.assessmentResult}`);
+  window.open(`https://line.me/R/msg/text/?${msg}`, "_blank");
+}
+function addAttendanceRow() {
+  const tbody = document.querySelector("#attendanceTable tbody");
+  const row = document.createElement("tr");
+  row.innerHTML = `
+    <td><input type='text' placeholder='週次'/></td>
+    <td><input type='number' placeholder='人數'/></td>
+    <td><input type='text' placeholder='訓練內容'/></td>
+    <td><input type='text' placeholder='指導員'/></td>
+    <td><input type='text' placeholder='備註'/></td>
+    <td><button onclick="removeAttendanceRow(this)">❌</button></td>
+  `;
+  tbody.appendChild(row);
+  saveAttendanceData();
+}
+
+function removeAttendanceRow(button) {
+  const row = button.closest("tr");
+  row.remove();
+  saveAttendanceData();
+}
+
+function saveAttendanceData() {
+  const rows = document.querySelectorAll("#attendanceTable tbody tr");
+  const data = [];
+  rows.forEach(row => {
+    const inputs = row.querySelectorAll("input");
+    const rowData = Array.from(inputs).map(input => input.value);
+    data.push(rowData);
+  });
+  localStorage.setItem("attendanceData", JSON.stringify(data));
+}
+
+function loadAttendanceData() {
+  const stored = localStorage.getItem("attendanceData");
+  if (stored) {
+    const data = JSON.parse(stored);
+    const tbody = document.querySelector("#attendanceTable tbody");
+    tbody.innerHTML = "";
+    data.forEach(rowData => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td><input type='text' placeholder='週次或日期' value='${rowData[0]}'/></td>
+        <td><input type='number' placeholder='人數' value='${rowData[1]}'/></td>
+        <td><input type='text' placeholder='訓練內容' value='${rowData[2]}'/></td>
+        <td><input type='text' placeholder='指導員' value='${rowData[3]}'/></td>
+        <td><input type='text' placeholder='備註' value='${rowData[4]}'/></td>
+        <td><button onclick="removeAttendanceRow(this)">❌</button></td>
+      `;
+      tbody.appendChild(row);
+    });
+  }
+}
+
+document.addEventListener("input", function(e) {
+  if (e.target.closest("#attendanceTable")) {
+    saveAttendanceData();
+  }
+});
+
+window.onload = function() {
+  loadAttendanceData();
+};
+
+function exportAttendance() {
+  const rows = document.querySelectorAll("#attendanceTable tbody tr");
+  let csv = "週次,出席人數,訓練內容,指導員,備註\n";
+  rows.forEach(row => {
+    const data = Array.from(row.querySelectorAll("input")).map(input => input.value);
+    csv += data.join(",") + "\n";
+  });
+  downloadCSV(csv, 'attendance_record.csv');
+}
+function downloadCSV(csv, filename) {
+  const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = filename;
+  link.click();
+}
+</script>
+</body>
+</html>
+</html>
