@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>居家行動照護 Q&A 衛教手冊（智慧科技版） — 智慧助行防跌科技之照護應用手冊</title>
+<style>
+    :root {
+        --paper: #f8f6f0; --paper-deep: #ede8da; --ink: #23262b; --ink-soft: #4b4f52;
+        --indigo: #22405c; --indigo-light: #3d5f80; --seal: #a1332b; --line: #cdc6b0; --line-soft: #ddd8c6;
+    }
+    * { box-sizing: border-box; }
+    body {
+        margin: 0; padding: 0; background: var(--paper); color: var(--ink);
+        font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        font-size: 15.5px; line-height: 1.9; -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4 { font-family: "Noto Serif TC", "Source Han Serif TC", serif; color: var(--ink); margin: 0; }
+    a { color: var(--indigo); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+    .page-head {
+        background-color: var(--indigo);
+        background-image: repeating-linear-gradient(115deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 5px);
+        color: #f4f1e6; padding: 30px 0 26px; border-bottom: 3px solid var(--seal);
+    }
+    .breadcrumb { font-size: 12.5px; color: #cfc9b3; margin-bottom: 10px; }
+    .breadcrumb a { color: #e7e2cf; }
+    .breadcrumb a:hover { color: #fff; }
+    .badge { display: inline-block; font-size: 11px; letter-spacing: .05em; background: rgba(255,255,255,.15); color: #fbf9f0; padding: 2px 9px; border-radius: 2px; margin-bottom: 10px; }
+    .page-head h1 { font-size: 24px; font-weight: 700; color: #fbf9f0; line-height: 1.5; }
+    .page-head .subtitle { margin: 10px 0 0; font-size: 13.5px; color: #d8d3bf; max-width: 46em; }
+    .doc-meta { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px 16px; font-size: 12px; color: #cfc9b3; }
+    .doc-meta span { border-left: 2px solid var(--seal); padding-left: 8px; }
+
+    nav.subnav {
+        position: sticky; top: 0; z-index: 10;
+        background: #fff; border-bottom: 1px solid var(--line);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+    .subnav .wrap { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; }
+    .subnav ul { list-style: none; margin: 0; padding: 0; flex: 1 1 auto; display: flex; flex-wrap: wrap; gap: 2px 22px; }
+    .subnav li { padding: 11px 0; }
+    .subnav a { color: var(--ink-soft); font-size: 13.5px; }
+    .subnav a:hover { color: var(--indigo); text-decoration: none; border-bottom: 2px solid var(--seal); padding-bottom: 2px; }
+    .site-search { display: flex; flex: 0 0 auto; border: 1px solid var(--line); background: #fff; overflow: hidden; }
+    .site-search input { border: none; background: transparent; padding: 6px 10px; font-size: 13px; color: var(--ink); width: 170px; }
+    .site-search input::placeholder { color: #9a988a; }
+    .site-search input:focus { outline: none; }
+    .site-search button { border: none; border-left: 1px solid var(--line); background: var(--indigo); color: #fff; padding: 0 14px; font-size: 13px; cursor: pointer; font-family: inherit; }
+    .site-search button:hover { background: var(--indigo-light); }
+
+    .search-wrap { position: relative; flex: 0 0 auto; }
+    .search-results {
+        display: none;
+        position: absolute; top: 100%; right: 0; margin-top: 4px;
+        width: 300px; max-height: 320px; overflow-y: auto;
+        background: #fff; border: 1px solid var(--line);
+        box-shadow: 0 4px 14px rgba(0,0,0,0.12); z-index: 50;
+    }
+    .search-results.show { display: block; }
+    .search-results a { display: block; padding: 9px 14px; font-size: 12.8px; color: var(--ink); border-bottom: 1px solid var(--line-soft); }
+    .search-results a:last-child { border-bottom: none; }
+    .search-results a:hover { background: var(--paper-deep); text-decoration: none; }
+    .search-results .no-match { padding: 10px 14px; font-size: 12.5px; color: var(--ink-soft); }
+
+    .principle-box { max-width: 920px; margin: -14px auto 0; padding: 0 20px; }
+    .principle-inner {
+        background: #faf8ef; border: 1px solid var(--line); border-top: 3px solid var(--seal);
+        padding: 18px 22px; font-size: 13.8px; color: var(--ink-soft); margin-top: 22px; box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .principle-inner .tag { display: block; font-family: "Noto Serif TC", serif; font-weight: 700; color: var(--seal); font-size: 12.5px; letter-spacing: .08em; margin-bottom: 6px; }
+
+    .layout { display: grid; grid-template-columns: 200px 1fr; gap: 40px; align-items: start; padding: 40px 0 60px; }
+    .toc { position: sticky; top: 20px; font-size: 13px; }
+    .toc h3 { font-size: 12px; font-weight: normal; letter-spacing: .12em; color: var(--ink-soft); margin-bottom: 10px; font-family: "Noto Sans TC", sans-serif; }
+    .toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+    .toc li a { display: block; padding: 6px 0 6px 14px; color: var(--ink-soft); border-left: 2px solid transparent; margin-left: -1px; font-size: 12.8px; }
+    .toc li a:hover { color: var(--indigo); border-left-color: var(--indigo); text-decoration: none; }
+    .toc .nav-group { margin-top: 18px; padding-top: 12px; border-top: 1px dashed var(--line); }
+    .toc .nav-group-title { font-size: 11px; color: var(--ink-soft); margin-bottom: 6px; }
+    .toc .nav-group a { display: block; font-size: 12.5px; padding: 3px 0; color: var(--indigo); }
+
+    main { min-width: 0; }
+    article > section { margin-bottom: 46px; scroll-margin-top: 20px; }
+    .section-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 18px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+    .section-head h2 { font-size: 19px; font-weight: 700; }
+    .section-head .note { font-size: 12px; color: var(--ink-soft); }
+    p.lead { color: var(--ink-soft); }
+
+    /* Q&A 卡片 */
+    .qa-list { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+    .qa-item { background: #fff; border: 1px solid var(--line-soft); border-radius: 4px; overflow: hidden; }
+    .qa-item summary {
+        cursor: pointer; list-style: none; padding: 14px 18px; font-weight: 700; font-size: 14px;
+        display: flex; align-items: baseline; gap: 10px; color: var(--ink);
+    }
+    .qa-item summary::-webkit-details-marker { display: none; }
+    .qa-item summary .q-mark { color: var(--seal); font-family: "Noto Serif TC", serif; flex: none; }
+    .qa-item summary::after { content: "＋"; margin-left: auto; color: var(--ink-soft); font-size: 15px; }
+    .qa-item[open] summary::after { content: "－"; }
+    .qa-item .qa-body { padding: 0 18px 16px 42px; font-size: 13.5px; color: var(--ink-soft); }
+    .qa-item .qa-body ul { margin: 6px 0 0; padding-left: 18px; }
+    .qa-item .qa-body li { margin-bottom: 4px; }
+    .qa-item .qa-link { display: inline-block; margin-top: 8px; font-size: 12.8px; font-weight: 700; }
+    .qa-item .qa-source { display: block; margin-top: 8px; font-size: 11.5px; color: var(--ink-soft); font-style: italic; }
+
+    .related-box { background: #faf8ef; border: 1px solid var(--line-soft); border-left: 4px solid var(--indigo); padding: 16px 20px; margin-top: 10px; }
+    .related-box h4 { font-size: 13.5px; margin-bottom: 8px; }
+    .related-box ul, .related-box ol { margin: 0; padding-left: 18px; font-size: 13.3px; color: var(--ink-soft); }
+    .related-box ol li { margin-bottom: 5px; }
+
+    .closing-line { text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 12.8px; color: var(--ink-soft); letter-spacing: .1em; }
+
+    footer { border-top: 1px solid var(--line); background: var(--paper-deep); padding: 22px 0 30px; font-size: 12.5px; color: var(--ink-soft); text-align: center; }
+
+    @media (max-width: 760px) {
+        .layout { grid-template-columns: 1fr; }
+        .toc { position: static; display: none; }
+        .qa-item .qa-body { padding-left: 18px; }
+    }
+</style>
+</head>
+<body>
+
+<header class="page-head">
+    <div class="wrap">
+        <div class="breadcrumb">
+            <a href="手冊首頁.html">手冊首頁</a> ／
+            <a href="居家行動照護QA衛教手冊.html">居家行動照護 Q&amp;A 衛教手冊</a> ／
+            智慧科技版
+        </div>
+        <span class="badge">衛教資源（家屬／照顧者導向）</span>
+        <h1>居家行動照護 Q&amp;A 衛教手冊（智慧科技版）</h1>
+        <p class="subtitle">承接「居家行動照護 Q&amp;A 衛教手冊」的通用版，本篇聚焦於手冊中各項智慧防跌科技（環境感測、穿戴式裝置、座式踩踏儀器）在家中實際使用時，家屬與長者最常見的疑問，並盡量標示答案所依據的技術頁面與文獻出處。</p>
+        <div class="doc-meta">
+            <span>所屬手冊：智慧助行防跌科技之照護應用手冊</span>
+            <span>適用對象：家屬、居家照顧者</span>
+        </div>
+    </div>
+</header>
+
+<nav class="subnav" aria-label="次要導覽">
+    <div class="wrap">
+        <ul>
+            <li><a href="手冊首頁.html">手冊首頁</a></li>
+            <li><a href="居家行動照護QA衛教手冊.html">Q&amp;A 通用版</a></li>
+            <li><a href="工具庫.html">工具庫</a></li>
+        </ul>
+        <div class="search-wrap">
+        <form class="site-search" role="search" onsubmit="return handleSiteSearch(event, this)">
+            <input type="search" placeholder="搜尋手冊內容…" aria-label="搜尋手冊內容" oninput="handleSiteSearchInput(event, this)">
+            <button type="submit">搜尋</button>
+        </form>
+        <div class="search-results"></div>
+        </div>
+    </div>
+</nav>
+
+<div class="principle-box">
+    <div class="principle-inner">
+        <span class="tag">本頁定位</span>
+        本頁與「居家行動照護 Q&amp;A 衛教手冊（通用版）」互為姊妹篇：通用版談的是不涉及特定科技的居家防跌常識；本頁則針對手冊中<strong>應用類別 A（環境感測）、B（穿戴式裝置）、C（座式踩踏儀器）</strong>的具體技術內容，回答家屬最常提出的疑問，每題盡量附上對應的技術頁面連結或原始文獻出處，方便查證與延伸閱讀。
+    </div>
+</div>
+
+<div class="wrap layout">
+
+    <aside class="toc">
+        <h3>目　次</h3>
+        <ol>
+            <li><a href="#sec1">壹、環境感測系統相關疑問</a></li>
+            <li><a href="#sec2">貳、穿戴式裝置相關疑問</a></li>
+            <li><a href="#sec3">參、座式踩踏儀器與運動相關疑問</a></li>
+            <li><a href="#sec4">肆、隱私與誤報相關疑問</a></li>
+            <li><a href="#sec5">伍、延伸資源與參考文獻</a></li>
+        </ol>
+        <div class="nav-group">
+            <div class="nav-group-title">導覽</div>
+            <a href="居家行動照護QA衛教手冊.html">← Q&amp;A 通用版</a>
+            <a href="手冊首頁.html">← 返回手冊首頁</a>
+        </div>
+    </aside>
+
+    <main>
+    <article>
+
+        <section id="sec1">
+            <div class="section-head">
+                <h2>壹、環境感測系統相關疑問</h2>
+                <span class="note">對應應用類別 A：環境與非接觸式感測應用</span>
+            </div>
+            <ul class="qa-list">
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 家裡裝了跌倒偵測感測器，會不會像監視器一樣把我拍下來？</summary>
+                    <div class="qa-body">
+                        不會。手冊中介紹的 ToF/LiDAR 深度感測與毫米波雷達，是「去識別化」技術——只擷取 3D 深度點雲或雷達訊號，判讀的是人體的姿態高度與速度變化，並不會產生一般可看清五官、衣著的彩色影像。
+                        <a class="qa-link" href="應用類別-環境與非接觸式感測應用.html#sec2">→ 查看六大感測技術詳細說明</a>
+                        <span class="qa-source">資訊來源：手冊「環境與非接觸式感測應用」貳節</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 這類系統會不會誤判，把上廁所久一點也當成緊急事件？</summary>
+                    <div class="qa-body">
+                        系統通常會設定「久滯警報」的時間門檻（如停留超過一定分鐘數且無明顯移動才觸發），並非只要停留較久就立刻通報。實際門檻可依個案如廁習慣調整，若常有誤報，可請照護團隊協助調校感測靈敏度。
+                        <a class="qa-link" href="應用類別-環境與非接觸式感測應用.html#sec6">→ 查看警報分級與 SOP</a>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 失智症長輩會不會排斥或想拔掉這類設備？</summary>
+                    <div class="qa-body">
+                        環境感測器安裝於天花板或牆面，長者不需要穿戴、也不會直接接觸到裝置，因此不像手環或貼片式裝置容易被抗拒或取下，特別適合中重度失智、對穿戴裝置有排斥反應的長者。
+                        <a class="qa-link" href="應用類別-環境與非接觸式感測應用.html#sec4">→ 查看適用個案特徵</a>
+                    </div>
+                    </details>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec2">
+            <div class="section-head">
+                <h2>貳、穿戴式裝置相關疑問</h2>
+                <span class="note">對應應用類別 B：穿戴式跌倒偵測裝置應用</span>
+            </div>
+            <ul class="qa-list">
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 長輩可以戴智慧手錶來防跌嗎？會不會很麻煩？</summary>
+                    <div class="qa-body">
+                        智慧手錶是五種穿戴式裝置中，長者接受度最高、最不容易產生「標籤化」排斥感的一種，因為外觀與一般手錶相近。主要的「麻煩」在於需要建立固定的每日充電習慣——家屬手機 App 可遠端查看手錶電量，低於 20% 會自動提醒充電，避免因沒電而失去防護。
+                        <a class="qa-link" href="應用類別-穿戴式跌倒偵測裝置應用.html#sec7">→ 查看各裝置優缺點與管理考量</a>
+                        <span class="qa-source">文獻依據：Wang et al., 2020；Debnath et al., 2025；Subramaniam et al., 2022</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 如果長輩只是手臂用力甩動，手錶會不會誤判成跌倒，害大家白緊張一場？</summary>
+                    <div class="qa-body">
+                        會有這個可能，但系統設計了「預警取消機制」：偵測到疑似跌倒後，手機 App 會先發出 30 秒警報音效並跳出確認視窗，長者若神智清醒、沒有受傷，可在 30 秒內點擊「取消警報」，系統就不會對外發送任何訊息，可有效避免造成家屬不必要的恐慌。
+                        <a class="qa-link" href="應用類別-穿戴式跌倒偵測裝置應用.html#sec5">→ 查看標準工作流與判定邏輯</a>
+                        <span class="qa-source">文獻依據：Wang et al., 2020；Debnath et al., 2025</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 這些裝置真的準嗎？會不會常常判斷錯誤？</summary>
+                    <div class="qa-body">
+                        依文獻實測數據，腰部感測主機的判定準確度可達 99.7%（敏感度 97.9%、特異度 99.9%）；手腕手錶的即時偵測敏感度約 97.0%。但沒有系統是百分之百完美——腰部裝置曾發生「快速坐下」被誤判為跌倒的情形，也曾因裝置鬆動而漏報，因此正確佩戴方式（如腰帶要繫緊）仍然重要。
+                        <a class="qa-link" href="應用類別-穿戴式跌倒偵測裝置應用.html#sec6">→ 查看各裝置效能實證數據</a>
+                        <span class="qa-source">文獻依據：Tseng et al., 2025；Debnath et al., 2025</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 長輩一個人在外面散步跌倒了，家人要怎麼知道位置去救援？</summary>
+                    <div class="qa-body">
+                        若手錶與手機完成配對、且家屬已加入專屬 LINE 群組，系統確認跌倒成立後，雲端會在約 1 秒內推播一則含 Google Maps 導航連結的求救訊息到家屬群組，家屬點擊連結即可直接導航到長者所在位置，同時建議同步撥打 119。
+                        <a class="qa-link" href="應用類別-穿戴式跌倒偵測裝置應用.html#sec4">→ 查看居家安全防護照護流程</a>
+                        <span class="qa-source">文獻依據：Tseng et al., 2025</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 要準備哪些東西才能開始使用穿戴式裝置？</summary>
+                    <div class="qa-body">
+                        家屬需要協助長者完成手錶與手機 App 的藍牙配對、確認手機有網路且已安裝 LINE 並加入通報群組、準備充電座並養成睡前充電習慣。詳細清單可參考手冊內的檢核表。
+                        <a class="qa-link" href="應用類別-穿戴式跌倒偵測裝置應用.html#sec3">→ 查看使用者端數位配置檢核清單</a>
+                    </div>
+                    </details>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec3">
+            <div class="section-head">
+                <h2>參、座式踩踏儀器與運動相關疑問</h2>
+                <span class="note">對應應用類別 C：智慧下肢座式踩踏儀器</span>
+            </div>
+            <ul class="qa-list">
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 長輩可以直接開始用座式踩踏儀器運動嗎？</summary>
+                    <div class="qa-body">
+                        建議先完成基本評估再開始，包括 FRAIL 量表（5 題判斷是否虛弱）、TUG 起立行走測試，以及 PAR-Q 運動前篩檢（7 題）。若 PAR-Q 任一題回答「是」，應先諮詢醫師後再進行運動，不宜直接開始。
+                        <a class="qa-link" href="應用類別-智慧下肢座式踩踏儀器.html#sec5">→ 查看使用前多因子風險評估</a>
+                        <span class="qa-source">文獻依據：Morley JE et al., J Nutr Health Aging. 2012;16(7):601–608.（FRAIL 量表出處）</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 每個人運動強度都一樣嗎？</summary>
+                    <div class="qa-body">
+                        不一樣。手冊工具會依 TUG 秒數、跌倒史、是否使用助行器、疼痛程度計分，將個案分成「體能較佳組」「體能較差組」「體能差且疼痛問題組」三組，各組有不同的運動建議，強度較弱者不會被安排和體能好的人做一樣的運動。
+                        <a class="qa-link" href="應用類別-智慧下肢座式踩踏儀器.html#sec6">→ 查看活動規劃與分組建議</a>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 有沒有現成的工具可以幫忙記錄評估和出席狀況？</summary>
+                    <div class="qa-body">
+                        有，手冊內建「社區防跌運動計畫管理工具」，可直接在網頁上填寫個案評估、自動分組，並記錄每週出席與訓練內容，也能匯出 Excel 備份，不需要額外安裝軟體。
+                        <a class="qa-link" href="工具-社區防跌運動計畫管理.html">→ 開啟社區防跌運動計畫管理工具</a>
+                    </div>
+                    </details>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec4">
+            <div class="section-head">
+                <h2>肆、隱私與誤報相關疑問</h2>
+                <span class="note">跨類別共通疑問</span>
+            </div>
+            <ul class="qa-list">
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 這些智慧科技蒐集的資料，會不會外流或被拿去做其他用途？</summary>
+                    <div class="qa-body">
+                        手冊中的環境感測技術特別強調「去識別化」設計（不產生可辨識人臉的影像），穿戴式裝置的資料則傳輸至機構或家屬設定的雲端系統。實務上仍建議使用單位向家屬清楚說明資料的蒐集範圍、保存方式與存取權限，並取得知情同意——本手冊未涵蓋各機構實際的資訊安全與個資保護政策，這部分請洽貴機構或系統廠商確認。
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 沒有智慧型手機或不會用手機，還能用這些科技嗎？</summary>
+                    <div class="qa-body">
+                        環境感測系統（如天花板雷達、深度攝影機）安裝於空間中，長者不需要操作手機即可受到保護，較適合不熟悉智慧型手機的長者；穿戴式手錶或口袋手機方案則需要搭配手機 App 與網路連線，較適合家中有人可協助設定與維護的情況。可依長者與家屬的科技熟悉度選擇合適的技術組合。
+                        <a class="qa-link" href="應用類別-環境與非接觸式感測應用.html">→ 查看環境感測技術類別頁</a>
+                    </div>
+                    </details>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec5">
+            <div class="section-head">
+                <h2>伍、延伸資源與參考文獻</h2>
+            </div>
+            <div class="related-box">
+                <h4>延伸閱讀</h4>
+                <ul>
+                    <li><a href="居家行動照護QA衛教手冊.html">居家行動照護 Q&amp;A 衛教手冊（通用版）</a></li>
+                    <li><a href="應用類別-環境與非接觸式感測應用.html">應用類別 A：環境與非接觸式感測應用</a></li>
+                    <li><a href="應用類別-穿戴式跌倒偵測裝置應用.html">應用類別 B：穿戴式跌倒偵測裝置應用</a></li>
+                    <li><a href="應用類別-智慧下肢座式踩踏儀器.html">應用類別 C：智慧下肢座式踩踏儀器</a></li>
+                    <li><a href="工具庫.html">工具庫：評估量表與工具查詢</a></li>
+                </ul>
+            </div>
+            <div class="related-box" style="margin-top:12px;">
+                <h4>本頁引用文獻</h4>
+                <ol>
+                    <li>Morley JE, Vellas B, van Kan GA, et al. Frailty consensus: a call to action. <em>J Nutr Health Aging.</em> 2012;16(7):601–608.（FRAIL 量表）</li>
+                    <li>Tseng, C.-K., Huang, S.-J., &amp; Kau, L.-J. (2025). Wearable Fall Detection System with Real-Time Localization and Notification Capabilities. <em>Sensors</em>, 25(12), 3632.</li>
+                    <li>Debnath, M., Alamgeer, S., Kabir, M. S., &amp; Ngu, A. H. (2025). Enhancing Wearable Fall Detection System via Synthetic Data. <em>Sensors</em>, 25(15), 4639.</li>
+                    <li>Wang, X., Ellul, J., &amp; Azzopardi, G. (2020). Elderly Fall Detection Systems: A Literature Survey. <em>Frontiers in Robotics and AI</em>, 7, 71.</li>
+                    <li>Subramaniam, S., Faisal, A. I., &amp; Deen, M. J. (2022). Wearable Sensor Systems for Fall Risk Assessment: A Review. <em>Frontiers in Digital Health</em>, 4, 921506.</li>
+                </ol>
+                <p style="font-size:12px;color:var(--ink-soft);margin-top:10px;">完整文獻清單請見「應用類別 B：穿戴式跌倒偵測裝置應用」捌節。部分問答（如隱私政策細節）為一般性提醒，未對應特定文獻，煩請留意。</p>
+            </div>
+        </section>
+
+    </article>
+
+    <p class="closing-line">―― 本頁 Q&amp;A 內容盡量標示對應技術頁面與文獻出處，未標示來源者為一般性提醒 ――</p>
+
+    </main>
+</div>
+
+<footer>
+    <div class="wrap">
+        <div><a href="手冊首頁.html">← 返回手冊首頁</a>　|　<a href="居家行動照護QA衛教手冊.html">Q&amp;A 通用版</a>　|　<a href="工具庫.html">前往工具庫</a></div>
+        <div style="margin-top:6px;">本頁如有任何問題，請洽 <a href="mailto:flkuo@nhri.edu.tw">flkuo@nhri.edu.tw</a>　｜　© 2026</div>
+    </div>
+</footer>
+
+<script>
+
+const SEARCH_INDEX = [
+  {title:"手冊首頁", url:"手冊首頁.html", kw:"手冊首頁 總覽 智慧助行防跌科技 首頁"},
+  {title:"應用類別總覽", url:"手冊首頁.html#categories", kw:"應用類別 分類 總覽 環境感測 穿戴式 座式踩踏 環境改造"},
+  {title:"衛教資源", url:"手冊首頁.html#education", kw:"衛教資源 家屬 照顧者 臨床實務版"},
+  {title:"政策與給付資訊", url:"手冊首頁.html#policy", kw:"政策 給付 補助 政策資訊"},
+  {title:"長照3.0智慧科技輔具全租賃新制：壹、政策背景與新制概要", url:"政策資訊-長照智慧科技輔具全租賃新制.html#sec1", kw:"長照3.0 智慧科技輔具 全租賃 新制 政策背景"},
+  {title:"長照3.0智慧科技輔具全租賃新制：貳、給付架構與金額", url:"政策資訊-長照智慧科技輔具全租賃新制.html#sec2", kw:"給付金額 6萬元 4萬元 二擇一 全租賃"},
+  {title:"長照3.0智慧科技輔具全租賃新制：參、適用範圍五大類輔具", url:"政策資訊-長照智慧科技輔具全租賃新制.html#sec3", kw:"移動類 移位類 沐浴排泄類 居家照顧床類 安全看視類"},
+  {title:"長照3.0智慧科技輔具全租賃新制：肆、申請資格與流程", url:"政策資訊-長照智慧科技輔具全租賃新制.html#sec4", kw:"申請資格 1966 長期照顧管理中心 甲類輔具評估人員"},
+  {title:"長照3.0智慧科技輔具全租賃新制：伍、產品查詢與官方資源", url:"政策資訊-長照智慧科技輔具全租賃新制.html#sec5", kw:"LTCAT 產品查詢平台 衛福部公告"},
+
+  {title:"環境與非接觸式感測應用：壹、核心概念", url:"應用類別-環境與非接觸式感測應用.html#sec1", kw:"被動警報 主動式風險管理 環境感測 核心概念"},
+  {title:"環境與非接觸式感測應用：貳、六大感測技術", url:"應用類別-環境與非接觸式感測應用.html#sec2", kw:"ToF LiDAR 毫米波雷達 mmWave AI影像骨骼分析 足底地板感測 聲音分析式 紅外線熱感測陣列 環境物聯網"},
+  {title:"環境與非接觸式感測應用：參、臨床量表整合", url:"應用類別-環境與非接觸式感測應用.html#sec3", kw:"Morse MFS Hendrich Downton 巴氏量表 MMSE TPR 跌倒風險量表"},
+  {title:"環境與非接觸式感測應用：肆、適用個案特徵", url:"應用類別-環境與非接觸式感測應用.html#sec4", kw:"失智症 夜尿 皮膚敏感 浴廁 獨居長者 適用個案"},
+  {title:"環境與非接觸式感測應用：伍、後臺資料應用", url:"應用類別-環境與非接觸式感測應用.html#sec5", kw:"事件日誌 後臺資料 用藥調整 復健"},
+  {title:"環境與非接觸式感測應用：陸、警報分級與SOP", url:"應用類別-環境與非接觸式感測應用.html#sec6", kw:"跌倒警報 久滯警報 SOP 應變流程"},
+  {title:"環境與非接觸式感測應用：柒、安裝前後調校流程", url:"應用類別-環境與非接觸式感測應用.html#sec7", kw:"安裝 調校 機構試辦 床邊安裝 廁所安裝 Fusion 毫米波顯影"},
+  {title:"環境與非接觸式感測應用：捌、導入期檢核表", url:"應用類別-環境與非接觸式感測應用.html#sec8", kw:"檢核表 導入清單 隱私溝通 培訓"},
+
+  {title:"穿戴式跌倒偵測裝置：壹、前言與手冊目的", url:"應用類別-穿戴式跌倒偵測裝置應用.html#sec1", kw:"穿戴式裝置 前言 手冊目的"},
+  {title:"穿戴式跌倒偵測裝置：貳、五大裝置分類與規格", url:"應用類別-穿戴式跌倒偵測裝置應用.html#sec2", kw:"腰部慣性裝置 智慧手錶 智慧鞋墊 胸前吊墜 貼片 口袋型手機 IMU"},
+  {title:"穿戴式跌倒偵測裝置：參、使用者端數位配置檢核", url:"應用類別-穿戴式跌倒偵測裝置應用.html#sec3", kw:"Wi-Fi 網路 LINE群組 GPS 藍牙配對 充電 帳號綁定 使用者端準備"},
+  {title:"穿戴式跌倒偵測裝置：肆、臨床與居家照護流程", url:"應用類別-穿戴式跌倒偵測裝置應用.html#sec4", kw:"機構情境 居家情境 預防篩檢 日常管理 緊急應變"},
+  {title:"穿戴式跌倒偵測裝置：伍、標準工作流與判定邏輯", url:"應用類別-穿戴式跌倒偵測裝置應用.html#sec5", kw:"FSM 有限狀態機 ASVM 判定邏輯 工作流程圖"},
+  {title:"穿戴式跌倒偵測裝置：陸、各裝置效能實證數據", url:"應用類別-穿戴式跌倒偵測裝置應用.html#sec6", kw:"敏感度 特異度 準確度 效能數據 誤警 漏警"},
+  {title:"穿戴式跌倒偵測裝置：柒、優缺點與管理考量", url:"應用類別-穿戴式跌倒偵測裝置應用.html#sec7", kw:"優點 缺點 限制 照護管理考量 決策建言"},
+  {title:"穿戴式跌倒偵測裝置：捌、相關科技與參考文獻", url:"應用類別-穿戴式跌倒偵測裝置應用.html#sec8", kw:"參考文獻 文獻清單"},
+
+  {title:"智慧下肢座式踩踏儀器：壹、科技概述與定位", url:"應用類別-智慧下肢座式踩踏儀器.html#sec1", kw:"座式踩踏儀器 科技概述"},
+  {title:"智慧下肢座式踩踏儀器：貳、核心原理", url:"應用類別-智慧下肢座式踩踏儀器.html#sec2", kw:"核心原理 資訊缺口"},
+  {title:"智慧下肢座式踩踏儀器：參、適用場域與對象", url:"應用類別-智慧下肢座式踩踏儀器.html#sec3", kw:"社區照顧關懷據點 社區活動中心 長照機構 適用場域"},
+  {title:"智慧下肢座式踩踏儀器：肆、典型應用流程", url:"應用類別-智慧下肢座式踩踏儀器.html#sec4", kw:"應用流程 六步驟"},
+  {title:"智慧下肢座式踩踏儀器：伍、使用前多因子風險評估", url:"應用類別-智慧下肢座式踩踏儀器.html#sec5", kw:"FRAIL量表 虛弱評估 TUG測試 PAR-Q 運動前篩檢 Morley"},
+  {title:"智慧下肢座式踩踏儀器：陸、活動規劃與分組建議", url:"應用類別-智慧下肢座式踩踏儀器.html#sec6", kw:"體能較佳組 體能較差組 疼痛問題組 分組建議"},
+  {title:"智慧下肢座式踩踏儀器：柒、工作人員注意事項", url:"應用類別-智慧下肢座式踩踏儀器.html#sec7", kw:"注意事項 執行前 執行中"},
+  {title:"智慧下肢座式踩踏儀器：捌、觀察記錄與工具資源", url:"應用類別-智慧下肢座式踩踏儀器.html#sec8", kw:"出席紀錄 匯出Excel 社區防跌運動計畫管理工具"},
+  {title:"智慧下肢座式踩踏儀器：玖、相關科技與參考資料", url:"應用類別-智慧下肢座式踩踏儀器.html#sec9", kw:"參考資料 相關科技"},
+
+  {title:"居家行動照護Q&A：壹、居家環境安全", url:"居家行動照護QA衛教手冊.html#sec1", kw:"居家環境安全 浴室防滑 動線 照明"},
+  {title:"居家行動照護Q&A：貳、行動輔具使用", url:"居家行動照護QA衛教手冊.html#sec2", kw:"助行器 拐杖 輪椅 行動輔具"},
+  {title:"居家行動照護Q&A：參、日常活動與運動", url:"居家行動照護QA衛教手冊.html#sec3", kw:"日常運動 規律運動"},
+  {title:"居家行動照護Q&A：肆、跌倒發生時的應變", url:"居家行動照護QA衛教手冊.html#sec4", kw:"跌倒應變 跌倒後處理"},
+  {title:"居家行動照護Q&A：伍、何時該尋求專業協助", url:"居家行動照護QA衛教手冊.html#sec5", kw:"尋求專業協助 轉介"},
+
+  {title:"居家行動照護Q&A智慧科技版：壹、環境感測系統疑問", url:"居家行動照護QA衛教手冊-智慧科技版.html#sec1", kw:"環境感測 隱私 誤報 監視器 疑問"},
+  {title:"居家行動照護Q&A智慧科技版：貳、穿戴式裝置疑問", url:"居家行動照護QA衛教手冊-智慧科技版.html#sec2", kw:"智慧手錶 誤判 準確度 GPS救援 充電 疑問"},
+  {title:"居家行動照護Q&A智慧科技版：參、座式踩踏儀器與運動疑問", url:"居家行動照護QA衛教手冊-智慧科技版.html#sec3", kw:"座式踩踏 FRAIL TUG PAR-Q 運動強度 疑問"},
+  {title:"居家行動照護Q&A智慧科技版：肆、隱私與誤報疑問", url:"居家行動照護QA衛教手冊-智慧科技版.html#sec4", kw:"資料隱私 個資 沒有手機 疑問"},
+  {title:"居家行動照護Q&A智慧科技版：伍、延伸資源與參考文獻", url:"居家行動照護QA衛教手冊-智慧科技版.html#sec5", kw:"參考文獻 延伸閱讀"},
+  {title:"臨床衛教資源：壹、臨床實證背景與定義", url:"臨床衛教資源-高齡者跌倒預防與行動照護實務手冊.html#sec1", kw:"跌倒統計 有害跌倒 Harmful Fall 臥地不起 Long Lie"},
+  {title:"臨床衛教資源：貳、跌倒危險因子分析", url:"臨床衛教資源-高齡者跌倒預防與行動照護實務手冊.html#sec2", kw:"內在因子 外在因子 姿勢性低血壓 多重用藥 危險因子"},
+  {title:"臨床衛教資源：參、平衡與移行能力評估工具", url:"臨床衛教資源-高齡者跌倒預防與行動照護實務手冊.html#sec3", kw:"TUG 簡易平衡測試 功能性前伸測試 交替登階測試 五次坐到站測試 Tinetti POMA 伯格氏平衡量表 BBS FESI MMSE RUDAS CAM"},
+  {title:"臨床衛教資源：肆、標準行動照護指引", url:"臨床衛教資源-高齡者跌倒預防與行動照護實務手冊.html#sec4", kw:"臥坐站行 移位 輪椅45度移位法 臨床照護三大鐵律"},
+  {title:"臨床衛教資源：伍、多因子預防介入策略", url:"臨床衛教資源-高齡者跌倒預防與行動照護實務手冊.html#sec5", kw:"運動處方 太極拳 藥物審查 維他命D 鈣質 視力檢查 耳石復位術"},
+  {title:"臨床衛教資源：陸、衛教檢核表與工具箱", url:"臨床衛教資源-高齡者跌倒預防與行動照護實務手冊.html#sec6", kw:"居家環境安全防跌檢核表 自評篩檢表"},
+  {title:"臨床衛教資源：柒、跌倒後緊急處理指引", url:"臨床衛教資源-高齡者跌倒預防與行動照護實務手冊.html#sec7", kw:"跌倒後處理 自救三步驟 機構應變流程 RCA 昏厥 絆倒"},
+  {title:"臨床衛教資源：捌、相關資源與參考文獻", url:"臨床衛教資源-高齡者跌倒預防與行動照護實務手冊.html#sec8", kw:"參考文獻"},
+  {title:"工具庫", url:"工具庫.html", kw:"工具庫 評估量表 工具查詢"},
+  {title:"社區防跌運動計畫管理工具", url:"工具-社區防跌運動計畫管理.html", kw:"個案評估 分組 出席記錄 匯出Excel LINE分享"}
+];
+
+function siteSearchRun(query, resultsEl) {
+  query = (query || "").trim().toLowerCase();
+  resultsEl.innerHTML = "";
+  if (!query) { resultsEl.classList.remove("show"); return; }
+  const hits = SEARCH_INDEX.filter(item => (item.title + " " + item.kw).toLowerCase().includes(query)).slice(0, 10);
+  if (hits.length === 0) {
+    resultsEl.innerHTML = '<div class="no-match">沒有符合「' + query.replace(/</g,"&lt;") + '」的結果</div>';
+  } else {
+    hits.forEach(h => {
+      const a = document.createElement("a");
+      a.href = h.url;
+      a.textContent = h.title;
+      resultsEl.appendChild(a);
+    });
+  }
+  resultsEl.classList.add("show");
+}
+
+function handleSiteSearch(ev, formEl) {
+  ev.preventDefault();
+  const input = formEl.querySelector("input[type=search]");
+  const resultsEl = formEl.parentElement.querySelector(".search-results");
+  const hits = SEARCH_INDEX.filter(item => (item.title + " " + item.kw).toLowerCase().includes(input.value.trim().toLowerCase()));
+  if (hits.length > 0) { window.location.href = hits[0].url; }
+  else { siteSearchRun(input.value, resultsEl); }
+  return false;
+}
+
+function handleSiteSearchInput(ev, inputEl) {
+  const resultsEl = inputEl.closest(".search-wrap").querySelector(".search-results");
+  siteSearchRun(inputEl.value, resultsEl);
+}
+
+document.addEventListener("click", function (e) {
+  document.querySelectorAll(".search-results.show").forEach(el => {
+    if (!el.parentElement.contains(e.target)) el.classList.remove("show");
+  });
+});
+
+</script>
+
+</body>
+</html>
