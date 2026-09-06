@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<title>居家行動照護 Q&A 衛教手冊（智慧科技版） — 智慧助行防跌科技之照護應用手冊</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<header class="page-head">
+    <div class="wrap">
+        <div class="breadcrumb">
+            <a href="../index.html">手冊首頁</a> ／
+            <a href="general.html">居家行動照護 Q&amp;A 衛教手冊</a> ／
+            智慧科技版
+        </div>
+        <span class="badge">衛教資源（家屬／照顧者導向）</span>
+        <h1>居家行動照護 Q&amp;A 衛教手冊（智慧科技版）</h1>
+        <p class="subtitle">承接「居家行動照護 Q&amp;A 衛教手冊」的通用版，本篇聚焦於手冊中各項智慧防跌科技（環境感測、穿戴式裝置、座式踩踏儀器）在家中實際使用時，家屬與長者最常見的疑問，並盡量標示答案所依據的技術頁面與文獻出處。</p>
+        <div class="doc-meta">
+            <span>所屬手冊：智慧助行防跌科技之照護應用手冊</span>
+            <span>適用對象：家屬、居家照顧者</span>
+        </div>
+    </div>
+</header>
+
+<nav class="subnav" aria-label="次要導覽">
+    <div class="wrap">
+        <ul>
+            <li><a href="../index.html">手冊首頁</a></li>
+            <li><a href="general.html">Q&amp;A 通用版</a></li>
+            <li><a href="../tools/library.html">工具庫</a></li>
+        </ul>
+        <div class="search-wrap">
+        <form class="site-search" role="search" onsubmit="return handleSiteSearch(event, this)">
+            <input type="search" placeholder="搜尋手冊內容…" aria-label="搜尋手冊內容" oninput="handleSiteSearchInput(event, this)">
+            <button type="submit">搜尋</button>
+        </form>
+        <div class="search-results"></div>
+        </div>
+    </div>
+</nav>
+
+<div class="principle-box">
+    <div class="principle-inner">
+        <span class="tag">本頁定位</span>
+        本頁與「居家行動照護 Q&amp;A 衛教手冊（通用版）」互為姊妹篇：通用版談的是不涉及特定科技的居家防跌常識；本頁則針對手冊中<strong>應用類別 A（環境感測）、B（穿戴式裝置）、C（座式踩踏儀器）</strong>的具體技術內容，回答家屬最常提出的疑問，每題盡量附上對應的技術頁面連結或原始文獻出處，方便查證與延伸閱讀。
+    </div>
+</div>
+
+<div class="wrap layout">
+
+    <aside class="toc">
+        <h3>目　次</h3>
+        <ol>
+            <li><a href="#sec1">壹、環境感測系統相關疑問</a></li>
+            <li><a href="#sec2">貳、穿戴式裝置相關疑問</a></li>
+            <li><a href="#sec3">參、座式踩踏儀器與運動相關疑問</a></li>
+            <li><a href="#sec4">肆、隱私與誤報相關疑問</a></li>
+            <li><a href="#sec5">伍、延伸資源與參考文獻</a></li>
+        </ol>
+        <div class="nav-group">
+            <div class="nav-group-title">導覽</div>
+            <a href="general.html">← Q&amp;A 通用版</a>
+            <a href="../index.html">← 返回手冊首頁</a>
+        </div>
+    </aside>
+
+    <main>
+    <article>
+
+        <section id="sec1">
+            <div class="section-head">
+                <h2>壹、環境感測系統相關疑問</h2>
+                <span class="note">對應應用類別 A：環境與非接觸式感測應用</span>
+            </div>
+            <ul class="qa-list">
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 家裡裝了跌倒偵測感測器，會不會像監視器一樣把我拍下來？</summary>
+                    <div class="qa-body">
+                        不會。手冊中介紹的 ToF/LiDAR 深度感測與毫米波雷達，是「去識別化」技術——只擷取 3D 深度點雲或雷達訊號，判讀的是人體的姿態高度與速度變化，並不會產生一般可看清五官、衣著的彩色影像。
+                        <a class="qa-link" href="../apps/environmental-sensing.html#sec2">→ 查看六大感測技術詳細說明</a>
+                        <span class="qa-source">資訊來源：手冊「環境與非接觸式感測應用」貳節</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 這類系統會不會誤判，把上廁所久一點也當成緊急事件？</summary>
+                    <div class="qa-body">
+                        系統通常會設定「久滯警報」的時間門檻（如停留超過一定分鐘數且無明顯移動才觸發），並非只要停留較久就立刻通報。實際門檻可依個案如廁習慣調整，若常有誤報，可請照護團隊協助調校感測靈敏度。
+                        <a class="qa-link" href="../apps/environmental-sensing.html#sec6">→ 查看警報分級與 SOP</a>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 失智症長輩會不會排斥或想拔掉這類設備？</summary>
+                    <div class="qa-body">
+                        環境感測器安裝於天花板或牆面，長者不需要穿戴、也不會直接接觸到裝置，因此不像手環或貼片式裝置容易被抗拒或取下，特別適合中重度失智、對穿戴裝置有排斥反應的長者。
+                        <a class="qa-link" href="../apps/environmental-sensing.html#sec4">→ 查看適用個案特徵</a>
+                    </div>
+                    </details>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec2">
+            <div class="section-head">
+                <h2>貳、穿戴式裝置相關疑問</h2>
+                <span class="note">對應應用類別 B：穿戴式跌倒偵測裝置應用</span>
+            </div>
+            <ul class="qa-list">
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 長輩可以戴智慧手錶來防跌嗎？會不會很麻煩？</summary>
+                    <div class="qa-body">
+                        智慧手錶是五種穿戴式裝置中，長者接受度最高、最不容易產生「標籤化」排斥感的一種，因為外觀與一般手錶相近。主要的「麻煩」在於需要建立固定的每日充電習慣——家屬手機 App 可遠端查看手錶電量，低於 20% 會自動提醒充電，避免因沒電而失去防護。
+                        <a class="qa-link" href="../apps/wearable-devices.html#sec7">→ 查看各裝置優缺點與管理考量</a>
+                        <span class="qa-source">文獻依據：Wang et al., 2020；Debnath et al., 2025；Subramaniam et al., 2022</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 如果長輩只是手臂用力甩動，手錶會不會誤判成跌倒，害大家白緊張一場？</summary>
+                    <div class="qa-body">
+                        會有這個可能，但系統設計了「預警取消機制」：偵測到疑似跌倒後，手機 App 會先發出 30 秒警報音效並跳出確認視窗，長者若神智清醒、沒有受傷，可在 30 秒內點擊「取消警報」，系統就不會對外發送任何訊息，可有效避免造成家屬不必要的恐慌。
+                        <a class="qa-link" href="../apps/wearable-devices.html#sec5">→ 查看標準工作流與判定邏輯</a>
+                        <span class="qa-source">文獻依據：Wang et al., 2020；Debnath et al., 2025</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 這些裝置真的準嗎？會不會常常判斷錯誤？</summary>
+                    <div class="qa-body">
+                        依文獻實測數據，腰部感測主機的判定準確度可達 99.7%（敏感度 97.9%、特異度 99.9%）；手腕手錶的即時偵測敏感度約 97.0%。但沒有系統是百分之百完美——腰部裝置曾發生「快速坐下」被誤判為跌倒的情形，也曾因裝置鬆動而漏報，因此正確佩戴方式（如腰帶要繫緊）仍然重要。
+                        <a class="qa-link" href="../apps/wearable-devices.html#sec6">→ 查看各裝置效能實證數據</a>
+                        <span class="qa-source">文獻依據：Tseng et al., 2025；Debnath et al., 2025</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 長輩一個人在外面散步跌倒了，家人要怎麼知道位置去救援？</summary>
+                    <div class="qa-body">
+                        若手錶與手機完成配對、且家屬已加入專屬 LINE 群組，系統確認跌倒成立後，雲端會在約 1 秒內推播一則含 Google Maps 導航連結的求救訊息到家屬群組，家屬點擊連結即可直接導航到長者所在位置，同時建議同步撥打 119。
+                        <a class="qa-link" href="../apps/wearable-devices.html#sec4">→ 查看居家安全防護照護流程</a>
+                        <span class="qa-source">文獻依據：Tseng et al., 2025</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 要準備哪些東西才能開始使用穿戴式裝置？</summary>
+                    <div class="qa-body">
+                        家屬需要協助長者完成手錶與手機 App 的藍牙配對、確認手機有網路且已安裝 LINE 並加入通報群組、準備充電座並養成睡前充電習慣。詳細清單可參考手冊內的檢核表。
+                        <a class="qa-link" href="../apps/wearable-devices.html#sec3">→ 查看使用者端數位配置檢核清單</a>
+                    </div>
+                    </details>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec3">
+            <div class="section-head">
+                <h2>參、座式踩踏儀器與運動相關疑問</h2>
+                <span class="note">對應應用類別 C：智慧下肢座式踩踏儀器</span>
+            </div>
+            <ul class="qa-list">
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 長輩可以直接開始用座式踩踏儀器運動嗎？</summary>
+                    <div class="qa-body">
+                        建議先完成基本評估再開始，包括 FRAIL 量表（5 題判斷是否虛弱）、TUG 起立行走測試，以及 PAR-Q 運動前篩檢（7 題）。若 PAR-Q 任一題回答「是」，應先諮詢醫師後再進行運動，不宜直接開始。
+                        <a class="qa-link" href="../apps/pedaling-device.html#sec5">→ 查看使用前多因子風險評估</a>
+                        <span class="qa-source">文獻依據：Morley JE et al., J Nutr Health Aging. 2012;16(7):601–608.（FRAIL 量表出處）</span>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 每個人運動強度都一樣嗎？</summary>
+                    <div class="qa-body">
+                        不一樣。手冊工具會依 TUG 秒數、跌倒史、是否使用助行器、疼痛程度計分，將個案分成「體能較佳組」「體能較差組」「體能差且疼痛問題組」三組，各組有不同的運動建議，強度較弱者不會被安排和體能好的人做一樣的運動。
+                        <a class="qa-link" href="../apps/pedaling-device.html#sec6">→ 查看活動規劃與分組建議</a>
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 有沒有現成的工具可以幫忙記錄評估和出席狀況？</summary>
+                    <div class="qa-body">
+                        有，手冊內建「社區防跌運動計畫管理工具」，可直接在網頁上填寫個案評估、自動分組，並記錄每週出席與訓練內容，也能匯出 Excel 備份，不需要額外安裝軟體。
+                        <a class="qa-link" href="../tools/community-program.html">→ 開啟社區防跌運動計畫管理工具</a>
+                    </div>
+                    </details>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec4">
+            <div class="section-head">
+                <h2>肆、隱私與誤報相關疑問</h2>
+                <span class="note">跨類別共通疑問</span>
+            </div>
+            <ul class="qa-list">
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 這些智慧科技蒐集的資料，會不會外流或被拿去做其他用途？</summary>
+                    <div class="qa-body">
+                        手冊中的環境感測技術特別強調「去識別化」設計（不產生可辨識人臉的影像），穿戴式裝置的資料則傳輸至機構或家屬設定的雲端系統。實務上仍建議使用單位向家屬清楚說明資料的蒐集範圍、保存方式與存取權限，並取得知情同意——本手冊未涵蓋各機構實際的資訊安全與個資保護政策，這部分請洽貴機構或系統廠商確認。
+                    </div>
+                    </details>
+                </li>
+                <li class="qa-item">
+                    <details>
+                    <summary><span class="q-mark">Q.</span> 沒有智慧型手機或不會用手機，還能用這些科技嗎？</summary>
+                    <div class="qa-body">
+                        環境感測系統（如天花板雷達、深度攝影機）安裝於空間中，長者不需要操作手機即可受到保護，較適合不熟悉智慧型手機的長者；穿戴式手錶或口袋手機方案則需要搭配手機 App 與網路連線，較適合家中有人可協助設定與維護的情況。可依長者與家屬的科技熟悉度選擇合適的技術組合。
+                        <a class="qa-link" href="../apps/environmental-sensing.html">→ 查看環境感測技術類別頁</a>
+                    </div>
+                    </details>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec5">
+            <div class="section-head">
+                <h2>伍、延伸資源與參考文獻</h2>
+            </div>
+            <div class="related-box">
+                <h4>延伸閱讀</h4>
+                <ul>
+                    <li><a href="general.html">居家行動照護 Q&amp;A 衛教手冊（通用版）</a></li>
+                    <li><a href="../apps/environmental-sensing.html">應用類別 A：環境與非接觸式感測應用</a></li>
+                    <li><a href="../apps/wearable-devices.html">應用類別 B：穿戴式跌倒偵測裝置應用</a></li>
+                    <li><a href="../apps/pedaling-device.html">應用類別 C：智慧下肢座式踩踏儀器</a></li>
+                    <li><a href="../tools/library.html">工具庫：評估量表與工具查詢</a></li>
+                </ul>
+            </div>
+            <div class="related-box" style="margin-top:12px;">
+                <h4>本頁引用文獻</h4>
+                <ol>
+                    <li>Morley JE, Vellas B, van Kan GA, et al. Frailty consensus: a call to action. <em>J Nutr Health Aging.</em> 2012;16(7):601–608.（FRAIL 量表）</li>
+                    <li>Tseng, C.-K., Huang, S.-J., &amp; Kau, L.-J. (2025). Wearable Fall Detection System with Real-Time Localization and Notification Capabilities. <em>Sensors</em>, 25(12), 3632.</li>
+                    <li>Debnath, M., Alamgeer, S., Kabir, M. S., &amp; Ngu, A. H. (2025). Enhancing Wearable Fall Detection System via Synthetic Data. <em>Sensors</em>, 25(15), 4639.</li>
+                    <li>Wang, X., Ellul, J., &amp; Azzopardi, G. (2020). Elderly Fall Detection Systems: A Literature Survey. <em>Frontiers in Robotics and AI</em>, 7, 71.</li>
+                    <li>Subramaniam, S., Faisal, A. I., &amp; Deen, M. J. (2022). Wearable Sensor Systems for Fall Risk Assessment: A Review. <em>Frontiers in Digital Health</em>, 4, 921506.</li>
+                </ol>
+                <p style="font-size:12px;color:var(--ink-soft);margin-top:10px;">完整文獻清單請見「應用類別 B：穿戴式跌倒偵測裝置應用」捌節。部分問答（如隱私政策細節）為一般性提醒，未對應特定文獻，煩請留意。</p>
+            </div>
+        </section>
+
+    </article>
+
+    <p class="closing-line">―― 本頁 Q&amp;A 內容盡量標示對應技術頁面與文獻出處，未標示來源者為一般性提醒 ――</p>
+
+    </main>
+</div>
+
+<footer>
+    <div class="wrap">
+        <div><a href="../index.html">← 返回手冊首頁</a>　|　<a href="general.html">Q&amp;A 通用版</a>　|　<a href="../tools/library.html">前往工具庫</a></div>
+        <div style="margin-top:6px;">本頁如有任何問題，請洽 <a href="mailto:flkuo@nhri.edu.tw">flkuo@nhri.edu.tw</a>　｜　© 2026</div>
+    </div>
+</footer>
+
+<script>var SITE_ROOT = "../";</script>
+<script src="../assets/js/search-data.js"></script>
+<script src="../assets/js/search.js"></script>
+<script src="../assets/js/protect.js"></script>
+
+</body>
+</html>

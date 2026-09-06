@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<title>工具庫 — 智慧助行防跌科技之照護應用手冊</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<header class="page-head">
+    <div class="wrap">
+        <div class="breadcrumb"><a href="../index.html">手冊首頁</a> ／ 工具庫</div>
+        <h1>工具庫</h1>
+        <p class="subtitle">彙整手冊各科技應用頁中提及的感測技術與臨床評估量表，提供跨頁面的快速查閱與比較。目前資料來源為「環境與非接觸式感測應用」類別，未來各應用類別發布後將持續擴充。</p>
+    </div>
+</header>
+
+<nav class="subnav" aria-label="次要導覽">
+    <div class="wrap">
+        <ul>
+            <li><a href="../index.html">手冊首頁</a></li>
+            <li><a href="../apps/environmental-sensing.html">環境與非接觸式感測應用</a></li>
+            <li><a href="../apps/wearable-devices.html">穿戴式跌倒偵測裝置應用</a></li>
+            <li><a href="../apps/pedaling-device.html">智慧下肢座式踩踏儀器</a></li>
+            <li><a href="../clinical/guide.html">臨床衛教資源</a></li>
+            <li><a href="../qa/general.html">衛教資源</a></li>
+            <li><a href="../policy/rental-scheme.html">政策資訊</a></li>
+            <li><a href="../videos/resources.html">影音資源</a></li>
+        </ul>
+    </div>
+</nav>
+
+<main>
+
+    <div class="filter-bar">
+        <span class="filter-label">篩選：</span>
+        <button class="filter-chip active" data-filter="all">全部</button>
+        <button class="filter-chip" data-filter="sensor">感測技術</button>
+        <button class="filter-chip" data-filter="scale">臨床評估量表</button>
+        <button class="filter-chip" data-filter="activity">運動與活動管理</button>
+        <button class="filter-chip" data-filter="checklist">居家安全與自評檢核</button>
+        <input type="search" id="toolSearch" placeholder="搜尋工具名稱或關鍵字…" aria-label="搜尋工具">
+    </div>
+
+    <div class="tool-grid" id="toolGrid">
+
+        <div class="tool-card type-sensor show" data-type="sensor" data-name="ToF LiDAR 去識別化深度感測">
+            <div class="cat-tags"><span class="cat-tag">環境與非接觸式感測應用</span><span class="cat-tag">浴廁／病房</span><span class="cat-tag">即時偵測</span></div>
+            <h3>ToF / LiDAR 去識別化深度感測</h3>
+            <dl>
+                <dt>用途</dt><dd>於高隱私空間（浴廁、病房）進行跌倒與久滯偵測。</dd>
+                <dt>基本原理</dt><dd>利用紅外線不可見光計算反射時間，生成 3D 深度點雲，不使用 RGB 彩色影像。</dd>
+                <dt>產生之資料</dt><dd>去識別化 3D 深度點雲、姿態高度與速度數據。</dd>
+                <dt>適用對象／情境</dt><dd>病房、浴廁等高度隱私且易滑倒區域。</dd>
+                <dt>優點</dt><dd>隱私度極高，完全去識別化。</dd>
+                <dt>限制</dt><dd>強烈光線（如陽光直射）可能干擾；感測位置固定，無法跨空間偵測。</dd>
+                <dt>資料來源／實證依據</dt><dd>Newaz, N. T., &amp; Hanada, E. (2023). The Methods of Fall Detection: A Literature Review. <em>Sensors</em>, 23(11), 5212.</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec2">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-sensor show" data-type="sensor" data-name="毫米波雷達 mmWave FMCW">
+            <div class="cat-tags"><span class="cat-tag">環境與非接觸式感測應用</span><span class="cat-tag">病房天花板</span><span class="cat-tag">即時偵測</span></div>
+            <h3>毫米波雷達（mmWave FMCW）</h3>
+            <dl>
+                <dt>用途</dt><dd>夜間離床偵測與生命徵象監測。</dd>
+                <dt>基本原理</dt><dd>利用 60GHz 高頻電磁波分析距離、角度與速度。</dd>
+                <dt>產生之資料</dt><dd>離床事件記錄、呼吸率與心率等生理參數估測。</dd>
+                <dt>適用對象／情境</dt><dd>病床正上方天花板（崁燈式設計），夜間離床監測。</dd>
+                <dt>優點</dt><dd>完全不受光線與黑夜影響，可穿透部分織物。</dd>
+                <dt>限制</dt><dd>對金屬反射與大件家具遮擋敏感；空調強風與旋轉風扇易造成移動誤判。</dd>
+                <dt>資料來源／實證依據</dt><dd>Newaz, N. T., &amp; Hanada, E. (2023). The Methods of Fall Detection: A Literature Review. <em>Sensors</em>, 23(11), 5212.</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec2">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-sensor show" data-type="sensor" data-name="AI 影像骨骼分析">
+            <div class="cat-tags"><span class="cat-tag">環境與非接觸式感測應用</span><span class="cat-tag">公共空間／復健室</span><span class="cat-tag">趨勢分析</span></div>
+            <h3>AI 影像骨骼分析</h3>
+            <dl>
+                <dt>用途</dt><dd>步態分析、平衡能力與起坐表現評估。</dd>
+                <dt>基本原理</dt><dd>透過標準攝影機影像辨識人體關節點，建立動態骨架。</dd>
+                <dt>產生之資料</dt><dd>動態骨架軌跡、步態與平衡量化指標。</dd>
+                <dt>適用對象／情境</dt><dd>公共交誼廳、走廊或復健評估室。</dd>
+                <dt>優點</dt><dd>步態分析、平衡能力與起坐表現評估精準度高。</dd>
+                <dt>限制</dt><dd>涉及 RGB 影像錄製，在病房及浴廁有極大隱私爭議，家屬接受度低。</dd>
+                <dt>資料來源／實證依據</dt><dd>Newaz, N. T., &amp; Hanada, E. (2023). The Methods of Fall Detection: A Literature Review. <em>Sensors</em>, 23(11), 5212.</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec2">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-sensor show" data-type="sensor" data-name="足底與環境地板感測">
+            <div class="cat-tags"><span class="cat-tag">環境與非接觸式感測應用</span><span class="cat-tag">床邊／走廊</span><span class="cat-tag">輔助判定</span></div>
+            <h3>足底與環境地板感測</h3>
+            <dl>
+                <dt>用途</dt><dd>特定點位（床邊踏墊、狹窄走廊）的跌倒輔助判定。</dd>
+                <dt>基本原理</dt><dd>利用光纖（FTIR）、壓力感測膜或微弱振動聲學感測，整合於地墊或地板下。</dd>
+                <dt>產生之資料</dt><dd>踏墊壓力／振動事件記錄。</dd>
+                <dt>適用對象／情境</dt><dd>病床旁落地踏墊、特定狹窄走廊防滑墊監控。</dd>
+                <dt>優點</dt><dd>完全隱形、無影像，不增加長者體感負擔。</dd>
+                <dt>限制</dt><dd>建置與維修成本極高，需大規模改造硬體；無法辨識未落地（如床上）的姿態變化。</dd>
+                <dt>資料來源／實證依據</dt><dd>應用指引原文，未列出具體品牌案例。</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec2">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="Morse 跌倒危險量表 MFS">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">風險評估</span></div>
+            <h3>Morse 跌倒危險量表（MFS）</h3>
+            <dl>
+                <dt>用途</dt><dd>篩選中高跌倒風險個案，決定系統布建優先順序。</dd>
+                <dt>基本原理</dt><dd>評估跌倒史、診斷件數、步態與靜脈輸液狀況。</dd>
+                <dt>適用對象／情境</dt><dd>入院／入住時之常規跌倒風險評估。</dd>
+                <dt>照護應用</dt><dd>中高風險個案應自動啟動系統布建程序，並依弱項（如步態不穩）調校判定靈敏度。</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec3">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="Hendrich II 跌倒風險評估模型">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">風險評估</span></div>
+            <h3>Hendrich II 跌倒風險評估模型</h3>
+            <dl>
+                <dt>用途</dt><dd>評估定向力障礙、憂鬱狀態、眩暈與起立行走（TUG）表現。</dd>
+                <dt>照護應用</dt><dd>TUG 表現不佳或定向力混亂者，優先配置天花板崁燈式毫米波離床預警。</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec3">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="Downton 跌倒風險指數">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">用藥風險</span></div>
+            <h3>Downton 跌倒風險指數</h3>
+            <dl>
+                <dt>用途</dt><dd>評估藥物因素（利尿劑、鎮靜劑、降血壓藥）及感官障礙。</dd>
+                <dt>照護應用</dt><dd>服用利尿劑且夜間頻繁如廁者，應增強夜間浴廁停留監控，調校高敏銳度久滯判定。</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec3">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="巴氏量表與 MMSE">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">認知／自理能力</span></div>
+            <h3>巴氏量表（Barthel Index）與 MMSE 心智狀態測驗</h3>
+            <dl>
+                <dt>用途</dt><dd>依日常生活自理能力與認知退化程度，判斷是否需要隱形防護。</dd>
+                <dt>MMSE 評估內容</dt><dd>評估定向感、訊息登錄、注意力與計算能力、短期記憶、語言等 11 個題目，總分 30 分。</dd>
+                <dt>MMSE 篩檢標準</dt><dd>總分 ≤23 分代表輕度認知障礙，≤18 分代表重度認知障礙。</dd>
+                <dt>照護應用</dt><dd>中重度失智且伴隨定向力混亂者，非接觸式感測較傳統壓力墊更能提供穩定的無感守護。</dd>
+                <dt>資料來源／實證依據</dt><dd>中華民國衛生福利部（107 年度護理機構實證應用之臨床照護及指導培訓計畫）．平衡能力評估與跌倒預防、照護與指導手冊。</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec3">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="跌倒通報系統 TPR 與根本原因分析 RCA">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">事件管理</span></div>
+            <h3>跌倒通報系統（TPR）與根本原因分析（RCA）</h3>
+            <dl>
+                <dt>用途</dt><dd>事件後根本原因分析與品質改善。</dd>
+                <dt>照護應用</dt><dd>系統產生的精確事件 Log 直接匯入 TPR，供團隊分析並推導藥物或環境因素，進行精準 RCA 改善。</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec3">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-sensor show" data-type="sensor" data-name="聲音分析式跌倒偵測系統">
+            <div class="cat-tags"><span class="cat-tag">環境與非接觸式感測應用</span><span class="cat-tag">浴室</span><span class="cat-tag">即時偵測</span><span class="cat-tag">新增</span></div>
+            <h3>聲音分析式跌倒偵測系統</h3>
+            <dl>
+                <dt>用途</dt><dd>於視覺監控敏感場域（如浴室）進行跌倒與異常聲響偵測。</dd>
+                <dt>基本原理</dt><dd>擷取環境音訊，透過演算法（如 Transformer 架構、決策樹搭配梅爾倒頻譜等聲學特徵）分類為跌倒／非跌倒事件。</dd>
+                <dt>產生之資料</dt><dd>異常聲響通報紀錄、緊急語音指令回應紀錄。</dd>
+                <dt>適用對象／情境</dt><dd>適合浴室等視覺監控敏感、但仍需即時示警之場域；對拒絕攝影機或穿戴裝置、但可接受環境麥克風之長者較合適。</dd>
+                <dt>優點</dt><dd>不涉及影像，隱私疑慮低於視覺式偵測。</dd>
+                <dt>限制</dt><dd>相關研究數量相對較少，現場泛化能力與誤報率之實證仍待累積。</dd>
+                <dt>資料來源／實證依據</dt><dd>Newaz, N. T., &amp; Hanada, E. (2023). The Methods of Fall Detection: A Literature Review. <em>Sensors</em>, 23(11), 5212.</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec2">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-sensor show" data-type="sensor" data-name="紅外線熱感測陣列 環境物聯網感測系統">
+            <div class="cat-tags"><span class="cat-tag">環境與非接觸式感測應用</span><span class="cat-tag">居家／受控住宅</span><span class="cat-tag">趨勢分析</span><span class="cat-tag">新增</span></div>
+            <h3>紅外線熱感測陣列／環境物聯網感測系統</h3>
+            <dl>
+                <dt>用途</dt><dd>獨居長者於受控居家環境之 24 小時日常活動與跌倒監測。</dd>
+                <dt>基本原理</dt><dd>利用低解析度熱感測陣列資料，以遞迴神經網路（LSTM、GRU、Bi-LSTM）進行跌倒分類，完全不擷取影像。</dd>
+                <dt>產生之資料</dt><dd>獨居長者日常活動監測紀錄、跌倒示警通報單。</dd>
+                <dt>適用對象／情境</dt><dd>特別設計給獨居長者於受控居家環境使用；對不願配戴任何裝置、重視隱私但仍需 24 小時安全監控之個案適用。</dd>
+                <dt>優點</dt><dd>完全不擷取影像，隱私侵擾極低；可安裝於受控式老人住宅，協助降低長期住院成本評估。</dd>
+                <dt>限制</dt><dd>易受環境溫度變化與涵蓋範圍內物體遮蔽影響，準確度可能因場域條件而有落差，建議搭配其他偵測方式互補。</dd>
+                <dt>資料來源／實證依據</dt><dd>Newaz, N. T., &amp; Hanada, E. (2023). The Methods of Fall Detection: A Literature Review. <em>Sensors</em>, 23(11), 5212.</dd>
+            </dl>
+            <a class="source-link" href="../apps/environmental-sensing.html#sec2">出現於：環境與非接觸式感測應用（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="FRAIL 量表 跌倒多因子風險評估">
+            <div class="cat-tags"><span class="cat-tag">智慧下肢座式踩踏儀器</span><span class="cat-tag">虛弱評估</span><span class="cat-tag">新增</span></div>
+            <h3>跌倒多因子風險評估工具（FRAIL 量表・第 1 步）</h3>
+            <dl>
+                <dt>用途</dt><dd>安排運動或使用座式踩踏儀器前，評估個案是否處於虛弱狀態。</dd>
+                <dt>基本原理</dt><dd>以 5 題是非題評估疲倦感、爬梯能力、行走距離、慢性病數量、近期體重減輕，加總判定虛弱程度。</dd>
+                <dt>適用對象／情境</dt><dd>社區據點或機構安排團體／個別運動前之評估人員。</dd>
+                <dt>限制</dt><dd>原始工具為多步驟評估流程，本頁僅取得「第 1 步」畫面，後續步驟內容為資訊缺口。</dd>
+                <dt>資料來源／實證依據</dt><dd>Morley JE et al., <em>J Nutr Health Aging.</em> 2012;16(7):601–608.</dd>
+            </dl>
+            <a class="source-link" href="../apps/pedaling-device.html#sec5">出現於：智慧下肢座式踩踏儀器（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-activity show" data-type="activity" data-name="社區防跌運動計畫管理工具">
+            <div class="cat-tags"><span class="cat-tag">智慧下肢座式踩踏儀器</span><span class="cat-tag">運動規劃</span><span class="cat-tag">監測記錄</span><span class="cat-tag">新增</span></div>
+            <h3>社區防跌運動計畫管理工具</h3>
+            <dl>
+                <dt>用途</dt><dd>個案評估、PAR-Q 運動前篩檢、自動分組、活動出席與訓練紀錄之一站式管理。</dd>
+                <dt>基本原理</dt><dd>依 TUG 秒數、跌倒史、助行器使用、疼痛程度計分，自動分為三組並給予運動建議；另提供週次出席與訓練內容記錄表。</dd>
+                <dt>適用對象／情境</dt><dd>照服員、活動帶領者於社區據點或機構執行防跌運動計畫之全程管理。</dd>
+                <dt>優點</dt><dd>評估、分組、記錄、匯出 Excel、分享 LINE 整合於單一互動網頁，資料儲存於本機瀏覽器。</dd>
+                <dt>資料來源／實證依據</dt><dd>由 Contrario Ish 設計與製作，© 2024（使用者提供之互動式工具原始檔）。</dd>
+            </dl>
+            <a class="source-link" href="community-program.html">直接使用（可輸入編輯）→</a><br>
+            <a class="source-link" href="../apps/pedaling-device.html#sec8">出現於：智慧下肢座式踩踏儀器（類別頁）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="計時起走測試 TUG Timed Up and Go">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">平衡與移行</span><span class="cat-tag">新增</span></div>
+            <h3>計時起走測試（Timed Up and Go, TUG）</h3>
+            <dl>
+                <dt>用途</dt><dd>評估基本移行能力與跌倒風險，臨床最常用之快速篩檢工具。</dd>
+                <dt>施測方式</dt><dd>受測者自直背有扶手椅子站起，正常步行 3 公尺，轉身返回並坐下，記錄所需時間；可使用常用移行輔具。</dd>
+                <dt>施測時間</dt><dd>1–2 分鐘。</dd>
+                <dt>高風險篩檢標準</dt><dd>TUG ≥15 秒（或動作不穩無法完成）。年齡參考值：60–69 歲 &gt;9 秒、70–79 歲 &gt;10.2 秒、80–89 歲 &gt;12.7 秒需注意。</dd>
+                <dt>資料來源／實證依據</dt><dd>高雄榮總家醫部，2020；衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="簡易平衡測試 Simple Balance Test">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">平衡與移行</span><span class="cat-tag">新增</span></div>
+            <h3>簡易平衡測試（Simple Balance Test）</h3>
+            <dl>
+                <dt>用途</dt><dd>快速篩檢基礎靜態平衡能力。</dd>
+                <dt>施測方式</dt><dd>安全環境下，檢測受測者單腳能否穩定站立 5 秒鐘。</dd>
+                <dt>施測時間</dt><dd>1 分鐘。</dd>
+                <dt>高風險篩檢標準</dt><dd>無法穩定單腳站立達 5 秒鐘以上者。</dd>
+                <dt>資料來源／實證依據</dt><dd>臺北榮總，2025。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="功能性前伸測試 Functional Reach FR">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">平衡與移行</span><span class="cat-tag">新增</span></div>
+            <h3>功能性前伸測試（Functional Reach, FR）</h3>
+            <dl>
+                <dt>用途</dt><dd>評估動態平衡與跌倒復發風險。</dd>
+                <dt>施測方式</dt><dd>受測者身體直立、雙手平舉 90 度，量測在固定支持面下盡量向前傾時，手指移動的最大水平距離。</dd>
+                <dt>施測時間</dt><dd>1–2 分鐘。</dd>
+                <dt>高風險篩檢標準</dt><dd>前伸距離 &lt;15 公分（≤10 英吋）預測有高度跌倒復發風險。</dd>
+                <dt>資料來源／實證依據</dt><dd>高雄榮總家醫部，2020；衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="交替登階測試 Alternate Step Test AST">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">平衡與移行</span><span class="cat-tag">新增</span></div>
+            <h3>交替登階測試（Alternate Step Test, AST）</h3>
+            <dl>
+                <dt>用途</dt><dd>量測橫向動態平衡穩定性。</dd>
+                <dt>施測方式</dt><dd>受測者於「越快越好」情況下，左右腳交替登上高 19 公分、深 40 公分的台階，記錄完成 8 階的時間。</dd>
+                <dt>施測時間</dt><dd>1–2 分鐘。</dd>
+                <dt>高風險篩檢標準</dt><dd>完成時間 &gt;10 秒，預測有跌倒風險。</dd>
+                <dt>資料來源／實證依據</dt><dd>衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="五次坐到站測試 Sit-to-Stand Test STS">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">下肢肌力</span><span class="cat-tag">新增</span></div>
+            <h3>五次坐到站測試（Sit-to-Stand Test, STS）</h3>
+            <dl>
+                <dt>用途</dt><dd>量測下肢肌力、速度與動態協調性。</dd>
+                <dt>施測方式</dt><dd>記錄受測者連續五次從椅子上完全站起並重新坐下所需的時間。</dd>
+                <dt>施測時間</dt><dd>1–2 分鐘。</dd>
+                <dt>高風險篩檢標準</dt><dd>完成時間 ≥12 秒，預測有下肢無力與跌倒風險。</dd>
+                <dt>資料來源／實證依據</dt><dd>衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="Tinetti 行動功能評估表 POMA">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">步態與平衡</span><span class="cat-tag">新增</span></div>
+            <h3>Tinetti 行動功能評估表（POMA）</h3>
+            <dl>
+                <dt>用途</dt><dd>完整量測步態與平衡功能。</dd>
+                <dt>施測方式</dt><dd>包含 9 項平衡測試與 7 項步態測試，總分 28 分。</dd>
+                <dt>施測時間</dt><dd>10–15 分鐘。</dd>
+                <dt>高風險篩檢標準</dt><dd>總分 ≤24 分，預測為跌倒高危險群。</dd>
+                <dt>資料來源／實證依據</dt><dd>高雄榮總家醫部，2020；衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="伯格氏平衡量表 Berg Balance Scale BBS">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">步態與平衡</span><span class="cat-tag">新增</span></div>
+            <h3>伯格氏平衡量表（Berg Balance Scale, BBS）</h3>
+            <dl>
+                <dt>用途</dt><dd>全面評估平衡能力，臨床與復健常用量表。</dd>
+                <dt>施測方式</dt><dd>包含 14 項平衡動作評估（如坐姿穩定度、單腳站立、閉眼站立等），總分 56 分。</dd>
+                <dt>施測時間</dt><dd>15–20 分鐘。</dd>
+                <dt>高風險篩檢標準</dt><dd>總分 ≤40 分，預測為跌倒高危險群。</dd>
+                <dt>資料來源／實證依據</dt><dd>高雄榮總家醫部，2020；衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="國際跌倒效能量表 FESI">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">心理焦慮</span><span class="cat-tag">新增</span></div>
+            <h3>國際跌倒效能量表（Falls Efficacy Scale, FESI）</h3>
+            <dl>
+                <dt>用途</dt><dd>評估長者對跌倒的心理焦慮與恐懼程度，而非身體功能本身。</dd>
+                <dt>施測方式</dt><dd>評估對 16 項日常活動（如居家清潔、行走於不平路面）時「害怕跌倒」的心理焦慮關注程度。</dd>
+                <dt>施測時間</dt><dd>5 分鐘。</dd>
+                <dt>高風險篩檢標準</dt><dd>總分 ≥23 分，代表對跌倒有高度焦慮與心理恐懼。</dd>
+                <dt>資料來源／實證依據</dt><dd>衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="RUDAS 通用失智症量表">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">認知功能</span><span class="cat-tag">新增</span></div>
+            <h3>Rowland 通用失智症量表（RUDAS）</h3>
+            <dl>
+                <dt>用途</dt><dd>篩檢失智／認知障礙，跨文化適用性佳，較不受教育程度影響。</dd>
+                <dt>施測方式</dt><dd>評估記憶力、動作計畫、語言、判斷力、描繪、身體概念等 6 個項目，總分 30 分。</dd>
+                <dt>高風險篩檢標準</dt><dd>評分 ≤23 分預測有顯著失智／認知障礙。</dd>
+                <dt>資料來源／實證依據</dt><dd>衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-scale show" data-type="scale" data-name="混亂評估方法 CAM 譫妄篩檢">
+            <div class="cat-tags"><span class="cat-tag">臨床評估量表</span><span class="cat-tag">急性譫妄</span><span class="cat-tag">新增</span></div>
+            <h3>混亂評估方法（CAM）</h3>
+            <dl>
+                <dt>用途</dt><dd>篩檢急性譫妄臨床症狀，協助辨別是否需緊急尋求身體急性疾病根本原因。</dd>
+                <dt>施測方式</dt><dd>評估四種病徵：(1) 心理狀態突然改變或病程起伏、(2) 注意力不集中、(3) 無組織性的思考、(4) 警醒度改變。</dd>
+                <dt>判定標準</dt><dd>若具備前兩項病徵並合併第三或第四項病徵，即可診斷為譫妄，應立即由醫療團隊尋求根本原因。</dd>
+                <dt>資料來源／實證依據</dt><dd>衛生福利部，2018。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec3">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-checklist show" data-type="checklist" data-name="居家環境安全防跌檢核表">
+            <div class="cat-tags"><span class="cat-tag">居家安全檢核</span><span class="cat-tag">新增</span></div>
+            <h3>居家環境安全防跌檢核表</h3>
+            <dl>
+                <dt>用途</dt><dd>系統性檢視居家七大區域（地板、燈光、樓梯、浴室、廚房、客廳臥房、服裝鞋具）之防跌安全狀態。</dd>
+                <dt>適用對象／情境</dt><dd>照護人員、居家服務員或長者家屬，定期檢視居住環境並改善危險項目。</dd>
+                <dt>資料來源／實證依據</dt><dd>衛生福利部國民健康署，2016．居家環境檢核表：居家環境及慢性病都是造成老人跌倒原因．健康九九網站教育專區。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec6">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+        <div class="tool-card type-checklist show" data-type="checklist" data-name="跌倒高危險因子自評篩檢表">
+            <div class="cat-tags"><span class="cat-tag">居家安全檢核</span><span class="cat-tag">民眾自評</span><span class="cat-tag">新增</span></div>
+            <h3>臨床跌倒高危險因子自評篩檢表</h3>
+            <dl>
+                <dt>用途</dt><dd>供高齡長者、家屬或基層照顧者快速自我篩檢跌倒風險，不需專業器材或訓練。</dd>
+                <dt>施測方式</dt><dd>五個核心問題：簡易平衡、意識狀況與認知、視覺功能、如廁頻率與排泄、多重用藥。</dd>
+                <dt>高風險篩檢標準</dt><dd>五項中任一項勾選「是」，即代表屬於臨床之跌倒高危險群，應儘快就醫進行全方位評估。</dd>
+                <dt>資料來源／實證依據</dt><dd>臺北榮總，2025；臺北榮總桃園分院，2024；高雄榮總家醫部，2020。</dd>
+            </dl>
+            <a class="source-link" href="../clinical/guide.html#sec6">出現於：臨床衛教資源（衛教資源）→</a>
+        </div>
+
+    </div>
+
+    <p class="no-result" id="noResult">沒有符合篩選條件的工具。</p>
+
+    <p class="back-nav"><a href="../index.html">← 返回手冊首頁</a>　|　<a href="../apps/environmental-sensing.html">應用類別：環境與非接觸式感測應用</a>　|　<a href="../apps/pedaling-device.html">應用類別：智慧下肢座式踩踏儀器</a></p>
+
+</main>
+
+<footer>
+    <div class="wrap">
+        <div>本頁如有任何問題，請洽 <a href="mailto:flkuo@nhri.edu.tw">flkuo@nhri.edu.tw</a>　｜　© 2026</div>
+    </div>
+</footer>
+
+<script src="../assets/js/protect.js"></script>
+<script src="../assets/js/tool-library.js"></script>
+
+</body>
+</html>

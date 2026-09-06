@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<title>社區防跌運動計畫管理工具 — 智慧助行防跌科技之照護應用手冊</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<header class="page-head">
+    <div class="wrap">
+        <div class="breadcrumb">
+            <a href="../index.html">手冊首頁</a> ／
+            <a href="../apps/pedaling-device.html">智慧下肢座式踩踏儀器</a> ／
+            社區防跌運動計畫管理工具
+        </div>
+        <h1>社區防跌運動計畫管理工具</h1>
+        <p class="subtitle">直接於本頁填寫個案評估、進行分組，並記錄每週出席與訓練內容。資料儲存於您目前使用的瀏覽器中（離開或清除瀏覽資料將無法保留，建議善用「匯出 Excel」備份）。</p>
+    </div>
+</header>
+
+<main>
+    <p class="attribution">本工具原始邏輯與內容由 Contrario Ish 設計與製作（© 2024），本頁已改用《智慧助行防跌科技之照護應用手冊》之視覺設計重新製作，功能邏輯維持一致。</p>
+
+    <div class="card">
+        <h2>👤 個案評估</h2>
+        <p class="card-desc">請填寫個案基本資料與評估數值，並完成下方運動前評估表後加入個案。</p>
+        <form id="personForm">
+            <label>姓名 <input id="name" required type="text"></label>
+            <label>年齡 <input id="age" required type="number"></label>
+            <label>TUG 測試（Timed Up and Go 秒數） <input id="tugSec" required type="number"></label>
+            <label>是否曾跌倒？
+                <span class="checkbox-inline"><input id="fall" type="checkbox"> 曾跌倒</span>
+            </label>
+            <label>使用助行器（可複選）：</label>
+            <div class="aid-group">
+                <span class="checkbox-inline"><input name="aid" type="checkbox" value="助行器"> 助行器</span>
+                <span class="checkbox-inline"><input name="aid" type="checkbox" value="四腳拐"> 四腳拐</span>
+                <span class="checkbox-inline"><input name="aid" type="checkbox" value="單腳拐"> 單腳拐</span>
+                <span class="checkbox-inline"><input name="aid" type="checkbox" value="其他"> 其他</span>
+            </div>
+            <label>疼痛程度：
+                <select id="pain">
+                    <option value="無">無</option>
+                    <option value="輕度">輕度</option>
+                    <option value="中度">中度</option>
+                    <option value="重度">重度</option>
+                </select>
+            </label>
+
+            <h2 style="margin-top:24px;">📋 運動前評估表（PAR-Q）</h2>
+            <div class="table-scroll">
+                <table>
+                    <thead><tr><th>評量項目</th><th>是</th><th>否</th></tr></thead>
+                    <tbody>
+                        <tr><td>醫師告知心臟問題，只能做醫師建議運動？</td><td><input type="radio" name="q1" value="是"></td><td><input type="radio" name="q1" value="否"></td></tr>
+                        <tr><td>活動時會有胸痛的感覺？</td><td><input type="radio" name="q2" value="是"></td><td><input type="radio" name="q2" value="否"></td></tr>
+                        <tr><td>過去 3 個月內，未活動時也有胸痛的情形？</td><td><input type="radio" name="q3" value="是"></td><td><input type="radio" name="q3" value="否"></td></tr>
+                        <tr><td>曾有暈眩導致失去平衡或意識的情況？</td><td><input type="radio" name="q4" value="是"></td><td><input type="radio" name="q4" value="否"></td></tr>
+                        <tr><td>是否有骨骼或關節問題，可能因活動惡化？</td><td><input type="radio" name="q5" value="是"></td><td><input type="radio" name="q5" value="否"></td></tr>
+                        <tr><td>因高血壓或心臟疾病而需要服藥治療（醫師處方）？</td><td><input type="radio" name="q6" value="是"></td><td><input type="radio" name="q6" value="否"></td></tr>
+                        <tr><td>有任何不適合活動的原因？</td><td><input type="radio" name="q7" value="是"></td><td><input type="radio" name="q7" value="否"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <button class="btn" type="button" onclick="addPerson()">➕ 加入個案</button>
+            <button class="btn btn-ghost" type="button" onclick="shareToLINE()">📲 此位個案分享至 LINE</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>👥 個案總覽與分群結果</h2>
+        <div class="table-scroll">
+            <table id="personTable">
+                <thead><tr><th>姓名</th><th>年齡</th><th>TUG（秒）</th><th>跌倒史</th><th>助行器</th><th>疼痛</th><th>分數</th><th>分群</th><th>安全評估建議</th><th>移除</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="output-box" id="groupSummary"></div>
+        <button class="btn btn-seal" onclick="exportExcel()">📥 群體評估資料匯出 Excel</button>
+    </div>
+
+    <div class="card card-yellow">
+        <h2>📆 運動計畫週次記錄</h2>
+        <p class="card-desc">請紀錄每位個案每週出席情況與訓練項目。</p>
+        <div class="table-scroll">
+            <table id="attendanceTable">
+                <thead><tr><th>週次或日期</th><th>出席人數</th><th>訓練內容</th><th>指導員</th><th>備註</th><th>移除</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><input placeholder="週次" type="text"></td>
+                        <td><input placeholder="人數" type="number"></td>
+                        <td><input placeholder="如 平衡訓練、拉筋等" type="text"></td>
+                        <td><input placeholder="指導員" type="text"></td>
+                        <td><input placeholder="備註" type="text"></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <button class="btn" onclick="addAttendanceRow()">➕ 新增週次記錄</button>
+        <button class="btn btn-ghost" onclick="exportAttendance()">📤 匯出運動記錄 Excel</button>
+    </div>
+</main>
+
+<footer>
+    <div class="wrap">
+        <div><a href="../index.html">← 返回手冊首頁</a>　|　<a href="../apps/pedaling-device.html">返回應用類別：智慧下肢座式踩踏儀器</a>　|　<a href="library.html">前往工具庫</a></div>
+        <div style="margin-top:6px;">本頁如有任何問題，請洽 <a href="mailto:flkuo@nhri.edu.tw">flkuo@nhri.edu.tw</a>　｜　© 2026</div>
+    </div>
+</footer>
+
+<script src="../assets/js/protect.js"></script>
+<script src="../assets/js/community-program.js"></script>
+
+</body>
+</html>

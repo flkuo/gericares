@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<title>穿戴式跌倒偵測裝置應用 — 智慧助行防跌科技之照護應用手冊</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<header class="page-head">
+    <div class="wrap">
+        <div class="breadcrumb">
+            <a href="../index.html">手冊首頁</a> ／
+            穿戴式跌倒偵測裝置應用
+        </div>
+        <span class="badge">應用類別 B</span>
+        <h1>穿戴式跌倒偵測裝置應用</h1>
+        <p class="subtitle">高齡者跌倒偵測穿戴式感測技術之臨床與居家照護應用手冊——技術評估、數位基礎配置與雙情境標準照護工作流指南</p>
+        <div class="doc-meta">
+            <span>版本：v2.0（繁體中文・臺灣臨床標準術語）</span>
+            <span>所屬手冊：智慧助行防跌科技之照護應用手冊</span>
+            <span>適用對象：臨床護理師、長期照顧服務員、物理治療師、家屬</span>
+        </div>
+    </div>
+</header>
+
+<nav class="subnav" aria-label="次要導覽">
+    <div class="wrap">
+        <ul>
+            <li><a href="../index.html">手冊首頁</a></li>
+            <li><a href="../index.html#categories">應用類別總覽</a></li>
+            <li><a href="../qa/general.html">衛教資源</a></li>
+            <li><a href="../policy/rental-scheme.html">政策資訊</a></li>
+            <li><a href="../videos/resources.html">影音資源</a></li>
+            <li><a href="../tools/library.html">工具庫</a></li>
+        </ul>
+        <div class="search-wrap">
+        <form class="site-search" role="search" onsubmit="return handleSiteSearch(event, this)">
+            <input type="search" placeholder="搜尋手冊內容…" aria-label="搜尋手冊內容" oninput="handleSiteSearchInput(event, this)">
+            <button type="submit">搜尋</button>
+        </form>
+        <div class="search-results"></div>
+        </div>
+    </div>
+</nav>
+
+<div class="principle-box">
+    <div class="principle-inner">
+        <span class="tag">本頁定位</span>
+        本頁為《智慧助行防跌科技之照護應用手冊》中<strong>應用類別 B：穿戴式跌倒偵測裝置應用</strong>的完整概覽頁，系統性整合腰部慣性裝置、手腕智慧手錶、足底智慧鞋墊、胸前吊墜貼片與口袋型手機五大主流穿戴式規格的技術評估、數位基礎配置、效能實證與臨床應用流程。內容全數整理自使用者提供之《高齡者跌倒偵測穿戴式感測技術臨床與居家照護應用手冊》v2.0，並保留原文獻引用以利溯源。手冊其他應用類別請由<a href="../index.html">手冊首頁</a>進入瀏覽。
+    </div>
+</div>
+
+<div class="wrap layout">
+
+    <aside class="toc">
+        <h3>目　次</h3>
+        <ol>
+            <li><a href="#sec1">壹、前言與手冊目的</a></li>
+            <li><a href="#sec2">貳、五大裝置分類與規格</a></li>
+            <li><a href="#sec3">參、使用者端數位配置檢核</a></li>
+            <li><a href="#sec4">肆、臨床與居家照護流程</a></li>
+            <li><a href="#sec5">伍、標準工作流與判定邏輯</a></li>
+            <li><a href="#sec6">陸、各裝置效能實證數據</a></li>
+            <li><a href="#sec7">柒、優缺點與管理考量</a></li>
+            <li><a href="#sec8">捌、相關科技與參考文獻</a></li>
+        </ol>
+        <div class="nav-group">
+            <div class="nav-group-title">導覽</div>
+            <a href="../index.html">← 返回手冊首頁</a>
+            <a href="../tools/library.html">→ 前往工具庫</a>
+        </div>
+    </aside>
+
+    <main>
+    <article>
+
+        <section id="sec1">
+            <div class="section-head">
+                <h2>壹、前言與手冊目的</h2>
+            </div>
+            <p class="lead">跌倒事件是高齡者面臨最嚴重的意外傷害之一，不僅容易導致骨折與腦部外傷，更可能引發長期臥床及一系列內科併發症（Wang et al., 2020；Tseng et al., 2025）。對於醫療機構、養護機構及居家照護而言，如何在跌倒發生的第一時間進行精準判定並快速通報，是降低長者「臥地不起（Long Lie）」時間、進而保障生命安全的黃金關鍵（Tseng et al., 2025；Wang et al., 2020）。</p>
+            <p class="lead">本頁針對「腰部慣性裝置」「手腕智慧手錶」「足底智慧鞋墊」「胸前吊墜」及「口袋型手機」等五大主流穿戴式規格進行技術評估（Subramaniam et al., 2022；Wang et al., 2020），特別剔除實驗室研究用之多點肢體貼片式慣性套件，聚焦於具備高依從性、便於臨床機構及家庭推廣之單一或微型穿戴裝置，並針對「臨床醫療機構」與「居家安全防護」兩種情境設計標準化照護評估與緊急反應流程。</p>
+        </section>
+
+        <section id="sec2">
+            <div class="section-head">
+                <h2>貳、五大裝置分類與規格對照</h2>
+                <span class="note">依佩戴部位、感測原理分類</span>
+            </div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>裝置類型</th><th>佩戴部位與外觀規格</th><th>核心感測技術與原理</th><th>代表性文獻</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. 腰部／腰際慣性量測裝置</strong></td>
+                            <td>腰部、腰帶，或置於專屬腰包內之微型感測主機</td>
+                            <td>整合式三軸加速度計與三軸陀螺儀（IMU），連續監測軀幹三維線性加速度與角速度變異</td>
+                            <td class="dim">Tseng et al., 2025；Boutellaa et al., 2019；Bet et al., 2020</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. 手腕戴式智慧手錶與手環</strong></td>
+                            <td>配戴於左手或右手腕之消費級或醫療級穿戴裝置</td>
+                            <td>內建微機電（MEMS）加速度計，常與手機 App 藍牙連線，透過輕量化 LSTM 模型即時推論</td>
+                            <td class="dim">Debnath et al., 2025；Wang et al., 2020；Bet et al., 2020</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. 足底智慧鞋墊感測系統</strong></td>
+                            <td>置於長者常穿鞋具內部之可裁剪、薄型智慧鞋墊</td>
+                            <td>力敏感電阻（FSR）或壓力電容陣列，量測足底壓力分佈（PPD）與身體壓力中心（COP）軌跡位移</td>
+                            <td class="dim">Subramaniam et al., 2022；di Rosa et al., 2017；Bet et al., 2020</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. 胸前吊墜與貼片式裝置</strong></td>
+                            <td>頸部懸掛式吊墜，或黏貼於胸前 L4 椎體骨骼部位之貼片</td>
+                            <td>結合 3D 加速度計與氣壓高度計，利用高度急降引發之氣壓驟降捕捉重心急劇變化，可觸發防護氣囊</td>
+                            <td class="dim">Subramaniam et al., 2022；Yhdego et al., 2021；Wang et al., 2020</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. 口袋型智慧型手機</strong></td>
+                            <td>常態置於衣服或褲子口袋內之日常智慧型手機</td>
+                            <td>利用內建三軸加速度計進行訊號擷取，透過背景 App 提供警報取消確認機制與雲端通報</td>
+                            <td class="dim">Wang et al., 2020；Subramaniam et al., 2022；Bet et al., 2020</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="conclusion-box">
+                <strong>核心分析結論：</strong>在五大穿戴式裝置中，腰部慣性量測裝置由於最接近人體質心（COM），能最真實反映身體重心不穩與傾倒（Tseng et al., 2025；Bet et al., 2020）。智慧鞋墊則因完全隱蔽、穿上即忘，最適合進行長期的亞臨床平衡功能量化評估（Subramaniam et al., 2022）。智慧手錶則具有極佳的日常接受度與最低的污名化障礙，是居家安全防護的最佳普及媒介（Wang et al., 2020；Debnath et al., 2025）。
+            </div>
+        </section>
+
+        <section id="sec3">
+            <div class="section-head">
+                <h2>參、使用者端需備置的數位配置與能力</h2>
+                <span class="note">從導入單位／家屬角度出發，而非裝置內部工程規格</span>
+            </div>
+            <p class="lead">要成功導入穿戴式跌倒偵測系統，除了裝置本身，機構與家屬也需要事先備妥對應的網路環境、裝置帳號與日常操作能力。以下依「機構端」「居家端」與「共通」三部分整理成檢核清單，方便導入前逐項確認：</p>
+
+            <div class="checklist-group">
+                <div class="cg-title">A. 機構端（護理站／照護單位）需準備</div>
+                <ul class="checklist">
+                    <li><input type="checkbox" disabled> 機構 Wi-Fi 或行動網路訊號需覆蓋所有病房、走廊與公共大廳，確保裝置訊號能持續回傳（Wang et al., 2020；Debnath et al., 2025）。</li>
+                    <li><input type="checkbox" disabled> 護理站需配置具備網頁瀏覽功能的電腦或大螢幕，作為顯示跌倒警報與長者定位的主控台（Debnath et al., 2025；Wang et al., 2020；Krishna et al., 2022）。</li>
+                    <li><input type="checkbox" disabled> 主控台所在位置需有穩定電源，確保 24 小時監看不中斷。</li>
+                    <li><input type="checkbox" disabled> 值班人員手機需具備網路連線能力，並加入機構 LINE 通報群組以接收即時推播（Tseng et al., 2025）。</li>
+                    <li><input type="checkbox" disabled> 建立每日晨間交班檢查流程：確認裝置已佩戴、電池電量 &gt;50%、網路連線正常（Tseng et al., 2025；Subramaniam et al., 2022；Wang et al., 2020）。</li>
+                    <li><input type="checkbox" disabled> 於便於快速取用之定點準備急救箱與行動 AED，以配合 3 分鐘內到場的應變流程（Tseng et al., 2025）。</li>
+                </ul>
+            </div>
+
+            <div class="checklist-group home">
+                <div class="cg-title">B. 居家端（長者與家屬）需準備</div>
+                <ul class="checklist">
+                    <li><input type="checkbox" disabled> 長者需持有一支具備 GPS 定位、藍牙（BLE）與行動數據／Wi-Fi 連線能力的智慧型手機（Debnath et al., 2025；Wang et al., 2020）。</li>
+                    <li><input type="checkbox" disabled> 手機需安裝對應之跌倒偵測 App（如 SmartFall App），保持背景執行，並開啟 GPS 定位權限（Debnath et al., 2025；Tseng et al., 2025）。</li>
+                    <li><input type="checkbox" disabled> 家屬與居家照顧服務員之手機需安裝 LINE，並加入「長者專屬居家 LINE 群組」以接收求救推播與 Google Maps 導航連結（Tseng et al., 2025）。</li>
+                    <li><input type="checkbox" disabled> 家屬需協助長者完成智慧手錶與手機 App 之藍牙配對（Debnath et al., 2025；Wang et al., 2020）。</li>
+                    <li><input type="checkbox" disabled> 家屬可於 App 中設定 GPS「電子安全圍籬」，掌握長者日常活動範圍（Tseng et al., 2025）。</li>
+                    <li><input type="checkbox" disabled> 家中準備手錶專用充電座，並建立固定睡前充電習慣，避免電量不足造成安全空窗（Subramaniam et al., 2022）。</li>
+                </ul>
+            </div>
+
+            <div class="checklist-group">
+                <div class="cg-title">C. 共通：帳號、通報與應變演練</div>
+                <ul class="checklist">
+                    <li><input type="checkbox" disabled> 完成裝置與雲端系統的帳號註冊／綁定，確認裝置與長者身分正確對應。</li>
+                    <li><input type="checkbox" disabled> 實際測試 LINE 推播是否能正常送達所有綁定人員（家屬、值班護理師等）（Tseng et al., 2025）。</li>
+                    <li><input type="checkbox" disabled> 向長者與照顧者說明並演練「預警取消機制」：如何在 30 秒內取消誤報，避免造成不必要的緊張與警報疲勞（Wang et al., 2020；Debnath et al., 2025）。</li>
+                </ul>
+            </div>
+
+            <p class="lead" style="font-size:12.8px;color:var(--ink-soft);">以上檢核項目整理自原始文件中對邊緣端感測、無線傳輸、地理定位與雲端通報整合之技術要求，重新從使用者實際導入的角度呈現；若需了解各項功能背後的技術規格（如晶片型號、取樣率、通訊協定等），請洽技術廠商索取完整規格文件。</p>
+        </section>
+
+        <section id="sec4">
+            <div class="section-head">
+                <h2>肆、臨床與居家之評估應用照護流程</h2>
+                <span class="note">機構情境與居家情境並列對照</span>
+            </div>
+            <p class="lead">高齡者在「醫療與養護機構（臨床情境）」與「獨立社區生活（居家情境）」的日常活動模式與急救支援系統有顯著差異，以下針對兩種情境設計標準照護指引：</p>
+
+            <div class="flow-cols">
+                <div class="flow-col">
+                    <h4>臨床與醫療機構照護情境</h4>
+                    <div class="flow-phase">
+                        <div class="phase-title">預防篩檢階段</div>
+                        <ul>
+                            <li>物理治療師或專科護理師定期協助高風險長者穿上配有足底智慧鞋墊的活動鞋（Subramaniam et al., 2022；di Rosa et al., 2017）。</li>
+                            <li>進行 TUG 或 Romberg 靜態平衡測試，鞋墊系統擷取壓力中心（COP）軌跡變異，運算「雙足支撐時間比例」（於穩態步態跌倒風險指數中佔 52% 權重）（Subramaniam et al., 2022；Bet et al., 2020）。</li>
+                            <li>系統輸出 0–100 分色彩編碼跌倒風險評分，若 &gt;31 分（中高風險），需召開多專科防跌會議並安排個人化訓練（Subramaniam et al., 2022；Bet et al., 2020）。</li>
+                        </ul>
+                    </div>
+                    <div class="flow-phase">
+                        <div class="phase-title">日常配戴與管理階段</div>
+                        <ul>
+                            <li>晨間交班時協助長者佩戴感測主機或手錶，確認電池電量 &gt;50% 且網路連線正常（Tseng et al., 2025；Subramaniam et al., 2022；Wang et al., 2020）。</li>
+                            <li>對中重度失智症患者，優先採用智慧鞋墊或非接觸式環境感測，避免標籤化排斥（Subramaniam et al., 2022；Wang et al., 2020）。</li>
+                        </ul>
+                    </div>
+                    <div class="flow-phase">
+                        <div class="phase-title">緊急求救工作流</div>
+                        <ul>
+                            <li>邊緣端 FSM 演算法確認跌倒成立，經 Wi-Fi 或 NB-IoT 傳送至後端 API（Tseng et al., 2025；Debnath et al., 2025；Krishna et al., 2022）。</li>
+                            <li>護理站大螢幕跳出紅色警報並顯示長者姓名、房號與定位，值班人員手機 LINE 群組同步收到推播（Tseng et al., 2025；Krishna et al., 2022）。</li>
+                            <li>至少兩名照護人員攜急救箱與 AED，於 3 分鐘內抵達現場評估並處置，通報值班醫師與家屬並完成事件登記（Tseng et al., 2025；Subramaniam et al., 2022；Wang et al., 2020）。</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="flow-col home">
+                    <h4>居家安全防護與通報情境</h4>
+                    <div class="flow-phase">
+                        <div class="phase-title">設定與校準階段</div>
+                        <ul>
+                            <li>家屬協助完成手錶與長者手機 App（SmartFall App）之 BLE 配對（Debnath et al., 2025；Wang et al., 2020）。</li>
+                            <li>雲端後端設定「長者專屬居家 LINE 群組」，納入家屬、鄰里長、居家照顧服務員（Tseng et al., 2025）。</li>
+                            <li>家屬於 App 設定 GPS「電子安全圍籬」，長者超出日常活動範圍即推播提醒（Tseng et al., 2025）。</li>
+                        </ul>
+                    </div>
+                    <div class="flow-phase">
+                        <div class="phase-title">日常佩戴與自主管理階段</div>
+                        <ul>
+                            <li>晨起後配戴手錶並確認 App 背景運作；睡前取下置於充電座，家屬 App 可遠端查詢電量，低於 20% 自動提醒（Debnath et al., 2025；Wang et al., 2020；Subramaniam et al., 2022）。</li>
+                        </ul>
+                    </div>
+                    <div class="flow-phase">
+                        <div class="phase-title">黃金救援流程</div>
+                        <ul>
+                            <li>裝置偵測到大於 1.4G 擊地撞擊，手機 App 發出 30 秒警報音效並彈出確認視窗（Tseng et al., 2025；Debnath et al., 2025；Wang et al., 2020）。</li>
+                            <li>長者可於 30 秒內點擊取消以排除誤報；逾時未取消則視為跌倒成立（Wang et al., 2020；Debnath et al., 2025）。</li>
+                            <li>雲端 API 於 1 秒內推播含 Google Maps 導航連結之 LINE 求救訊息至家屬群組，家屬或居服員依導航赴現場，同時通報 119（Tseng et al., 2025；Subramaniam et al., 2022；Wang et al., 2020）。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec5">
+            <div class="section-head">
+                <h2>伍、標準照護工作流與級聯判定圖示</h2>
+                <span class="note">FSM 判定邏輯、機構應變流程、居家救援流程</span>
+            </div>
+
+            <h3 class="sub-title">圖一：有限狀態機（FSM）邊緣端級聯跌倒判定演算法</h3>
+            <ol class="flow-list">
+                <li><div class="flow-title">狀態 1</div><div class="flow-desc">監測加速度合成幅值 ASVM 是否小於等於 800 mg（0.8G），若低於則觸發狀態機並進入記錄模式（Tseng et al., 2025）。</div></li>
+                <li><div class="flow-title">狀態 2</div><div class="flow-desc">觸發後 200 個數據點（2 秒內）持續檢測，確認是否出現大於等於 1400 mg（1.4G）的重重撞擊波峰（Tseng et al., 2025）。</div></li>
+                <li><div class="flow-title">狀態 3</div><div class="flow-desc">計算第 151–200 個數據點之加速度標準差，須小於 100 mg，確認衝擊後身體已停止劇烈震盪（Tseng et al., 2025）。</div></li>
+                <li><div class="flow-title">狀態 4</div><div class="flow-desc">計算第 151–200 個數據點之陀螺儀角速度標準差，須小於 10 dps，用以濾除日常跑步、步行等高頻連續動態活動（Tseng et al., 2025）。</div></li>
+                <li><div class="flow-title">狀態 5</div><div class="flow-desc">計算第 181–200 個數據點之 y 軸與水平地面夾角平均值，須小於 60 度，確認長者身體橫躺於地面且無法起身（Tseng et al., 2025）。</div></li>
+                <li><div class="flow-title">狀態 6（完成判定）</div><div class="flow-desc">系統判定跌倒事件正式成立，立即調用 GPS 更新座標，驅動 NB-IoT 傳送求救封包，雲端 API 即時推送 LINE 訊息（Tseng et al., 2025）。</div></li>
+            </ol>
+
+            <h3 class="sub-title">圖二：醫療與長照機構緊急跌倒應變工作流</h3>
+            <ol class="flow-list seal">
+                <li><div class="flow-title">感測與偵測端</div><div class="flow-desc">長者佩戴腰部感測主機或智慧鞋墊，邊緣端 FSM 演算法偵測異常 ASVM 幅值急降與高撞擊波峰，姿態夾角小於 60 度即判定跌倒成立（Tseng et al., 2025；Subramaniam et al., 2022）。</div></li>
+                <li><div class="flow-title">雲端通報端</div><div class="flow-desc">微控制器驅動 NB-IoT 傳送求救封包，雲端 API 接收並同步推播，護理站大螢幕發出紅色閃爍警報，值班人員手機 LINE 群組同步收到推播（Tseng et al., 2025；Krishna et al., 2022）。</div></li>
+                <li><div class="flow-title">臨床處置端</div><div class="flow-desc">兩名護理師或照護員攜急救箱、行動 AED，於 3 分鐘內抵達評估意識與傷情，防範臥地不起伴隨的失溫或橫紋肌溶解症（Tseng et al., 2025；Subramaniam et al., 2022；Wang et al., 2020）。</div></li>
+                <li><div class="flow-title">事件記錄與追蹤</div><div class="flow-desc">通報值班醫師與家屬，於病歷系統登錄事件，物理治療師與防跌小組重新分析平衡能力與用藥配置，調整復健訓練強度（Tseng et al., 2025；Subramaniam et al., 2022；Bet et al., 2020）。</div></li>
+            </ol>
+
+            <h3 class="sub-title">圖三：居家智慧安全防護求救與家屬 GPS 導航救援工作流</h3>
+            <ol class="flow-list seal">
+                <li><div class="flow-title">自主安全管理</div><div class="flow-desc">長者晨間佩戴智慧手錶，手機保持 BLE 背景連線；睡前取下充電，家屬 App 可遠端檢視電量（Debnath et al., 2025；Wang et al., 2020；Subramaniam et al., 2022）。</div></li>
+                <li><div class="flow-title">預警取消機制</div><div class="flow-desc">戶外跌倒後手機 App 發出 30 秒高分貝警報並彈出確認視窗，長者若無大礙可一鍵取消以排除日常誤報（Debnath et al., 2025；Wang et al., 2020）。</div></li>
+                <li><div class="flow-title">家屬群組求救</div><div class="flow-desc">30 秒逾時未取消，App 自動啟動 GPS 定位，雲端後端組裝 Google 地圖連結，透過 LINE 群組推播給家屬與社區保全（Tseng et al., 2025；Wang et al., 2020）。</div></li>
+                <li><div class="flow-title">即時導航救援</div><div class="flow-desc">家屬點擊連結啟動導航，第一時間奔赴現場或通報 119 與救護車前往相同定位點，實施緊急處置（Tseng et al., 2025；Subramaniam et al., 2022；Wang et al., 2020）。</div></li>
+            </ol>
+        </section>
+
+        <section id="sec6">
+            <div class="section-head">
+                <h2>陸、各類感測裝置之效能與量測表現評估</h2>
+                <span class="note">數據完全遵循文獻記載，不含虛構估計</span>
+            </div>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead><tr><th>裝置／系統</th><th>研究情境</th><th>量測表現</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>腰部 FSM 感測主機</td>
+                            <td>15 名受試者（平均 40.47 歲），6750 個測試樣本（6000 日常活動＋750 模擬跌倒）（Tseng et al., 2025）</td>
+                            <td>敏感度 97.9%、特異度 99.9%、準確度 99.7%；全功能模式續航 27.8 小時，省電模式 100 小時，深度睡眠模式理論達 16.7 天（Tseng et al., 2025）</td>
+                        </tr>
+                        <tr>
+                            <td>手腕智慧手錶（輕量化 LSTM）</td>
+                            <td>3 名受試者，模擬 15 次跌倒＋7 項日常活動，加入擴散模型合成數據混合訓練（Debnath et al., 2025）</td>
+                            <td>F1-Score 0.86、敏感度 97.0%（較純真實數據訓練之 F1-Score 0.62 提升 24%）（Debnath et al., 2025）</td>
+                        </tr>
+                        <tr>
+                            <td>黎曼共變異特徵融合系統</td>
+                            <td>DLR 資料集 19 名受試者（腰帶 IMU）；CogentLabs 42 名受試者（胸、大腿 IMU）（Boutellaa et al., 2019）</td>
+                            <td>DLR 準確度 98.31%、F-Score 0.9908；CogentLabs 中風/跌倒判定準確度 92.51%（Boutellaa et al., 2019）</td>
+                        </tr>
+                        <tr>
+                            <td>時域注意力網絡（Transformer）</td>
+                            <td>SDSU 高頻（200Hz）數據，30 名受試者，43.5 萬列跌倒資料＋10.3 萬列近跌倒資料（Yhdego et al., 2021）</td>
+                            <td>特異度 98.0%、敏感度 97.0%、準確度 98.0%，優於傳統 CNN-LSTM（Yhdego et al., 2021）</td>
+                        </tr>
+                        <tr>
+                            <td>居家無人監督連續監測</td>
+                            <td>Gietzelt et al., 2012（Bet et al., 2020 引用）</td>
+                            <td>敏感度 91.3%、特異度 95.0%（Bet et al., 2020）</td>
+                        </tr>
+                        <tr>
+                            <td>大腿單一感測模組</td>
+                            <td>Saadeh et al., 2019（Bet et al., 2020 引用）</td>
+                            <td>快速預警模式敏感度 97.8%、特異度 99.1%；慢速確認模式敏感度 98.6%、特異度 99.3%（Bet et al., 2020）</td>
+                        </tr>
+                        <tr>
+                            <td>智慧鞋墊 WIISEL 系統</td>
+                            <td>di Rosa et al., 2017（Subramaniam et al., 2022 引用）</td>
+                            <td class="dim">〔文獻未提供〕具體敏感度與特異度數值，僅證實對穩態步態參數具優異篩檢與跌倒風險群聚分析能力（Subramaniam et al., 2022）</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h4 class="mini-title">誤警與失效分析（腰部 FSM 感測主機）</h4>
+            <p class="lead">實測中發生 5 次將「快速坐下」誤判為跌倒之假陽性事件，主因為受試者快速坐下後順勢後靠高靠墊辦公椅，致 y 軸夾角在 2 秒內急劇小於 60 度；文獻建議可將角度觀測時間由 181–200 點延長至 181–400 點以濾除此類誤報。另有 16 次漏警（假陰性），原因為重複高強度摔倒測試過程中裝置扣帶鬆動、跑位，導致角度判定失效（Tseng et al., 2025）。</p>
+        </section>
+
+        <section id="sec7">
+            <div class="section-head">
+                <h2>柒、實務導入之優缺點與照護管理考量</h2>
+                <span class="note">依個別長者身心狀態與預算選擇最適技術</span>
+            </div>
+            <div class="device-review">
+                <div class="device-card">
+                    <h4>1. 腰部／腰帶式慣性量測裝置</h4>
+                    <div class="field"><span class="label">優點：</span><span>姿態判定精準度最高，結合 GPS 與 NB-IoT 可實現戶外大範圍無死角的 LINE 即時通訊與地圖導航救援，FSM 機制運算功耗極低（Tseng et al., 2025；Bet et al., 2020）。</span></div>
+                    <div class="field limit"><span class="label">缺點：</span><span>佩戴不夠緊貼（腰帶鬆動移位）時，傾倒角度可能大於 60 度而漏報（Tseng et al., 2025）。</span></div>
+                    <div class="field"><span class="label">管理考量：</span><span>需長者每日晨間主動佩戴，對失智症、嚴重認知障礙患者依從性低（Subramaniam et al., 2022；Wang et al., 2020）。</span></div>
+                </div>
+                <div class="device-card">
+                    <h4>2. 手腕戴式智慧手錶與手環</h4>
+                    <div class="field"><span class="label">優點：</span><span>佩戴接受度最高，外觀時尚，消除標籤化與污名化心理障礙，適合大眾化長期推廣（Wang et al., 2020；Debnath et al., 2025）。</span></div>
+                    <div class="field limit"><span class="label">缺點：</span><span>手腕頻繁活動容易引發高誤警率；電池續航較短，螢幕偏小不利視力退化長者操作（Wang et al., 2020；Subramaniam et al., 2022）。</span></div>
+                    <div class="field"><span class="label">管理考量：</span><span>須建立固定每日充電流程，避免設備沒電造成夜間或清晨漏警空窗（Subramaniam et al., 2022）。</span></div>
+                </div>
+                <div class="device-card">
+                    <h4>3. 足底智慧鞋墊感測系統</h4>
+                    <div class="field"><span class="label">優點：</span><span>完全隱形、穿上即忘，最適合失智症患者；可連續量測 COP 軌跡變異進行預防性篩檢與早期物理治療介入（Subramaniam et al., 2022）。</span></div>
+                    <div class="field limit"><span class="label">缺點：</span><span>對鞋子尺寸適應度較低，長期受壓耐用度及維護成本較高，多數不具備即時跌倒報警功能（Subramaniam et al., 2022）。</span></div>
+                    <div class="field"><span class="label">管理考量：</span><span>價格昂貴，實務上適用於高跌倒風險且積極復健之住院或機構長者，作為評估工具而非居家常態報警設備（Subramaniam et al., 2022）。</span></div>
+                </div>
+                <div class="device-card">
+                    <h4>4. 胸前吊墜與貼片式裝置</h4>
+                    <div class="field"><span class="label">優點：</span><span>吊墜佩戴方便，貼片位置穩定，結合氣壓計能敏銳捕捉高程急降，適合著地前防護氣囊觸發（Subramaniam et al., 2022）。</span></div>
+                    <div class="field limit"><span class="label">缺點：</span><span>吊墜易因彎腰產生擺錘效應造成誤報；貼片黏膠常導致皮膚紅腫或撕除時表皮受損（Subramaniam et al., 2022）。</span></div>
+                    <div class="field"><span class="label">管理考量：</span><span>貼片式需定期更換一次性耗材，機構須列入經常性營運預算（Subramaniam et al., 2022）。</span></div>
+                </div>
+                <div class="device-card">
+                    <h4>5. 口袋型智慧型手機</h4>
+                    <div class="field"><span class="label">優點：</span><span>無外接硬體採購成本，能直接調用內建 GPS、Wi-Fi 與語音撥號系統（Wang et al., 2020；Subramaniam et al., 2022）。</span></div>
+                    <div class="field limit"><span class="label">缺點：</span><span>長者常忘記隨身攜帶手機，導致跌倒時無法偵測；各廠牌手機 IMU 精確度落差懸殊，難以建立一體適用演算法（Wang et al., 2020；Bet et al., 2020）。</span></div>
+                    <div class="field"><span class="label">管理考量：</span><span>建議作為輔助手段，不宜作為唯一的跌倒偵測依據。</span></div>
+                </div>
+            </div>
+            <div class="conclusion-box">
+                <strong>本章總結與機構決策建言：</strong>對於「神智清醒但伴隨肢體偏癱或巴金森氏症」之長者，應優先配戴腰部感測器或智慧鞋墊，以擷取最高精度的步態特徵並提供精準的物理治療回饋（Subramaniam et al., 2022；Tseng et al., 2025）；而對於「伴隨中重度失智症」之長者，則應優先採用智慧鞋墊（穿上即忘）或結合非接觸式環境感測雷達（免依從），以降低因抗拒或遺忘而導致的安全漏洞（Subramaniam et al., 2022；Wang et al., 2020）。
+            </div>
+        </section>
+
+        <section id="sec8">
+            <div class="section-head">
+                <h2>捌、相關科技與參考文獻</h2>
+            </div>
+            <div class="related-box">
+                <h4>手冊其他應用類別</h4>
+                <ul>
+                    <li><a href="environmental-sensing.html">應用類別 A：環境與非接觸式感測應用（非接觸式環境雷達可作為失智症個案之替代方案）</a></li>
+                    <li><a href="pedaling-device.html">應用類別 C：智慧下肢座式踩踏儀器</a></li>
+                    <li><a href="../index.html">應用類別 D：居家與病房環境改造應用〔佔位〕</a></li>
+                </ul>
+            </div>
+            <div class="related-box" style="margin-top:12px;">
+                <h4>參考文獻清單</h4>
+                <ol>
+                    <li>Boutellaa, E., Kerdjidj, O., &amp; Ghanem, K. (2019). Covariance matrix based fall detection from multiple wearable sensors. <em>Journal of Biomedical Informatics</em>, 94, 103189.</li>
+                    <li>Krishna, K. L., Vamsi, K. V., Reddy, K. A., &amp; Thyagharajan, K. K. (2022). A patient-specific single sensor IoT-based wearable fall prediction and detection system using machine learning. <em>AIP Conference Proceedings</em>, 2519(1), 050025.</li>
+                    <li>Bet, P., Castro, P. C., &amp; Ponti, M. A. (2020). Fall detection and fall risk assessment in older person using wearable sensors: a systematic review. <em>International Journal of Medical Informatics</em> (Preprint 2020).</li>
+                    <li>Subramaniam, S., Faisal, A. I., &amp; Deen, M. J. (2022). Wearable Sensor Systems for Fall Risk Assessment: A Review. <em>Frontiers in Digital Health</em>, 4, 921506.</li>
+                    <li>Wang, X., Ellul, J., &amp; Azzopardi, G. (2020). Elderly Fall Detection Systems: A Literature Survey. <em>Frontiers in Robotics and AI</em>, 7, 71.</li>
+                    <li>Yhdego, H., Li, J., Paolini, C., &amp; Audette, M. (2021). Wearable Sensor Gait Analysis of Fall Detection using Attention Network. <em>Proceedings (IEEE Int Conf Bioinformatics Biomed)</em>, 3137–3141.</li>
+                    <li>Tseng, C.-K., Huang, S.-J., &amp; Kau, L.-J. (2025). Wearable Fall Detection System with Real-Time Localization and Notification Capabilities. <em>Sensors</em>, 25(12), 3632.</li>
+                    <li>Debnath, M., Alamgeer, S., Kabir, M. S., &amp; Ngu, A. H. (2025). Enhancing Wearable Fall Detection System via Synthetic Data. <em>Sensors</em>, 25(15), 4639.</li>
+                </ol>
+            </div>
+        </section>
+
+    </article>
+
+    <p class="closing-line">―― 本頁內容 100% 整理自使用者提供之來源文件與其原始文獻引用 ――</p>
+
+    </main>
+</div>
+
+<footer>
+    <div class="wrap">
+        <div><a href="../index.html">← 返回手冊首頁</a>　|　<a href="../tools/library.html">前往工具庫</a>　|　本頁如有任何問題，請洽 <a href="mailto:flkuo@nhri.edu.tw">flkuo@nhri.edu.tw</a>　｜　© 2026</div>
+    </div>
+</footer>
+
+<script>var SITE_ROOT = "../";</script>
+<script src="../assets/js/search-data.js"></script>
+<script src="../assets/js/search.js"></script>
+<script src="../assets/js/protect.js"></script>
+</body>
+</html>

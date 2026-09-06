@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; object-src 'none'; base-uri 'self'; frame-ancestors 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<title>環境與非接觸式感測應用 — 智慧助行防跌科技之照護應用手冊</title>
+<link rel="stylesheet" href="../assets/css/main.css">
+</head>
+<body>
+
+<header class="page-head">
+    <div class="wrap">
+        <div class="breadcrumb">
+            <a href="../index.html">手冊首頁</a> ／
+            環境與非接觸式感測應用
+        </div>
+        <span class="badge">應用類別 A</span>
+        <h1>環境與非接觸式感測應用</h1>
+        <p class="subtitle">智慧長照與臨床防跌安全網的無縫整合實務指南——涵蓋六種環境端感測技術之原理、臨床整合、警報分級與導入方法（含機構試辦實務案例）</p>
+        <div class="doc-meta">
+            <span>版本：v2 修正版</span>
+            <span>所屬手冊：智慧助行防跌科技之照護應用手冊</span>
+            <span>適用對象：護理團隊、照服員、物理／職能治療師、技術廠商</span>
+        </div>
+    </div>
+</header>
+
+<nav class="subnav" aria-label="次要導覽">
+    <div class="wrap">
+        <ul>
+            <li><a href="../index.html">手冊首頁</a></li>
+            <li><a href="../index.html#categories">應用類別總覽</a></li>
+            <li><a href="../qa/general.html">衛教資源</a></li>
+            <li><a href="../policy/rental-scheme.html">政策資訊</a></li>
+            <li><a href="../videos/resources.html">影音資源</a></li>
+            <li><a href="../tools/library.html">工具庫</a></li>
+        </ul>
+        <div class="search-wrap">
+        <form class="site-search" role="search" onsubmit="return handleSiteSearch(event, this)">
+            <input type="search" placeholder="搜尋手冊內容…" aria-label="搜尋手冊內容" oninput="handleSiteSearchInput(event, this)">
+            <button type="submit">搜尋</button>
+        </form>
+        <div class="search-results"></div>
+        </div>
+    </div>
+</nav>
+
+<div class="principle-box">
+    <div class="principle-inner">
+        <span class="tag">本頁定位</span>
+        本頁為《智慧助行防跌科技之照護應用手冊》中<strong>應用類別 A：環境與非接觸式感測應用</strong>的完整概覽頁，一次收錄 ToF/LiDAR、毫米波雷達、AI 影像骨骼分析、足底環境地板感測、聲音分析式跌倒偵測，以及紅外線熱感測陣列／環境物聯網感測六種子技術的原理、臨床應用與導入方法，不另外拆分子頁面。手冊其他應用類別（如穿戴式裝置、移動輔具、環境改造）將陸續於<a href="../index.html">手冊首頁</a>發布。
+    </div>
+    <div class="principle-inner">
+        <span class="tag">指引核心原則</span>
+        跌倒偵測系統必須被視為「照護流程與決策的一部分」，而不僅僅是科技設備。一個真正成功的臨床導入，應建立起「臨床評估、精準配置、分級應變（跌倒與久滯）、多學科對話調校、趨勢分析、預防微調」的完整防護閉環。本指引旨在協助機構與病房照護團隊，利用非接觸式感測科技建構全天候的隱形守護網，兼顧長者的生命安全與生活尊嚴。
+    </div>
+</div>
+
+<div class="wrap layout">
+
+    <aside class="toc">
+        <h3>目　次</h3>
+        <ol>
+            <li><a href="#sec1">壹、核心概念</a></li>
+            <li><a href="#sec2">貳、六大感測技術</a></li>
+            <li><a href="#sec3">參、臨床量表整合</a></li>
+            <li><a href="#sec4">肆、適用個案特徵</a></li>
+            <li><a href="#sec5">伍、後臺資料應用</a></li>
+            <li><a href="#sec6">陸、警報分級與 SOP</a></li>
+            <li><a href="#sec7">柒、安裝前後調校流程</a></li>
+            <li><a href="#sec8">捌、導入期檢核表</a></li>
+            <li><a href="#sec9">玖、建議照護應用流程</a></li>
+        </ol>
+        <div class="nav-group">
+            <div class="nav-group-title">導覽</div>
+            <a class="back-home" href="../index.html">← 返回手冊首頁</a>
+            <a class="back-home" href="../tools/library.html">→ 前往工具庫</a>
+        </div>
+    </aside>
+
+    <main>
+    <article>
+
+        <section id="sec1">
+            <div class="section-head">
+                <h2>壹、核心概念：從「被動警報」轉向「主動式風險管理」</h2>
+            </div>
+            <p class="lead">傳統的防跌科技多偏向「被動警報」模式——跌倒事件已經發生、長者倒地不起後，系統才發出通知，往往導致長者長時間倒地，造成橫紋肌溶解、骨折併發症或失血錯過黃金搶救時間。非接觸式環境型感測技術的應用價值，應從被動救援遞進式演進至主動式風險決策，具體包含以下三個核心層次：</p>
+
+            <div class="tier-list">
+                <div class="tier">
+                    <div class="tier-name">第一層：即時事件偵測（Event Detection）</div>
+                    <div class="tier-desc">現在是否發生了需要處理的事件？例如高度疑似跌倒的姿態異常，或浴廁停留異常久滯。此層次著重於即時警報與快速救援。</div>
+                </div>
+                <div class="tier">
+                    <div class="tier-name">第二層：活動風險辨識（Risk Identification）</div>
+                    <div class="tier-desc">個案近期是否跌倒風險增加？透過後臺連續數據分析，統計夜間離床次數是否異常上升、步態移動速度是否下降、或起立活動時間拉長。此層次著重於早期風險訊號的擷取。</div>
+                </div>
+                <div class="tier">
+                    <div class="tier-name">第三層：主動式照護決策（Clinical Decision）</div>
+                    <div class="tier-desc">照護團隊下一步該做什麼？結合數據與個案的用藥、生理參數，評估是否需調整利尿劑與降血壓藥物給藥時間、由物理治療師提前介入肌力鍛鍊計畫，或進行房內動線的預防性環境改造。</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec2">
+            <div class="section-head">
+                <h2>貳、六大核心非接觸式感測技術與臨床定位</h2>
+                <span class="note">依隱私需求、光線條件與空間特性選擇適用技術</span>
+            </div>
+            <p class="lead">照護團隊應依據空間的隱私需求、光線條件與多人干擾程度，評估並部署適合的技術。以下六種為目前常見的非接觸式感測技術；穿戴式裝置相關內容請見手冊「<a href="wearable-devices.html">應用類別 B：穿戴式跌倒偵測裝置應用</a>」。</p>
+
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>技術類型</th>
+                            <th>核心原理與優點</th>
+                            <th>缺點與限制</th>
+                            <th>臨床典型應用與實務案例</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ToF / LiDAR</strong><br>去識別化深度感測</td>
+                            <td>利用紅外線不可見光計算反射時間，生成 3D 深度點雲（Point Cloud）。不使用 RGB 彩色影像，隱私度高，能解析姿態高度與速度。</td>
+                            <td class="dim">強烈光線（如陽光直射）可能干擾；感測器裝設位置固定，無法跨空間偵測。</td>
+                            <td>適合病房、浴廁等高度隱私且易滑倒區域。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>毫米波雷達</strong><br>（mmWave FMCW）</td>
+                            <td>利用高頻電磁波分析距離、角度與速度，完全不受光線與黑夜影響，可穿透部分織物；部分系統可延伸監測呼吸率與心率。</td>
+                            <td class="dim">對金屬反射與大件家具遮擋敏感；空調強風與旋轉風扇易造成移動誤判。</td>
+                            <td>適合病床正上方天花板（崁燈式設計），進行夜間離床監測。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI 影像骨骼分析</strong></td>
+                            <td>透過標準攝影機影像辨識人體關節點，建立動態骨架，用於步態分析、平衡能力與起坐表現評估。</td>
+                            <td class="dim">涉及 RGB 影像錄製，在病房及浴廁有隱私爭議，家屬接受度較低。</td>
+                            <td>適合公共交誼廳、走廊或復健評估室。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>足底與環境地板感測</strong></td>
+                            <td>利用光纖（FTIR）、壓力感測膜或微弱振動聲學感測，整合於地墊或地板下，完全隱形、無影像。</td>
+                            <td class="dim">建置與維修成本高，需大規模改造硬體；無法辨識未落地（如床上）的姿態變化。</td>
+                            <td>適合病床旁落地踏墊或特定狹窄走廊防滑墊監控。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>聲音分析式跌倒偵測</strong><br>（Sound Analysis-based）</td>
+                            <td>擷取環境音訊並以演算法（如深度學習模型、決策樹）分類為跌倒／非跌倒事件，不涉及影像。</td>
+                            <td class="dim">相關研究數量相對較少，現場泛化能力與誤報率之實證仍待累積。</td>
+                            <td>適合視覺監控敏感、但仍需即時示警之場域，如浴室。</td>
+                        </tr>
+                        <tr>
+                            <td><strong>紅外線熱感測陣列／<br>環境物聯網感測</strong></td>
+                            <td>利用低解析度熱感測陣列資料，以遞迴神經網路（如 LSTM 系列模型）進行跌倒分類，完全不擷取影像。</td>
+                            <td class="dim">易受環境溫度變化與涵蓋範圍內物體遮蔽影響，準確度可能因場域條件而有落差。</td>
+                            <td>適合獨居長者於受控居家環境使用。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="related-box">
+                <h4>研究實證背景</h4>
+                <p style="margin:0 0 8px;">依文獻回顧，跌倒偵測方法可分為 IoT、穿戴式裝置、雲端、視覺影像、智慧型手機、聲音分析、生理訊號、動作學訊號等類型；其中視覺影像式研究比例較高，聲音分析式相對仍屬少被研究的領域，現場泛化能力的實證仍待累積。</p>
+                <p style="margin:0;font-size:12px;color:var(--ink-soft);">資料來源：Newaz, N. T., &amp; Hanada, E. (2023). The Methods of Fall Detection: A Literature Review. <em>Sensors</em>, 23(11), 5212. <a href="https://doi.org/10.3390/s23115212" target="_blank" rel="noopener">https://doi.org/10.3390/s23115212</a></p>
+            </div>
+        </section>
+
+        <section id="sec3">
+            <div class="section-head">
+                <h2>參、臨床風險評估量表與系統之深度整合</h2>
+            </div>
+            <p class="lead">非接觸式系統不應被視為孤立的硬體工具，而應與臨床現有的跌倒風險量表深度聯動，用以篩選適用對象、決定高風險長者的布建策略，並在意外發生時將離床、浴廁超時等日誌（Log）產出，利於事件後的根本原因分析（RCA）。以下為系統與臨床評估表單的對應整合方式：</p>
+
+            <ul class="scale-list">
+                <li>
+                    <span class="scale-name">Morse 跌倒危險量表（MFS）</span>
+                    <p>評估長者的跌倒史、診斷件數、步態與靜脈輸液狀況。針對評分為「中高風險」之個案，應自動啟動系統布建程序，並依其弱項（如步態不穩）調校適當的判定靈敏度或配置高風險警告。</p>
+                </li>
+                <li>
+                    <span class="scale-name">Hendrich II 跌倒風險評估模型</span>
+                    <p>著重於定向力障礙、憂鬱狀態、眩暈與「起立行走（TUG）」表現。對於 TUG 表現不佳、定向力混亂或排斥穿戴裝置的長者，應優先配置「天花板崁燈式」毫米波離床預警，提供無感防禦。</p>
+                </li>
+                <li>
+                    <span class="scale-name">Downton 跌倒風險指數</span>
+                    <p>評估藥物因素（如服用利尿劑、鎮靜劑、降血壓藥）及感官障礙。針對服用利尿劑且夜間頻繁上廁所之長者，應在系統後臺增強夜間時段之浴廁停留監控，調校高敏銳度的久滯判定。</p>
+                </li>
+                <li>
+                    <span class="scale-name">巴氏量表（Barthel Index）與 MMSE 心智狀態測驗</span>
+                    <p>依據日常生活自理能力與認知退化程度，判斷是否需要「隱形防護」。當 MMSE 評分顯示中重度失智且伴隨定向力混亂，傳統床單壓力墊易引起長者焦慮並將其扯毀，非接觸式感測能提供更穩定的無感守護。</p>
+                </li>
+                <li>
+                    <span class="scale-name">跌倒通報系統（TPR）與根本原因分析（RCA）</span>
+                    <p>當發生疑似跌倒或久滯事件時，系統產生的精確事件 Log 應直接匯入 TPR。團隊可透過 Log 分析長者起身與停留時間，推導是藥物副作用或環境障礙所致，進行精準的 RCA 改善。</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec4">
+            <div class="section-head">
+                <h2>肆、適用個案特徵</h2>
+                <span class="note">最適合採用非接觸式偵測的個案族群</span>
+            </div>
+            <p class="lead">非接觸式環境型偵測具有「不需穿戴、無形守護」的臨床優勢，最適合以下五大高跌倒風險、且傳統穿戴式裝置（如手環、感測吊墜）極難發揮作用的個案族群：</p>
+
+            <div class="population-grid">
+                <div class="population-card">
+                    <div class="num">1</div>
+                    <h4>中重度認知障礙與失智症個案</h4>
+                    <p>常伴隨定向力障礙、短期記憶喪失與夜間遊走，極易忘記配戴、拒絕配戴或忘記充電。非接觸式雷達與 ToF 感測器不需個案主動配合，可提供 24 小時持續防護。</p>
+                </div>
+                <div class="population-card">
+                    <div class="num">2</div>
+                    <h4>夜尿頻繁與夜間頻繁離床個案</h4>
+                    <p>長者夜間起身時大腦尚未完全清醒，極易重心不穩。雷達與 ToF 技術在黑夜無光環境下仍能精準運作，可在「剛坐起」或「雙腳落地」瞬間立即記錄，讓大夜班人員提前到場協助。</p>
+                </div>
+                <div class="population-card">
+                    <div class="num">3</div>
+                    <h4>皮膚極度敏感、排斥穿戴設備者</h4>
+                    <p>長期佩戴塑料或金屬材質手環易引發紅疹、搔癢甚至皮膚破損；部分個案視「防跌手環」為失能烙印。環境型感測器完全消除生理不適，給予個案「無感尊嚴」。</p>
+                </div>
+                <div class="population-card">
+                    <div class="num">4</div>
+                    <h4>浴廁等高隱私、高滑倒風險場域使用者</h4>
+                    <p>浴廁是機構中最潮濕、滑倒風險最高的空間，也涉及極度敏感的個人隱私。去識別化的 ToF 深度感測與毫米波雷達只解析 3D 深度點雲，兼顧尊嚴隱私與生命安全。</p>
+                </div>
+                <div class="population-card">
+                    <div class="num">5</div>
+                    <h4>獨居或無人陪伴、需長時間居家／病房監測之長者〔新增〕</h4>
+                    <p>文獻指出此族群特別適合以視覺影像式（尤其具去識別化能力之深度攝影機）或紅外線熱感測陣列進行 24 小時受控環境監測。若個案明確拒絕攝影機或穿戴裝置、但可接受環境麥克風，聲音分析式亦為可考慮之替代方案。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec5">
+            <div class="section-head">
+                <h2>伍、後臺資料範例與照護決策應用</h2>
+            </div>
+            <p class="lead">非接觸式系統產生的後臺資料包含「即時事件」與「長期趨勢」。照護團隊應妥善運用這些資料進行藥物微調與預防性照護決策，而非僅當作事後追悔的記錄。</p>
+
+            <h3 class="sub-title">1. 即時事件日誌實務與警報反應範例</h3>
+            <div class="table-wrap">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>記錄時間</th><th>事件類別與警報</th><th>後臺記錄與照護團隊動作</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>02:14:05</td>
+                            <td>離床事件記錄<br>（Bedside Activity）</td>
+                            <td>雷達感測到個案於床邊起身、雙腳落地。後臺產生常規活動日誌（若屬極高跌倒風險，可設定床邊預警發送至照護 App）。</td>
+                        </tr>
+                        <tr>
+                            <td>02:14:20</td>
+                            <td>進入浴廁記錄<br>（Entered Bathroom）</td>
+                            <td>ToF 感測器記錄個案進入浴廁高風險區域。後臺系統自動啟動「久滯監測計時」（此時尚未發出警報）。</td>
+                        </tr>
+                        <tr>
+                            <td>02:18:20</td>
+                            <td>觸發【久滯警報】<br>（Toilet Overstay Alert）</td>
+                            <td>個案於浴廁停留時間已達 4 分鐘閾值，且無明顯姿勢移動。系統判定為高風險久滯，自動對照護團隊發出久滯警報。</td>
+                        </tr>
+                        <tr>
+                            <td>02:18:45</td>
+                            <td>警報解除與確認<br>（Alert Resolved）</td>
+                            <td>照護人員於警報發出 25 秒內抵達，發現長者於馬桶上起立困難、步態搖晃，立即協助扶回床休息，並於系統 App 中標記警報解除。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 class="sub-title">2. 資料驅動的預防性照護決策應用</h3>
+            <p><strong>用藥時間與種類評估——</strong>若趨勢數據顯示某長者夜間離床次數在近兩週內急遽上升，且時間多集中在凌晨 2:00–4:00，護理師應主動會同醫師檢視用藥，評估是否因近期新增利尿劑、降血壓藥或安眠藥物引起，並微調給藥時程。</p>
+            <p><strong>預防性復健與肌力訓練——</strong>若系統分析個案每次離床起立至站穩的平均時間逐月拉長，代表下肢肌力有退化跡象，物理治療師應介入進行針對性的下肢肌力與平衡訓練，預防未來跌倒。</p>
+            <p><strong>客製化環境改造——</strong>當數據反映個案頻繁於夜間離床且起步常伴隨重心不穩，職能治療師可針對房間進行動線改造，例如加裝床邊扶手、鋪設防滑條或配置感應式夜燈。</p>
+        </section>
+
+        <section id="sec6">
+            <div class="section-head">
+                <h2>陸、臨床警報分級與應變 SOP</h2>
+                <span class="note">跌倒警報與久滯警報分流，避免警報疲乏</span>
+            </div>
+            <p class="lead">為防止照護團隊產生「警報疲乏」——因頻繁誤報或無差別警報而對通知麻木、錯失真正的救援，本指引將核心警報嚴格劃分為「跌倒警報」與「久滯警報」兩大類別，並依其臨床急迫性建立對應的應變 SOP：</p>
+
+            <div class="alert-grid">
+                <div class="alert-card fall">
+                    <div class="head">跌倒警報（Fall Alert）</div>
+                    <div class="body">
+                        <p><strong>觸發原理：</strong>ToF 深度感測或毫米波雷達分析到人體重心／高度在極短時間內急遽下降至地面水平，且隨後人體無微幅移動特徵。</p>
+                        <p><strong>臨床意義：</strong>高度危急！代表長者已發生摔倒、滑倒等意外，若不即時介入，長時間倒地可能導致橫紋肌溶解、骨折併發症或失溫等嚴重二次傷害。</p>
+                        <ol class="sop">
+                            <li>必須於 1 分鐘內抵達現場！</li>
+                            <li>值班人員必須攜帶「緊急醫療急救包」與「行動記錄器」。</li>
+                            <li>到場後立即評估生命徵象與外傷，啟動急救流程並確實記錄通報（TPR）。</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="alert-card overstay">
+                    <div class="head">久滯警報（Overstay Alert）</div>
+                    <div class="body">
+                        <p><strong>觸發原理：</strong>浴廁停留時間超過設定閾值（預設 4 分鐘），感測器記錄個案高度維持不變且活動幅度長時間低於微動門檻。</p>
+                        <p><strong>臨床意義：</strong>中高度潛在危機！長者可能在浴室突發腦血管意外、昏厥、發生「無聲跌倒」，或遭遇起立困難、受困而無法自行呼救。</p>
+                        <ol class="sop">
+                            <li>應於 3 分鐘內進行狀態確認。</li>
+                            <li>護理人員可先透過照護 App 快速覆核去識別化之點雲畫面，若有異常應立刻抵達現場關懷與引導協助。</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sec7">
+            <div class="section-head">
+                <h2>柒、安裝與應用前後之個案防跌情境與技術調校討論流程</h2>
+            </div>
+            <p class="lead">非接觸式跌倒偵測技術的成敗，高度依賴「硬體演算法」與「臨床照護情境」的深度對接。通用的判定閾值極易導致漏報（安全網破洞）或頻繁誤報（照護團隊疲乏），因此本指引新增以下多學科討論流程：</p>
+
+            <h3 class="sub-title">1. 安裝前（Pre-Installation）臨床與技術廠商之對接討論</h3>
+            <ul class="scale-list">
+                <li>
+                    <span class="scale-name">個案易發生跌倒情境之分析</span>
+                    <p>照護團隊（護理長、主責護理師、照服員、治療師）應召集技術廠商工程師，針對個案的 MFS／Hendrich II 評估與過往跌倒史，分析最易發生跌倒的情境。</p>
+                </li>
+                <li>
+                    <span class="scale-name">易跌倒位置之對接</span>
+                    <p>評估個案在房內及浴廁的日常活動軌跡，鎖定高風險位置，廠商據以調整感測器安裝位置與波束覆蓋範圍，列為重點偵測防護核心。</p>
+                </li>
+                <li>
+                    <span class="scale-name">典型跌倒姿勢之模擬</span>
+                    <p>依個案生理狀態說明可能出現的跌倒姿勢（如中風偏癱的慢速滑落、帕金森氏症的向前絆倒、失智長者的慢速癱軟下滑），以便廠商調整偵測演算法中的姿態判定邏輯。</p>
+                </li>
+                <li>
+                    <span class="scale-name">演算法閾值之預先微調</span>
+                    <p>根據臨床分析調整感測器判定標準，例如針對起立極度緩慢的個案，將浴廁久滯警報的預設 4 分鐘閾值調整為 5–6 分鐘，避免無效誤報。</p>
+                </li>
+            </ul>
+
+            <h3 class="sub-title">2. 應用與安裝後（Post-Installation）持續校正流程</h3>
+            <ul class="scale-list">
+                <li>
+                    <span class="scale-name">實際運作回饋與誤報排查</span>
+                    <p>系統啟用後首兩週內，照護團隊應將每日／每夜發生的警報 Log 逐筆覆核，檢查是否有非人為因素造成的誤報（如空調強風、寵物移動、家屬洗拖把時間過長）。</p>
+                </li>
+                <li>
+                    <span class="scale-name">演算法參數線上調整</span>
+                    <p>若發現漏報或非預期的敏感度問題，應立即回饋工程師，調整邊緣運算或雲端演算法的模型參數，例如微調 3D 深度點雲中「高度相對於水平面變化」之判定公式。</p>
+                </li>
+                <li>
+                    <span class="scale-name">後續動態維護機制</span>
+                    <p>個案生理狀態、平衡能力、肌肉力量與用藥是動態變化的，當個案有重大生理改變或發生跌倒通報後，應重啟與廠商的對話，重新微調偵測演算法閾值。</p>
+                </li>
+            </ul>
+
+            <h3 class="sub-title">3. 實務案例：機構試辦導入示例〔新增，摘自機構內部試辦資料〕</h3>
+            <p class="lead">以下為一項真實機構在導入前設計的試辦評估案例，示範如何將抽象的「安裝前討論流程」轉化為具體的比較設計與安裝準則。部分內容為原始資料尚未完成之片段，已明確標示為資料缺口，不代為杜撰。</p>
+
+            <div class="related-box">
+                <h4>實證目的與設計</h4>
+                <ul>
+                    <li><strong>目的：</strong>評估透過導入跌倒偵測設備、調整人力配置，是否能確保照護品質並減輕工作人員負擔。</li>
+                    <li><strong>導入模式：</strong>新導入模式（不含追加導入），針對約 11 床住民床位安裝偵測設備，並加上護理站螢幕與聲音警示通知。</li>
+                </ul>
+            </div>
+
+            <div class="related-box">
+                <h4>比較假設／評估指標</h4>
+                <ul>
+                    <li>比較日班與夜班照顧時數，並比較「有安裝感測器房間」與「未安裝房間」之差異。</li>
+                    <li>比較系統使用頻率、巡視時間。</li>
+                    <li class="data-gap">〔資料缺口〕原始資料第三項比較指標尚未載明。</li>
+                </ul>
+            </div>
+
+            <div class="related-box">
+                <h4>預期成效</h4>
+                <ul>
+                    <li>減少巡視時間，並提升職員工作效率。</li>
+                    <li>預防或及早發現跌倒、摔傷事件。</li>
+                    <li>適時引導如廁。</li>
+                    <li class="data-gap">〔資料缺口〕原始資料「最終預期結果」段落尚未完成。</li>
+                </ul>
+            </div>
+
+            <h4 class="sub-title" style="font-size:14px;margin-top:22px;">安裝準則案例（原文件製圖圖示）</h4>
+            <p class="lead" style="margin-bottom:10px;">以下圖示引用自原始文件之製圖，用以標示安裝準則中的關鍵元素，非實景照片：</p>
+            <div class="icon-diagram-grid">
+                <div class="icon-diagram-card">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATwAAAFUCAYAAAC5ooAxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAEWbSURBVHhe7Z0JlBXF9f+T/H6/vytRY8R9icYVl6C44xoVVBRmpqveACpRcQMFFVRwARVUBAFRUUAR2Wbe7Z7BJa5xjSZucY3GJYlGjVtc4r7Lrf+pBw/63RrgVXXN635v7uec7/Ecmbl1u7puTXd11b0/+UkGyTXjFrlQjRAhtgjANwTgJyLEP0rAqwPAHP15hmEqTy5SQsekAPyjCPG/MizEaqsMcWQA+Gv680wbiAhPkIBfyVCpZSqPc0Wo1qO/yzBM+3NUK3YWgLONuIwL8GsZ4kn0d5kYEjBvdNwypP+iBIAHUhsMw7QfAeB+EvBjGo/LkgAVUhuM5WS3VPg8tcMwTPshAZ8143D54kmPICK8inZS+cJJ1B7DMP4RgFeY8VeeBOBUaq9DIgDPoJ1jq8ZbcANql2EYfzTeiuvSuLMXDqN2OxS5CHubnWKvAPBIapthGH8EgIfTuHNRAFhHbXcIAsBfiRA/pB3iJryY2mcYxh8yxNFm3DkI8GO97Yzar3lkiPcZneEqwDy1zzCMPyTgfCPuHCUAH6T2axqZx0m0E5JIAJ5L22AYxh8C8Bwad4kEeCVtoyaReWwwLj6hchH2ou0wDOMPmcfDaNwllT6pQdupKRqbcF0J+B698KSqn4eb0rYYhvFH/1bciMZdYgH+p64V16dt1QwiUqFx0QklIryAtsMwjH9ygOfR+EsqffaWtlMTBICn0otNLMAnaDsMw7QfAvAxIw4TSgAOoe1UNXoLyqLDxObFOgvwh4Zm3Ie2xTBM+yJD/NaIxyQC/K6msqvoNE/GRSZULsJ62g7DMO2PzKs+NB4TC3ABbacqkSEea1xcQgWAZ9J2GIapHDLE02lcJhcOpO1UFYu/yn5kXpi7BOA02g7DMJUnALyWxmcS6ZRvVf3VVuZxBr2oJBIhPkbbYBgmPQTgn2mcJhLgDbSNqqChWe1vXEwCiRC/aYywC22HYZj0yDXjtiLEL2m8JlFVJvYt1KBo42JcFQAeT9tgGCZ9fK/TixD/RNvINDqXPb2IRAKcRdtgGCY7yBBnGnGbSDiItpFJjrwFO+kjI+YFOArwHyJUq9N2GIbJDgHgKiLEV434dRXgR71vVmvSdjKHDHGC4XwCcXJPhqkOdBIPGr+JBDiRtpEpCicqqNNJBDidtsEwTHaRebzOiOMEyi3IcLJQEeE06rC78N/95+LPaRsMw2QXvfwkAN8y49lNAvB62kYmkHnciTqbRAKwL22DYZjsIyKUNJ6TqDHCrrSN1JEhNlFHnVUr5+oYpoMiwOP5+ayVcBCh6m44mUStuD1tg2GY6iEA3M6I6wQKAPejbaSGALyFOugqEeGl1D7DMNVHADiWxrerBODvqf1UCAB3o865C98Y/aD6X9oGwzDVx+jR6mcS8HUzzh3VinvQNiqOBJxjOOYoATiA2mcYpnoRER5F49xZgPOp/YoSAG5tOOWqKkvXLkNsFBFeIUP1kAR8WwLeJSK8XAAeRX+WYVyQIfYXUBhTd+ptWoXz6YATA8B+9GezjAR81Ih3R+m1QWq/Ysg8XkMdclWuuToyGDdE2E0A/on6XyLAW3PNuBX9XYYph1wzbqF3KhjjKiadKq0xwt3p72aRXIS9qf/OAryW2q8IOlGf4YyjBOB91H4WsSpGDPijCNWJ1AbDLI9C5hHA74zxtAxVSxF6AXgP9d1Vda24EbXf7sgQL6GOOCuvDqL2s4aurGT4vULhV/qvNbXFMG0hQrWJCPEzcxwtX9VQ8kDnuKN+J9A4ar99UeqnEvDjNhyxVxVsMtYFgwy/y1RmPqczmWdFr7HLkwCU1F7W8LgZ+dP9KrmbQwAe14YTTsrUhsI2aIxwx6QZXfUaBrXLMHFkHg+j48ZKgN+JUO1C7WYJvwcUKljwRwA+bDpgr/qmbx+htrOGCPFJ6retBOAYapdh4gSAo+i4sRbgsydOV/9HbWeJoOn7+wy/HaRraVDb7YLXjcZ5PILazxIiwusNn10EeBe1zTBx9Jd9Y9y46SZqO0vIloRPsjEFgHtS+97xle+q18wP36a2s4TPPP0C8B1qn2HiiBD/RceNq7K+O6D37E/+QX12UnvnyzxqDq6mq4cZDTuo57Q3T6f2s0LfFtxSAn5FfXYWP+ExK8DjE57eo/d9qht0V8ARsz4/nvrsIgH4/XG3YCdq3xsCcDBt1EWHz/zwG2o7S+gJivqcRPoEBm2DYeL4PGivJUK8l7aRJQ6f+WGiD4FF6e1i1LY3ZIh/oQ26aI/LHr2H2s4KAeCp1N+k4uNmzIrQ20rouEkqAXgGbScr7DPxWT/5MwGfoba9oLOOGo056tdnzs5eBtPFNTl8vbIXJULM7OTOZAsBeAcdP4kE+GNWjzhuO+b+TQUsNH12UGOE3aj9xMi8n5MV3Sc8/TG1nRUkYET9Taw87kTbYZi28J00U0vnqqTtZIV9Jz3/BvXXSYCXUduJkYCvGA05aKthczNZVDsArKO+JheeTdthmOWRAzzTHEfJpGtM0HaywHYjFnh5iNK1q6ntROQi3MtoxEGHXPeGWqn3SZtR+1lAhPgC9TeZcAptg2HKIQCcaI6nBAJ8hbaRCXoPXfPga183/XVQLsJ9qHlnZIiTaAMu2n7kzf+mtrOAzONI6msSiRDvpm0wjA0S8HY6rpJIn+SgbWSBHc+/41nqq5PyHh8wJOCbRgOWamj6XnUKho2lttMmAFxHAn5N/XWVCPH9XDNuTNthGBsK6dd0Ytk2xpib8IfGJtyAtpM2qwdnDqxv+q4Nfy0F6Ocgg07dZBh30F7jn8jk6+zirMWGv64KAAPaBsO4IPOqDx1fyeTxKcgXvYeuuee4x9rw1V65CA+h5q2RoZ+jZFsMvfF1ajttCpll2/DVWT4fqxlm0VYV33+Qt6ZtpM3Ww5q8JBSQIc6gtq3x8VhdN+9LtdIRp1xIbaeN7iDqq6tEiK+KUP0PbYNhkiIBX6TjzVmAmdslsVLvQb/rM+cL01dbAb5HbVsh87irYdRBu1/6SOZeZ+tb1DbUzyQKAI+kbTCMD3IRHkrHWxIFgDvQNlKl99A1d7vkYcNPFyWq8yEiPJcadNFmg6f9k9pOGxn6K0AkQ5xJ7TOMTwTgNHPcucrDq59ntjz9prtNP+0lAC+gtsumUIKwDaM2OnL2J5l7ndVfq6ifrhKA3wSAG9I2GMYnda3YWQJ+Tsefq/q14Ka0jTTRr7VHzPrY8NNagG5JhQfcrNY0jDmo28UPZO51VgBeSv10VQ7wLGqfYdoDGeLpdPy5Sn8MofZTpffQNbtddL/hp4v6LMC1qfkV4it7w69Ou+FP1HaaiFCtLgG/oH46CfBv1D7DtCcixOeMcegiwG/73a7WovbT5NdDZ3pJyyYA+1LbK0QC3kAN2apu/jeZe52VIZ5G/XRWHo+h9hmmPZEhNhrj0Fk4jNpPE/1aWz//6zb8tJTLl2gR4luGIUvtM/HZLL7OPkP9dJEAfJzaZphKIEM/RbT0+XFqO1V6D12z+4SnDT9tZV1SQeZxZ2rERTued8ez1HaaeC0G3KL6UPsMUwkCwMON8eiqPPag9tNkpwvu+LPho4vyuCu1vUxEhGcYBhy03vETrqS200QCzqE+ukiE+Bi1zTCVxFepVBFhM7WdJhudcOUw6qOLRITDqe1lIvMI1ICtesx4O1Ovs41NuC710Vl57E/tM0wl8fVRUauuFTei9lOj99A1e0x7y/DRVgKwhZpeJgIwcSbSPcc97jcpX0ICwKHURyfxl1kmI/j6YivA4mmoAuw1/sm/Uh9tJQDLS0UnQrUJ/WUXbTey9TpqO018LfQGgKdQ21lArylKwLE6F59+5ZZ5nFEoSNRqsZbRgclF+Fu9z00A3ihD9ZQI8fcyxNF6vYz+bFaQIQ6k49NFWVui2f7c2y6nPrpI16ihtg1ykRL0F20VwI9qjfrTN6e206Je15ltw09rAX7R805cidpPE52+a4XZmgEvor/HLGK/B9X/CsDJRp+VCP8cAO5GfzdtRo9WPxOA/zX9tVem6tj2HrpmQ/P3ho/2wkZq2sBHOpqeM975iNpNk1yoRlAfXRQAXk1tp0kAeBn1cVkSgE/LPG5PbXRkcpHaXwL+nfbVsoUjqY20kZ7SwWctI3LPGe+8R320lf5DRu0a6LNo9Bdttf+Ulx6kdtNEv6JQH53UijtT22mhi3sb/q1AWS/OXGlc1sAE4DnUTprozCfURxcJwOep7TQ56NrXF1AfrQX4KLVbilI/FSF+b/yipXpOf2sQNZ0WjRHuSP1zkQjxAWo7LWTefe1GP+1Sex2RJE9GusIdtZcmet2W+uiihqZ2qO/qSK9Z/z2a+mcrEeJCvWRBbS8hANyT/pKL9IcPajstZB7Ppv65SACeQG2ngY8Kck6Hq2sI/WpP+8RKgJ9kqcC1iHCA4aODAsDzqO200BmIqH9OasG9qe0lyHzybAz1Td/+h9pNE/0aR310UQD4C2o7DQTgk9Q3a2Vsd32lEZB8ghAh3kHtpoVOiKGfZqiPthKAf6S206Ru3jfvUx+tlV/OeeEAcJbxC5aqm/vV76ndtChkRmnDR1uJEG+mttPAV1qrLP0lTwMJeDXtExcJwDOo7bQQoELqn4v6zc9OBpWG5u8i6p+tRISzqd0l6EU++gu2ytIg0Gst1D8XCcCjqO1K4/MccFYm8LQQgI/RPnFVVtKlB4A56puLRISS2k4LATiE+mctwCeo3SWIMPmeHr3GRO2mhZeKa4DfDXhQrUxtVxpfZye1BOAYar8jIQCvp33iKqsjTO3IfqPV/4oQv6T+WQvwBmo7LXR9CsM/S4kQP6N2C/haJBwwK/3JoYgI8Z/UP1sJwNuo3UrjY80pLr25nLbRkfCaE1Erj4fRNtJAhNhi+GYpnRaO2k2LE6er/6P+uajNj6gNzfpojfnDVgLMzPlZXzVn9fEsarvSCEg+ccdVP19tQ9voSASA+9E+SaQV7veqDDKPJxm+OSjXjNtS22khAV+h/tmqobmNAt0yxEH0B60FeDu1mxYBYD/DPwelXbhY7+6nPiUTXkPbaG/0X1j9erJoTRUHBfrML+C0HOAofR60kN8tjzuLUK1Hf7e9kGHyjEBxBYDH0zYqjT47Sv1ykQjV76jttBAh3kL9sxeeRu3qvTxXmT9opywVBpEhTqH+2UqE+BK1W0l0YW8J+DH1y1U6C06v6WpV2o5v9GbPXIS9F62V4bvUj+VJ97kMcYJ+CqN2faInYS9rXouV9lgpok9MUN/shZlJ/CFDNc70z04iwqnUrn50/AP9QXvhQGo3LWSIj5v+WSqPU6jdSiLzHp66Y2rvtbtchPUSMBIhfkPbdhLge4GurdKKe9C2fGG0mUR5bKD2K43+Y2H4ZSvAZ6jdtMiF6neGf7YCvJ/a9VLDQoSqO7WbBj2n4ErUNyfl003jLsD+rOeyhaOpfV/opzFfx5uWKcBZfVtwS9p2Uny82RQlAO+h9iuNr/Tveg8rtZ0GPk5/iZDUuBChWoP+kIv6zle/LDGcEjKP+1LfXFQ3F9entitFLsJe1B9Xtdc54MIRrTw20fbaU3rZpM9sv0fjVphey0Y2tRTagaMX4NqGTw7S+QGp7TTQG6Gpby4qKUmpc33RH7CVCPH9Ek9TRBfHpv5ZK+UvziLE2wyfXNWKO1H7SckBnmK0UykBfiBb/B2P0zkFjTYcJSK8ntqvNDorN/XLViLCc6ndtNBPaNQ/W+knxSUGc83Ym/6Agx4q8TJFZF7d1IZ/VhKA86jdSqG/DFN/EmgctZ8UHzkT/Qi9ZeVZnOm4jTbspd+YqP1K4uVaAOdTu2mh1+AM/yyVa8b6pQbD5Pt39DaDEi9TpJDivA0fbZRLcf+dLpBM/XGRCPFDn2sxhbPJgMnzlHmUr50B9fPV5tS2u9It8uQlnkN8mtpNCwE4lfpnr9gfR72gbf6AnQTgBSVepogM8RPqn7VSrAUhQ3zQ8MdBunARte2KzhbjZ8tDOwhwAfXXBb0/0LDtIsA8tV1JRKh+Y/hkK8CvqN20EIDnGv5ZCy9eYtDHmdOs5Iurm4sbUd9clFbtCr35lvriJvxEhOr/Ufuu6E3lZhtZEk6gPtvSv9XP2NH7+6jtSlKodeEhXVRZRXAqgAA8jvpmL5wRN5h4N7P+qljiZUosqj5l+melFD9Y6D8chj8OEoCXU9uuCPC3daM9JSI8mfpuiwyTr/8WlMcjqO1K4uPDRS7CQ6ndNNBnlalvthKAS9PWCUi+SbcxykZ6aAE4mPpmq5LOqTAS8Fbqj4v0WWJq24Wcr3q+FVIuauPcpAU+MkoXBDid2q4kMsRWwydLZSXVW2OEXalvthKAf1liUHoovJ2V6uV+kjsmfz1yoddtalUfryK+1rRyEe5j2M649Pao/nPx5/RabNBlGaldWwnAd6ndSuIlWWzKk3aRulZc3/DNVvHC3BLwW+MHLKXzcZV4mRI+9q+ldRDc14ZpveZBbbsgAe+itqtEibbi+ErYkFuQXt0LmcdjqD+2EoB3U7vpoH5KfbMW4A8FU7qgi/GP1sLM1LEQoZeaD8su/NGOeMnwumjCXofatsVXtui2JGCh6j3nc+P/+1SSBXePpQ9Tyx7s6TDBc9RuWuhz1dQ/W9XNwc76/bgL/QdrZaimpY8zwf1b0zlSJkOcSX2xF95H7brg5Q/HYh1+44eq25gH1cYnXa3WaByhVu49qKBV6k5Va/U9T21+2g1qz8sfV3XzvjR+11U6Uwu9JhsE4IvUpr3wEmq3UvS9Tf3S9MdOWTo9JUN8hvpnK12y1ctXzSwcmi7io66urs9L7VYCPwXD8XRq1xad9ca0a6/esz9T250dLpngVqTVgzNV19H3GHacleBcq8wnT0uUdn5IAcljQacoo3bTQADeSX2zVeGDlo9XFwHLqQxUQfSrHPXNWoDvUbsVQamfSsAfDX8sJUK1CzVtiy58Qu3aat+Jz6mfi+HGpFaOOg8Yq3rMeNuwaS3Aa+m1lYuXrCOAb1O7lUQCvmn4ZCld+oHaTQMfx+UCwEAb6kv/wVZ6nxZ1MA28rL0APkvtVoKGpuSf3iUgLrfSehn4yJq7y0X3GpOYrVZvOF0dOftTw7aVAN+k11cuvjawVzKLM8XHHy4ff0B9IAAnU99sVag+KEM8lv6DrQLA8dTBNAgAD6a+WQvwLmq3Eui02oYvtvIwWeszxIZdC3Wf8JQxeblq9YYzVc/pyZ70SrJkWOJjoTwA7EntVgofezr1ky61mwYB4GXUN3vhQG2ovDQ/0Mb/KyofO6eWIm1+io/a8Hc51yQivJHarQSe1oxmUbu2JEnkeej176pV64YYE1cSrTvgEqMdO7l/ONDbMkx7KxhTRHrjNrVbKQLA6dSfgk+x/4oVXU8+G1nMZd4871+4jsUxnIsWX0vxmtpQoSCX3k1N/8FW+nAvdTANBODJJb61MaGtSCLCS6ndSqCzzVBf7JXsg0Xvm9Waps3y9evTZxkTlg/tcuG9RlvlSic8oNdZLj7qKbRnpukVISJ1oemPnfRWKWo3DQTgOdS3shSbzAXgcC+bLEWUjSMoOuCpb7YKAM+jdiuBiLCZ+mKrpFlqkywJ/PaafxgTlS91EsNVfdO3RpvlSk/k9FrLQa/5UFtla3GgiQgnU7uVInBNhBt/UMjj2dRuGojIcY9qyUMPnq/f8y8yfshSOvstdTANRKhGFHxyeLJbKhxG7VYCH6caki4wJyn43WXEAmOi8qm9JzxltFmuXOus5ppjafZdx5SHZQZXkhQc16+I+r8B4ChqNw1yoTqR+mgtwLF65rzc+Adr4bHUwTQQ4OURfjC1Wwl8JHBImjAgV/yD4aBfHnORMUn5lH5dpm2WqwDwQHqt5aCLUlFbVoLC5t2bqd1KoTPvFNfrnKTXxSCdJR6KDNtYn7eQXtcrJIvNFWqHmj9gIxFhX+pgGgSAE6lvtkrtHC3gf6gvttLHBKldG1zTQNXN+8qYoHxr7aMvNNotX24ZiAtFigxbdgry+Ddqt1IEgEdTf2ylsw1Tu2kgIpTUN2vpp22ZT/4qpTcvUwfTIMhjRH2zkn6Mz7sFR1Ik4NeGP5ZKuite15SlNsvRoTPeNSYo31qtfqjRbrnSa1n0WstBZwCitqwF6Z0zz+WVMPyxVAB4K7WbBgHgkYmeVrUA/6AH+bPGP1iqUe9gzgCe0vp4yTRii8gjUl/shN9Tm7YIcOu/A6a8bExQ7aG6+V8bbZelPE6i11oOhRoe1JatAL+mditFEGKj4Y+lSvLIpUgu8lFoDJ/XT0Vvm/9gpzT3GsWRgK9R32yVxkZLXS+C+mGtYvqbBAjAmw27ZajH9LeNycm3kjzhJdk25fyxoihApDYrhd6GYfhjLWyidtPAS2LfEFv0JPEK/QdbNUY4gDqYBj6eVtOqVkb9sBZ4ecJzqg7VZ+4XxgTlW2v3H2W0W670KRZ6reWga4JQW7bSySyo3UqhNw1Tf2yli5RTu2mgl5qob7YSEb6qd9b/kf6DrfT7NXUwDXxkVJB5bKR2K0HiLC8eniRkHs837Japtfqdb0xSPrXZqdONNstW3q1od10rdjZs2QrwE2q3UuharIY/lsqFeC+1mwaekjk8oieJxBte00x0GEenpKa+2cr1aSApOjCoL7Y68hbsRO3akKQ61LbDm41Jyqf2uOxRo81ypZNK0Gsth1wzbkVt2Qtfo3YrRQDYz/THWjdRu2kg89jQhm9WEqBCL1s59B4Z6mAaiAjHmL7ZSR9Po3YrgQB8ifpiq1wzbkzt2qAPulOb5Wq/K180JimfSpIhue989Ut6reXgKWtwak9ISf6ALfHfY/W7JOitRdQ3W+mMK3rmvIT+g61EqE6kDqZBDvA86pu18snOo7oiQnzA8MVSrk8yRXTuM2rTRpueMtWYqHxoh3NvNdoqWwlKbuqEkYY9WwHOp3YrhczjIMMfSwWAF1G7aaD3x1LfrAV4mf4rcIHxD5bS59yog2mgj4VR32ylj6dRu5VAVxqjvtiqoRn3oXZt0esc1G65Omjqa8ZklVQ6JXySc7SFv+qO6KUaas9WIkpv424AeCb1x1p5HEntpoGIkn+lLSRycD5gXGooGweMfXy6BnUhtVsJfGR01emxqF1bROSYlWKxdO0KOmklkd7jR9uwUl4dRK+xXPS4NuxZyz09VVL0dhzTHztlpTatl4cZwHMSJ3zUymXkgLGPx960jtLIECdRX6wFOJHatcXHcap9Jj1rTFwu2u2SRwzbNhKAH9Hrs0G/jlKb1kox24iPLME6Xya1mwY+lqsCvV/YR8EWnY2UOpgGPnZjC8BWarcS5Dy8fgh/FcteoLZt1W2s+5NeJ3GW2m/yC4ZNByX6wijD5JXL9JdSardS+Ek5pgS1mwYB4Fjqm73wJP1XwD3n12IlWSfxSUMT7k59sxbgn6ndSuCpelyiJ5oifpY5lDr42tfVZoOnGRPa8rTN8CZ1xKyPDVsu0vn96LWVSwC4CrXnooYm7EJtVwoZqoeoP7bysS7sA53phPpmK53+TN/YgP6DvfA66mAaiFBtYvpmq3T2TemtE6Yv9kpSgDqO/rpJbbvqgKteVl3OidTaR402Jjit9Y4bp3a64HbVc9pbxu+6qnCMKAGyFfegNq2V4jlajY9TVAHgr6ndNJAhXkN9s1UAmNNPFkuTHDpKAN5CHUwDH0eBZIhfUbuVQgD+y/THTrkI66ldF3zs4WpL+ovrYTP/U/ii2+vGj1TQ/IPxM17UijvTa7JBhsm3dAjAx6jdSiJD9Sn1yVY6gQK1mwZ6qYn6Ziu95PWTxgi70X+wlU5eSR1MC/1aR/2zlWtK8KToZJHUF1sFHjPs+khKmooAp9NrsUWEHo4ppvjmc9QcXM30x04C8HNqNy1cM/nE1Rjh7r5yfr1BHUwLHwvujVE66y5eMjaH+CG164o+I03tV4P6teCm9FpsEKFag9p0UVqndjQ+jsWJEF+ldtPCRyakej0udOFm+g/2wm+pg2mhj/KY/lkqjw3UbiWQLaqP4YuLEuw9o+gU34b9DEtn+aXXYIuPY0xaSWriJsXHHyudWITaTQu91ET9s1XPO3GlorHk6cVnJ0sv7guZx7nUN1vpPT/UbiXQHxyoL04CvJLaToIEzBttZFJ+SiL6ul79pZfarhReNk0D5qndNOg9K1n50EWK7WCQgM+bP2CnhpReAym6zCL1zV44l9qtFD5y+okQ36F2k6A/BokQn6TtZEkB4BzqtwuFZKyAP1L71gK8i9quJD5O7mTlHG39fLUN9c1agC8uMSgA7zF+wFJJa6L6wkcaGRmml9Zahnix6Y+9fKeq79uittHrg7SdLEiE+CfqrytJKreVCgdR25VEAj5q+mQnAdkozpWL1P7UN1sJiG3KF4Cz6Q/YK53iNxT9pGn6ZinAL6jdSuEjJZFWe3w5DwC3loBP0LbSlD5NcOJ09X/UV1ck4Ou0DRfpPaHUdiURgP+lPtmqoQm7UrtpIP3U5pgXM6jG0R+wlc6fX+JlSujKXdQ3F/Wdr7pT25VCePgiVVCLv48XRfTk4iNprB/5PZjvI424lt5CQW1XksYm7Ep9clGaa5BxdAID6pu9cMISgzLE080fsFOhyG1GkIAvU/9sVdiVnRIyj1OoPy5qz+STerKh7VVSIvL7yq4RIT5H23FSyimVdNlUwydL6T+61G5a6CSk1D974bAlBr08MobZOG2h8bGBV2cvoXYrhd5WYvrjqvar0aHrDPjYEGolwKgx8v+qJUM8zWjLVa24PbVfSby8sYV4B7WbFjJMfsqiZMnNx6KgPrdX4mWK6Mymhn+2AnyU2q0kAvDvhk8uin+daid0in8f5zaXJ50ROkkygOVx5A3YSQJ+QNt0ki4UkzI+kgbo0g/Ublp4KX8Q/6jq59C9UnoTc4mnKSFbkn+pFYAL9XogtV0p/NQUXawKpe8SEZ4hQnzaaD+BBOjU9+33lKoREV5P23WVj43PSREhfkP9slVWvtD+RKmfihAXUv9sZSTVkICf0x+yVj7dR/ki/X0cl1v0V2EvartS6ApkPgZuUZXcNtS3BbcsLDQD3k/9WKEAv1t0UByPDQDXobZ9o9dqDR+clf4RS5nHXU2/7GVMECmRa8ZtqW/WgjYSgvjYWKpTTVG7aeFje0EO8Cxqt5LI0M/Hi4IA32howh1pG+2NnrT0kolOhFl4agWcqL/y6g8qIsLZMq/GCcAhubwSMo97+9xisiL0mWm9BcnoK0fplOq0jUqji1BRv6wF+Da1mxaePsA8Te3qCWIO/UF74fnUblr42DrRnl85y8HLnsKYCnU5mSUIwAdpHzkLEF3LQfpEf2wwfLNU0lyCPpEhjqT+WautynGeCn4s3dyXMjnAodQ/F+k0O9R2JZEhAvUpiQpZXxndr4mLwpQI8GraRqUp5IME/MHwzVI64zW1nRY+DkXoyozUrk4EWk9/0EFPUbtpIfMeMtYuuvl11HYl0bVmqU/JhP85ekE2Ej2khT6bKQDR7BtHAX7d2ITr0nYqjd4mZPjmojzuS22nhY+TPW3W5QgAt6M/aCsR4pfUbmos+rqTfNEf8FpqutL4qD4VVyU/YGQRX+mflirdjcZFfKz56i+iPacsTqOUAUSIn1EfbdVmgfrRo9XP9DoE/WFb1c/HLanttBAh3kb9s5UA/Ce1W2kWZ/BI/hV9sbJSazQt/OzcXyQRpj8+iggPJ4zSzvISp36+2tzwz0HL/BAmwuQb/HQVNGo3LXzU3C0oj3tT25XGVyUxLRHhjdR+R8JP+vZFEqH6HbWfBr6STgSAZ1LbaaH3AlL/bLXcrM0ScAH9BWtlYPG2SCG7B/XPQVkpQ+m0r60NZeV60sLHF/yCMpIgUyMiT0+tGdlLq9GJbA3/bAV4K7W7BB8Hwuubv3+e2k0TL0+tIb5F7aaB3kdHfXNTNlJ5pYWfL7T4UV0rrk9tp4WPDDtZWL6JUzf/679SHx00jtpdgo88+FoDHlQrU9tp4SvzSHud47RFv3JQ32yln3yp3Y5EQ3Pys+NZOEJWJADcj/rnpAx8oCuyqOQqmj5aarm7LPSndfoLLtIDitpOC1+f6kWE06jttCicUGjDx3KUlRrCaZMsy0t6mXTaQi8jmT46qEX1obbToqEZ9zH8c1BjE25AbZcgAF+lv2SrXjM/WvZjZApID7Vq9RlPnVWD2k6D0Ur9TAD+xfBxRQL8IitnJNPG+cxphr5ianQlLh/H4xbVoFU/pfbTose0tydRH21V1iu6LoZCf9FWB0/955vUbprowszURzfhadR2WuRuVptZp2TK40BqpyMjLOtX6N/pfyf+nNpJE137lvrpIl30h9pOk0Omvfk36qOtRFTGyS9dfIT+oq2OnPPpQmo3TfT6G/XRRQLwGWo7TQrVxCKcSv00BPhiLsJD6e8zi7KlCMC3jD6jqlCKLVt07RLDVwfppR9qO02OnP1p4iNyZT2giFDtYv6ivbYbEWXqzKYE/Df10UUB4IHUdtoUjgUC3qrLMy7xFfAHnZtOb7KlP8+UIkK1ul6wl4ClXwUB39AH6X0WNveJCFV3Oj5dJEJ8n9pOk+3Pv81LQXq9N5HabhOdP4r+sq26XXj/E9RumgQ+9vRoAUbUdpaob8FN2zxKw5SFTmIr87jzChe7M4AMsckYn07Ca6jtNNntkoeTbwwH/JbaXSY6nbZhwFL7X/nS99Rumvj6a6glQvUbap9hKoneIEzHpbNa8ABqP032n/Jy4gcuEeIfqd1lEnioCSHyC9Ua/YZn6lXA13qHDHEmtc0wlUQATjPHpb30sge1nSaryrN2DvI/GH7aKgAcT20vE9mCR1ADLtp6WFOqCTQpvr5oadW3qM2pfYapBLmbcWM6Ht1VxsJ+BelyTss800cH5S32FJ52J67ko3DGrmP/WP57dAXwtWepIMDp1D6zbHpNV6vqYlH6o1guwn10rYK+t6WfIbga0Wtuxnh0kd5beks29pYW2XXsw4nTQWn1uk2tSm0vF73Bkhqx1aHXv6/+X+9Typ9pK4C3XelaedyJ2meWsijbBV63vDJ7AvAbAXi3Ll7dGGE3aoMpxUfeyqKCjP3R/r/eg35z6PXvGn5aC/AP1PYK0SX3DEMOWu+4KxZQ22nia9vNImETtd/RyTXjxgJwjHudV7wzF2FvapdZhI+U50uUxz2o/TTZ4ITJVxk+OkhEOJzaXiG+vgJ1GbHga2o7bfSeNeqnq7K4Ly8tAl1HBPBb2kcuEoC3dfQkBxS9FED7yVUC8E5qP222H7ngY+qnixojx+p8EvAf1JitDpr6z+y91ubVQdRPV4kQ/0TtdzTqWrHzsnL19Zz+b9Xt4gfUr06bodY77nL1i34XqJ/Ls9U6x4xRG544SW13dqT2nficqm/6zvjdRRm4cRBtr6Pis8pa1k7e6NfZ317zD8NPawG+Tm2XTaB3n1ODDlr/uPGt1Hba+Bw8HTkoF7/CPkP7ZO/xT6oNT5isVu49qCyt3nC66jKiVQX5H43+1U+OtN2OhojwBNovrsriH+kNBk7yksYtUVYj/WmXGnTRjufd9g21nTaeqrQtEuDHIlTr0TZqnQDw1xKw5JC3fqLb5OSrjQmtXK3S51TV7aL7zD4OcRhtv6PQZzauLQH/Y/aJo/LYSNtIm53Ov+O/hp8uymMDtV02+tOuYdBBPa57S63Ue1Amcv/H8bcRudDRc6n9WqahCbvQJY/uE542JjBXbT5kptHHOrsJ9aMjoDOZ0L5wVdY2Gmv06+wh171h+OqixNtsfGxP0droxCnLzi2fEjobKvUzmbL3l7M90Gt2Ou19/Nr3Gv+EMWkl1a9OndFWH59O/allZAs2mH3gLgEoaRtps8kp13lZOnPajkKRIQ40DDvoN6PuztxrrUYA3kt9dZUA/DAA3JC2UWvQQ+t7XPaoMVn50q8GTzP6OUuFZtqTxR+D3jWu310P0TayQNdR93zShq/2yuNJ1LY1A25WaxqGHXToDe9l8rVWF6WmviYSYKb2HfpGJxGNX297TnZFbTroWtrHyf+SVwECVGiMrwQKAHvSNtJG7+Doef07hq8u6rMA16b2nfBSvjFUasszZt1DbWcBnfKJ+ppMeD5toxbQ6eFFiF8Wr/OIWR+rTsGZxgTVHtr5wntK+ziPZ1P/agnbbMwr1PLKFabI1sOa/Gyk9nl9Mo/9jQYctPeEp76jtrOAz+M6ReWasZ62U+3ozcDxa9zs1OnGxNSe6jHtrZI+boywK/WxFpB5P8k7SpTRY5DdJzzt5Wx7zmcVucWH7r3soF9/4PhMLjoHgGOpr0mkn4Rq6WyoiEqrwO865iFjQmpv6X19pI9vo35WO7IVd5Kh+pSOp4TKVFGtIhucMGFAG77aC/AH62QBK0ICzjcactBulzycuc/imtGj1c/0Lm3qbyIBPkvbqVZEiE8Wr0uvx+r9cnRCqoR+M+qukj7Wx62or9VMvJ99SH9N1w8stJ0ssOe4x/18MATMU9uJaWj2s1H3sJn/yVSBnzh6Qyb1N6lEhGNoO9WGiFDGr2nrM+cZE1GlpE9k1M3/emn/AmbuFI8rMo+j6fhJKhHhUbSdrHD4zA++p/66KAAMqG0vSEAvn4+7XviHKdR2VtAbiKm/iZWxrBS2iBAfK17LYTe8b0xCldZOF9xRU/2r8ZvFZ5EEYDNtJyvsPPaBMdRfJ+l6uqqd6ulKT4Vwsla3No4+IqaPilGfk0hEeA5tp1rQR3Xi17LNsCZjAqq0OonhqqH5+yU+Be3xSlNhAsAz6bhJJMDP61pxI9pOVjho6r8SJyYpCPBqatsbuniN0aCr8rgztZ8VBKCfxdSiAOfTNqqFeEGnw2d+YEw+aanrqLtL+ri+RW1Dfa8mJOAsY9wkUAB4PG0jK+gvxtRfV+knY2rfKwLwPtqoiw657q1HqO0sIQCvpz67SoT4ArVfDeg07PHr6D7+KWPiSUs/z51D+hkvpv5XE/qMKx03zsqrm6j9LNHzhnf/YPjsIJ3xiNr2jgz97MnTyjXjFtR+VtB1PSTgy9RnFwnAv1D71UAhc/GS60C1ejDMmHjS1N4T/rK0j0P8J/W/mpCAf6bjxkW6H3RhcWo/K+RuVptRn92Fx1D77YIEfM9s3EGAV1LbWaKh2VeGWbyO2q4GJOBrxWvYa/yTxoSTtuiRsywenSoXGaKXfHBZqzFLkYATDZ9dBPgBtd1u+KhbqyVg4cIAcB1qP0sIwMHUb1tleT1lWTQ046Hxa9h00FRjwsmC9PG2JX4CzqHXUS3opxU6buyV7UwyAeAvguaFP5p+28uq7mxScgtwK+qAswAvovazRqK/voAfNN6K61KbWSdeLKbXrI+MiSYrin+8EIALve+4rxD64LtIkBlFZyenNrOGz32Gen2Z2m9XRIg3UydcJEL8pm4Odqb2s4YAvIX6Xp6wP7VVDYgQPyxeQ9fRdxsTTVbUecCYkv4OAHP0WqoFusG7bAHeTm1lDT2hy/zCrw3fHZTKkUKvaZUAJ1L7WaPnFFxJAD5s+L4c6Uy11E41oCuxxa9jg4ETjYkmS+ox/e14n8+j11NN6ALvdBwtV4CPHjUHV6N2soYMcYLhu6NyER5C7VcEAUv3aCVVbkF2v9jGEYCXUt/bkgA8l/5utRDEFpaPnP2pMcFkTV1j52sF4Gf0eqoNAXgOHU9tSUR4Of3dLKLTilHfEyi9JKY+U6TrfW/UflYpPN0C/kEAlhQe0a+BIsS7G1zrYmaE+Hac3S/9szHBZE3rHz++dDy14GH0mqqNhgi7iBDvMAqaA34iQrw3taccB3QlMRrvrmq3c7PlIkP1FHXKVQ1VmN+sfr7aJteMvUSoNqH/Vo3oQIvfk0rnvHNVr1kfLh1LVbCAb4MuhRkAHl7xhXoP6KLYNM7dhc9Q+xVHhOp3pmOOqvH06NWADPG02P1Qq9YPMSaXLKrb2AdjYwlfo9fFpIMAbDHi3FEC8DhqPxUE4N+pc65K/ZG1gxP/+n7AVS8bE0tWRTch63Pf9NqYyqKzftP4dpWADP0RkyEOog66SgC+RO0zlUOE+FnxXuxw3q3GxJJV6YSkQfMPS8dRB61hmyX0GXIa3+7C06j9VBGAL5pOOipfm0Vwso7OHhy/D+sfP8GYWLKsfSc9HxtHFThYziwTGeJII64dJQBfpvZTJwA8mjrqKhHiwiwnFqhV4ltu+sz9wphQsq5thjeXjKOjfZXtY6xYtA0Ff6Bx7SoR4QDaRibQmyCps87iDxgVR9fgKPb/Xpc/YUwoWdcv+l1QMoYEZDe9eS0jQn8fKiTgE9R+ZshF2NtwOIFyVXjovlrRT9Txvt9iyI3GhFIN6nHd0lKO1X7qohqRIR5L4ziJclHGy50KwHuo064SIf63bi6uT9tg/BMAnhrv+9VFtnLflav4qQsZ4kf0Opn2o64VO0vAj2gcu0onG6ZtZI5cpPanjicR/5WuDALwjmKfH3DVK8ZEUi3a4IQrSsaPHo/0Wpn2IZ5hx4f0mW7aRiaRIc6gzieRCNWJtA3GHwHgKhIQi/3dZUSrMZFUk3rP+Xzp2IHqOG9a7cgQB9K4TSTAG2gbmUVX/hKAXxoX4SgB+H0AuB1th/ED3SC6zjFjjEmkmrTnuMeWjh/A5+n1Mn7Rxyt1mjcat84C/DoA3JC2k2naoezc/bQNxg/xgkWH3vCeMYFUmzYfMrNk7PRtwS3pNTP+0MkMjHhNIBHhcNpGVeAzsUBBlUzr3IGQIf672MfdLrrPmECqTZ2CM0vGjQAcQq+Z8YMM1TgjThMpAwkCXNFpeswLSibeW+UXmcc94v278clXGRNINeqAKS/Hx8yd9LqZ5ASA/Wh8JlYej6DtVBW6YpdxUUkE+G27F9/tQIhIXVjs27r5XxsTR7VquxGtsXGDWK21LrKKTuWm19qM+EwiwOm0napD18iUgG8aF5dAIsSX+s1Xa9G2GHv0TvZiv+49ITuFtpNqnWMuLhkzmd/AWkWIUK3h9ey8FuDb2i5tqyrRhVWMC0wsvIe2w9ihk5bG+3TLM+YYE0c1S3+AKV5bNWXUzjoS8C4zHpNJAPal7VQ1IvK7KbEgwKtpO0z55EJ1Yrw/fy7PMSaNapb+ABMbK/+m18/Yk6hk6TJUk4cL+s5Xv4x/DfSmFuxB22LKI57s87fX/MOYMKpd+gNMfKw0Rrg77QOmfALAg434SyrAd49qzX6ZVidkXvUxLjipAP9K22FWjAjV/+gPQMV+3OHc6kn2aaO6+d8sGSsC1IW0H5jyESE+Z8RfUuWxgbZTUwjAK4yLTqo87k3bYZZPLsJe8T7s/LtLjcmiFtR9wtNLrlEAPk77gSkP2Vq6fcmHBOBk2k5NIkN8nF58EokIT6ZtMMtHAE4t9t/hMz80Jopakf4QEx8rda24Ee0LZsXo8+w07pJIAP6FtlGzFEq3AX5HO8FZNVaWrxJIwNeL/bfrmIeMiaJWtEbjCDJecCDtC2bF6A+ERty5CvCHhqbqK8maCJ8p4XnCs0Pmced4/216ylRjoqglHTT1tSXXKgBbaX8wK8bnhJfZlO3tja/1PBFlpF5llZADPK/Ydw3N36uV+ww2Jola0o7n3bZ0vAB+9ROlfkr7hFk+AnAAjTs34SRqu0MhAG8xO8VO+hWZ2mWWjQjxT8W+2+eKZ40Jota07rHjSsZLLsJDaZ8wy6cxwi407mwlQryN2u1wHHkLdtJbS2jnlC3AR6lNZtnoXIXx/tt62DxjgqhF9Zr1UWzc4BTaL8yKkYCPGPFXrgBfrJmjY0nRyT0l4AdGJ5WhAHA3ao9ZNrTIypp9zzUmh1rUbmMfXnLNAvDvtF+YFdPQhN1o/JUlwI8CwB2ovQ5NQ7Pa3/7LLY6kdpjlI0CFxf47+NrXjYmhVrXZ4GklY6eBl0GcEIDnmHG4POEPVVObotIEgFuXdzAZvxKAg+nvMytGAn5R7Medzr/dmBhqVavWDVEB/BgfQ2fTvmHKIwA8pZwSDiLEu3PNuC39fYYgAIcLwFfb6MAv9RNKvxbclP4Os2JkHnvE+3O94y83JoZa1r6T/7p0LAE+SPuHKZ9Cph3AvI7JNuL0VZnnPyjW9FmAa+sgzUVK6Kc/+u+MHQHglcVBecSsj40Joda17fDmksDsMxvXpn3E2KNjMwAMdCIPnSSE/jvDpEL8qXm3Sx4xJoRa1y/6X1Ay4ckQ+9M+YhimBtBfyeLB/qtTpxkTQkdQj2lvxSe8ubSfGIapAfSaSjHQRX5hYRGfTgYdQV1H3b10rQnwI9pPDMPUAHqRvhjoevGeTgQdRRsMnFjyWpuL1P60rxiGqWL04nw8yPXiPZ0IOpJ6z/k8PumNo/3FMEwVo2v5xic8vXhPJ4GOpD3HPbb0tTbE52h/MQxTxYgI5xUDvMe0N40JoKNp8yEzS15r6+fjlrTPGIapUiTgx8Xg/s2ou4wJoKOpUzCsZMKTIZ5G+4xhmCpEtuAB8eDeYOAVxgTQEXXAVS/HX2vvoP3GMEwVIgHHFwO79+zPjMDvqOoyonXpEx4gBoCr0L5jGKbKECG+UAzsPS571Aj8jqp1jhlT8lqba8Z62ncMw1QRhewzsaDefMgNRuB3ZB16/fvxdbwZtP8YhqkiZIinxye81RvOMIK+I6vbxffH1/Heov3HMEwVIQDvKQb0/lNeMgK+o2vjk68qea1taMLdaR8yDFMFFGqFxIJ5u3MiI+BZg1T9/G/ir7WjaT8yDFMFCEAZn/B+edSFRrCzBqnuVzwdf619jPYjwzBVgAScVQzknjPeMQKdtUhbnTm35LU2ANyQ9iXDMBlHhPh+MYh3vvAPRqCzFmmNxhElE57M40DalwzDZBgRqu7xIN7oxMlGoLOW6qCpr8Vfa1tofzIMk2FkiJcUA7hu7pdGgLNKteP5t8UnvC9pfzIMk2EE4DPFAN5r/BNGgLNKte6x4+g6Xk/apwzDZJD6FrV5PHi3GDrLCHCWqV6zPo6v402h/cowTAbRBcrjE14nOdwIbpap3S55OP5a+yrtV4ZhMogEvL0YuAde9YoR2Ky2pau4kdfaHWjfMgyTIQbMUisLwIXFoO0ycoER2Ky2pau46Wpusdfas2n/MgyTIQLAuvhTSucBY4zAZi1b+05+If5a+wDtX4ZhMoTM44xiwB52w/tGQLOWr23PytPX2l/QPmYYJiPoFEfFYNWpj2hAs5avX/QbRSe8frSPGYbJADq1UTxYNz7paiOgWStWj2lvxdfx5tJ+ZhgmAwhQFxYDtW7+N0Ygs8pT19F3x9fxPqT9zDBMBpAhPl4M1O4TnjYCmVWeNjxhEn2t3Y/2NcMwKZJrxo3jQbrlGXOMQGaVrz5zPl866QFeRvubYZgUERGeEJ/w1sidYwQxq3ztOe7x+Gvtc7S/GYZJEQm4oBigB039pxHALDttMXQmfa39Ne1zhmFSYLRSPxMhflMMzh3OvdUIYJadVg+GlUx4OcBTab8zDJMCAeDh8eDsfOxlRgCz7HXAVa8sfa0FvIP2O8MwKSBDvKYYmIff+KERuCw3dRnRGl/HWxgArkL7nmGYCiMBXysG5q5jHzICl+WmdQaMoet4dbTvGYapII0Rdo0H5aaDrjUCl+Wuw65/f+mkBzid9j/DMBVEAJ5bDMiG5u/VKr0HG0HLcle3ix+Ir+O9RfufYZgKIgEfKQbkvhOfMwKWlUybnHw1fa3djd4DhmEqQGMTrhsPxq2HzTcClpVc9fO/WdLHOcBR9D4wDFMBRKh+F5/w1up7rhGsrOTS55KX9DPgo/Q+MAxTAWSIUAzEg6/9lxGoLD/a6sy59LV2Q3ovGIZpZyTg58Ug3OmC241AZfnRGo0j6YR3PL0XDMO0I7kID4kH4XrHjTcCleVPB019Lf5aG9H7wTBMOyIAJxcD8Iib/msEKMuvdjzv90smPAH4Jb0fDMO0IxLwlWIA7n7pI0aAsvxqvePG0dfanvSeMAzTDsg8bh8Pvs1OnW4EKMu/jrjp4/hr7ZX0vjAM0w4EgGctfb1aqFarH2oEJ8u/drvkkfiE9wq9LwzDtAMC8IFi4O135QtGYLLaR786dRp9rd2B3huGYTyiC0PHg27bs8AITFb7aNX6IYUn6tiEdxa9PwzDeETmsX98wtOFo2lgstpP+05+If5aez+9PwzDeESGOLcYcLpgNA1IVvtKP1HH/+D0u12tRe8RwzCekCF+VAy2rqPuNgKS1b5au/8ouo7Xj94jhmE8IPN4QDzYNhg40QhIVvur5/S34q+1c+h9YhjGAyLCy4uB1nv250Ygsioj/WQdm/A+oPeJYRgPSMC/FgNtz3GPGYHIqow2PGESfa3dj94rhmESkFuAW8WDbPPTbjACkVU59Zn7RXzCu4zeL4ZhEpADHBqf8FYPzjSCkFU57Tnu8fhr7bP0fjEMkwAR4t3FANt/yktGALIqqy2G3FjyWptbgFvQe8YwjAMiVKvHg2u7cyIjAFmV1epiWMmEFwCeSu8bwzAO5CIl4sH1y6MvMgKQVXkdePUr8dfa2+l9YxjGAQF4YzGwel7/jhF4rHTUZcSC+IT344BZamV67xiGsUQCvlcMrF0uvNcIPFY66nzM2JLXWtmi+tB7xzCMBTKPe8eDaqMTrzQCj5WeDrvh/fg63nR6/xiGsUACji0GVN28L42AY6Wrbhc/EH+tfZPeP4ZhLBAhPl0MqL0uf9IIOFa62uTkq0tfa1txV3oPGYYpgwDwV/Fg+vXps4yAY6Wv+qZv46+1o+h9ZBimDGSIg+ITXidxlhFsrPTV/Yqn46+1j9L7yDBMGQjA3xcD6cCrXzUCjZUNbXXm3JLX2sYm3IDeS4ZhlkPPO3ElvberGETbj1xgBBorG1qzcWTJhCciPI7eT4ZhloPMqz7xIOo8YKwRaKzs6OBrX4+/1kb0fjIMsxz0nq5iAOm9XjTAWNnSjuf/Pj7hfUHvJ8Mwy0EAvlUMoG5jHjACjJUtrXfc5SWvtTKPPeg9ZRimDQLA3eLBo/d60QBjZU9HzPo4vo43md5XhmHaQOZxdDFw6pu+MQKLlU3tdukj8dfaV+h9ZRimDUSIjxUDp/uEp43AYmVTmw2eTl9rt6f3lmGYGHVzcaN40Gx1xlwjsFjZ1Gr1Q5WAhfHX2uH0/jIME0OGODA+4a3ROMIILFZ2td/kF+KvtffT+8swTAwRYmsxYA665jUjoFjZ1rZnQ8lrbb/5ai16jxmG0Sj1Uwn4dTFYdjjvNiOgWNnW2v1HlUx4ArAvvc0Mw+jX2RY8LB4s6x57mRFQrOyr5/R/x9fxZtP7zDDMomSfVxcDpdeNHxmBxKoOdR19T3wd7wN6nxmGWbR+989ioOw69o9GILGqQxueMKnktVbmcV96rxmmQyNC9Zt4kGw26FojkFjVoz5zv4iv411K7zfDdGhkiCOLARI0/6BW6XOqEUSs6tFelz8Re8rDZ+j9ZpgOjQB8uBgg+056zgggVnVpi6E3lrzW5ppxC3rPGaZDUteKnePBsfWwJiOAWNWlTmJ4yYQnAAfT+84wHRIBOCAeHGv1O88IIFb16cCrXolPeL+n951hOiQSMF8MjEOu+5cROKzqVJeRC5Y+5QH+OGCWWpnee4bpcIgQPysGxk4X3GEEDqs61fmYsSWvtTptP733DNOhCAAPjgfF+sePNwKHVb3S6fljr7XT6P1nmA6FDHFSMSCOvOkTI2BY1a1dLn4g9pSHb9D7zzAdCgH4cjEgdr/0T0bAsKpbm5xyNXmtxV3pGGCYDkFDhF3iwbDZqdONgGFVv+qbvo2/1l5AxwHDdAgE4PAlgRBiIWMuDRZW9WufK56JT3h/puOAYToEOiNuMRB0plwaKKza0FZnzit5re3fiuvTscAwNY3OhBsPAp0plwYKqza0ZuPIkglPAB5HxwPD1DQBYL94EOhMuTRQWLWjg699PTbhqZCOB4apaWQe5xYDQGfIpQHCqi3teP7tS5/yAD+n44FhahoR4ofFAOg66m4jQFi1pfWOv7zktVbmsQcdEwxTkzQ0q/3jg19nyKUBwqo9HTHr4/g63mQ6LhimJpGhGlcc+L3nfG4EBqs2tfulj8Rfa1+m44JhahIZ4vPFgb/nuMeMwGDVpvTG8viTfWOEXejYYJiaom8Lbhkf9JsPmWkEBqs2tVrDUCVgYfy1djgdHwxTU4gIh8QnvE7BmUZgsGpXeoN5bMK7j44PhqkpJOBdxQF/wJSXjYBg1bb0BvP4H7zeN6s16RhhmJrgqHtwtfhg3+6cFiMgWLWttY8aVTLhyRAb6ThhmJogAAzig32dYy4yAoJV+9IbzWOvtbPpOGGYmkCGOLM40HvOeNcIBFbH0M6j71n6hAf4HzpOGKYmkIDvFgf6LhfdawQCq2NowxMml7zW5iLch44VhqlqchHuFR/kG500xQgEVsdRnzlfxF9rL6XjhWGqGgE4pjjA6+Z9ZQQAq2Npr8ufiE94z9DxwjBVjd5zVRzgffg4WYfXPhOfLXmtPfIW7ETHDMNULRLwyvgA3+OyR40gYHUMbTOsqWSyk4B/o+OFYaqeeEp3rf2nvKQ6ybOMgGDVrnShdTLZ/ShbuZIZU4P0b8WNRIj/KnmVmf2J2mLIjUZgsGpLes/lvlcuPVZWlAA8io4ThqkZRKg2EYB/ogN/7/FPqs4DLjEChVXdWqXPqWr7kbfoJznjyS4XKUHHB8PUHKNHq59JwDyd9LT02t46x4wxAodVXVqlz2C13YhW1Xv2p8Y9loCvyBbcm44Lhqlp9OuMBHzPCIhQqX0nPc+FuatQ+o/VLhfdp+rmfWnc08WT3cTRSv2MjgWG6RDobBk63bcRGIt1+I0fqp0vvEetd9x4I7hY2dDPc+eobYY3qwOuesm4f0UJwHsCwAPp/WeYDkl9C24qAK+igRLXode/X5j8Nj1lqlqt4XQj8FiV07oDLlHbnR2q/a580bhPZKJ7QObxMHq/GYbRKaRasbMAPKewztNGAMX122v+oX5zwV1q45OuUqv2Oc0ISpY/rXP0xWqbs5pV9wlPqd6zPzPuRYkAUSeKEKHqTu8vwzDLQObxCAk4S4bqUyOoiHTq8AOvekXtdP7tarPB07iwdwJ1CoapDQZeobYZ3lQ4AhavNrZ84YMCcEgA+At6LxmGsUDmVR+dO00CvmEGWtuqm/+NOvja1wrVsvTr10YnXql+Ls82ArzDqs/gwlagLYbOKtQG3nfyX1WvGz8y+nFZEiF+L0K8V0R4Rr8W3JTeM4ZhPFDforaRIZ4kQ2wSIb5DA3FFOvKmT9SBV/9d7Xn546rrqLsKTzJ6XbDzMWMLTzfGxFCt6jNYrdX3fLXBwIlqi6E3FvbD7Tr2ocIX8B4z3tbra0bflKGHJOBF+gOECNX/0HvDMEw7EwDuEACeKgEjCfhmG0Fqpfp5X6ueM95R+01+sfB0qD+UbH/uLYUzoJufdoPa+OSr1HrHjSukK+8kzlKr9B5sTjbtoNUbTldrNp6rOg8YWyherl/dtzxjjtru7KhwZKvbmAfV3uOfUgdNfU0dMeu/xnXZSgB+JQEfDQAvCwB7DnhQrUz7nmGYlNFrSAHgfgJwsAzxOgn4iAT8hAa0T9XN/7rw5KhfCQ+74f3ChNlj2lvq4Gv/pQ6a+o/C+uL+V/6t8NqoM4V0n/C02nfSc4WvnLqY0W+v+XthojrkujcLT1+HXv+eOnzmB4X1M12sPMj/YLTpUyLElwSoMAAclWvG+lwzbkX7lWGYKiLXrDbLRdhLhGrE4onwdl0UXLTzZJgJAf6ozzELwIdFhPMk4GUiVL9riLDbgFn85NaR+P/5DoEefFl53AAAAABJRU5ErkJggg==" alt="感測涵蓋範圍圖示">
+                    <div class="icon-diagram-label">感測涵蓋範圍</div>
+                    <div class="icon-diagram-desc">床邊約 1 公尺範圍、廁所中央擴大涵蓋馬桶周邊及其他活動區域。</div>
+                </div>
+                <div class="icon-diagram-card">
+                    <img src="data:image/png;base64,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" alt="警報通知照護站圖示">
+                    <div class="icon-diagram-label">警報通知照護站</div>
+                    <div class="icon-diagram-desc">偵測到異常時，訊號傳送至護理站進行即時通知。</div>
+                </div>
+                <div class="icon-diagram-card">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABCBAMAAABXzL5xAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAhUExURQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG3RSMEAAAALdFJOUwD/9PDG6QcR+CEXNLZJagAAAAlwSFlzAAAh1QAAIdUBBJy0nQAAAK9JREFUSMft1sENgzAMBdD4yik+wJ0ZukBH6godgY1BKKKt9P9vAhJw8OcGPCwiK05Ka1wmoYzaZGTcmwuZ+0OEGFhdPjZ/hgkTJkyYUw0fMdSouUSMqblkeBiVCrgQmXqlgHltmeXrfwy6GeaoqT2BXGE+/7C9XbsGh03eYZar2fQ3XoMzTK43W9cMwvx21lffvah5r5sPPXdDY8XkBqP2a2pEoJm06ch+LbPHJEhmQnI67RKQXKQAAAAASUVORK5CYII=" alt="護理站顯示裝置圖示">
+                    <div class="icon-diagram-label">護理站顯示裝置</div>
+                    <div class="icon-diagram-desc">加裝護理站螢幕與聲音警示通知，供人員即時確認。</div>
+                </div>
+                <div class="icon-diagram-card">
+                    <img src="data:image/png;base64,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" alt="無障礙廁所場域圖示">
+                    <div class="icon-diagram-label">無障礙廁所場域</div>
+                    <div class="icon-diagram-desc">感測器裝設於較接近廁所中央的天花板，兼顧馬桶周邊與其他區域。</div>
+                </div>
+            </div>
+            <p class="diagram-note">以上圖示引用自原始文件提供之製圖。原文件另附有安裝現場照片與工作人員示範跌倒情境的照片，因涉及特定機構空間與可能可辨識之人員，基於隱私考量未收錄於本頁。</p>
+
+            <ul class="scale-list">
+                <li>
+                    <span class="scale-name">個人床邊安裝準則</span>
+                    <p>適用於下肢行動不便、日常主要依賴輪椅移動，且過去較常於床邊發生跌倒之個案。作法：先確認個案可能跌倒的風險熱點，於床邊上方天花板設置一台感測器，以床邊約 1 公尺範圍作為主要偵測區域，監測上下床、移位等高風險活動。</p>
+                </li>
+                <li>
+                    <span class="scale-name">無障礙廁所安裝準則</span>
+                    <p>感測器設置於較接近廁所中央的天花板位置（而非僅正對馬桶），以擴大空間涵蓋範圍，兼顧馬桶周邊及廁所內其他可能發生跌倒的區域；多數案例將感測器安裝於馬桶前方、長者起身站立位置正上方的天花板。</p>
+                </li>
+                <li>
+                    <span class="scale-name">試辦設備範例</span>
+                    <p>Fusion（毫米波顯影監視機型）：以毫米波顯影方式監控對象，並可依設定之特定動作觸發偵測，對應本頁「貳」節毫米波雷達技術類型。</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="sec8">
+            <div class="section-head">
+                <h2>捌、導入期 5 大維度實務檢核表</h2>
+                <span class="note">共 35 項具體檢核指標（已新增多學科調校項目）</span>
+            </div>
+
+            <div class="checklist-group">
+                <div class="cg-title">A. 個案風險與用藥篩選評估</div>
+                <ul class="checklist">
+                    <li><input type="checkbox" disabled> 確實完成長者入院／入住時的跌倒風險評估（如 MFS、Hendrich II 或 Downton 評估）。</li>
+                    <li><input type="checkbox" disabled> 確實審查長者的跌倒史，掌握其下肢肌力、步態穩定度與定向力狀況。</li>
+                    <li><input type="checkbox" disabled> 詳細檢視長者用藥清單，特別針對利尿劑、降血壓藥、安眠藥或鎮靜劑進行風險標記。</li>
+                    <li><input type="checkbox" disabled> 確認個案具有「不適合配戴穿戴式設備」之臨床指徵，列為環境型監測優先對象。</li>
+                    <li><input type="checkbox" disabled> 明確於病歷／照護紀錄中標記該個案後臺系統應啟動的感測規則與閾值。</li>
+                </ul>
+            </div>
+
+            <div class="checklist-group">
+                <div class="cg-title">B. 感測器布建、場域排查與臨床廠商調校討論</div>
+                <ul class="checklist">
+                    <li><input type="checkbox" disabled> 明確標示房內跌倒高風險區域，包含病床兩側、床尾、通往浴廁動線及浴廁內部。</li>
+                    <li><input type="checkbox" disabled> 由工程師與照護團隊共同進行感測器布點規劃，確保感測範圍覆蓋所有關鍵動線。</li>
+                    <li class="new-item"><input type="checkbox" disabled> 安裝應用前，臨床團隊與廠商工程師召開討論會，針對個案之易跌情境、位置與姿勢進行演算法閾值與主要波束角調校。</li>
+                    <li class="new-item"><input type="checkbox" disabled> 安裝應用後首兩週內，召開持續優化討論會，就漏報與誤報情況對偵測演算法進行線上再調校，排除環境干擾。</li>
+                    <li><input type="checkbox" disabled> 排查感測死角，確認高大衣櫃、隔簾、金屬床欄板或厚重座椅不會阻擋雷達／ToF 訊號。</li>
+                    <li><input type="checkbox" disabled> 避開硬體干擾源：毫米波雷達避開空調出風口與旋轉風扇；ToF 感測器安裝避開低矮吊燈與裝飾物遮擋。</li>
+                </ul>
+            </div>
+
+            <div class="checklist-group">
+                <div class="cg-title">C. 系統配置、警報分流與數據管理設定</div>
+                <ul class="checklist">
+                    <li><input type="checkbox" disabled> 選定適合該空間的感測器（如病房用毫米波崁燈雷達，浴廁用 ToF 深度鏡頭），完成安裝。</li>
+                    <li><input type="checkbox" disabled> 依個案之易跌情境與起立能力，調校「跌倒警報」的姿態靈敏度與「久滯警報」的浴廁超時閾值（預設 4 分鐘）。</li>
+                    <li><input type="checkbox" disabled> 建立後臺即時事件日誌保存機制，確保警報事件、到場覆核時間均有精確時間戳記。</li>
+                    <li><input type="checkbox" disabled> 建立「誤報標記與累積改善機制」，護理人員標記誤報時，提供演算法累積學習以優化判定。</li>
+                    <li><input type="checkbox" disabled> 設定嚴格的後臺數據存取與管理權限，確保僅限授權的醫療照護人員查閱去識別化資料。</li>
+                </ul>
+            </div>
+
+            <div class="checklist-group">
+                <div class="cg-title">D. 照護流程與分級應變常規</div>
+                <ul class="checklist">
+                    <li><input type="checkbox" disabled> 建立並公告「跌倒警報」（1 分鐘內抵達）與「久滯警報」（3 分鐘內確認）的處理常規與流程圖。</li>
+                    <li><input type="checkbox" disabled> 明確指定各班別的警報主要接收人，以及跌倒警報的第一到場責任人。</li>
+                    <li><input type="checkbox" disabled> 備妥緊急救援裝備，於護理站配置隨手可拿的緊急醫療急救包與行動記錄器。</li>
+                    <li><input type="checkbox" disabled> 將系統警報日誌與機構現有的跌倒事件通報系統（TPR）整合，實現 RCA 閉環分析改善流程。</li>
+                </ul>
+            </div>
+
+            <div class="checklist-group">
+                <div class="cg-title">E. 團隊培訓與家屬隱私溝通</div>
+                <ul class="checklist">
+                    <li><input type="checkbox" disabled> 對全體照護人員完成硬體特性、警報分流與應變常規培訓。</li>
+                    <li><input type="checkbox" disabled> 完成「隱私與倫理溝通培訓」，能以專業、通俗的語言向個案及家屬解釋一般影像與去識別化深度資料之本質差異，消除監控焦慮。</li>
+                    <li><input type="checkbox" disabled> 確實向個案與家屬說明防跌科技導入之安全守護目的，取得並簽署臨床知情同意書。</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="sec9">
+            <div class="section-head">
+                <h2>玖、建議照護應用流程</h2>
+                <span class="note">串連前述章節，形成完整導入路徑</span>
+            </div>
+            <p class="lead">以下為建議的整體應用流程，將本頁前述各章節串連為一條可依循的路徑，方便照護團隊掌握「從評估到持續調校」的完整脈絡：</p>
+            <ol class="flow-list">
+                <li>
+                    <div class="flow-title">1. 個案評估與風險分級</div>
+                    <div class="flow-desc">以 <a href="#sec3">參節臨床量表</a>（如 MFS、Hendrich II、Downton）評估個案跌倒風險，作為是否導入及優先順序之依據。</div>
+                </li>
+                <li>
+                    <div class="flow-title">2. 確認適用個案與情境</div>
+                    <div class="flow-desc">對照 <a href="#sec4">肆節適用個案特徵</a>，確認個案（如失智症、獨居長者）與場域是否適合本頁技術。</div>
+                </li>
+                <li>
+                    <div class="flow-title">3. 技術選型與安裝前討論</div>
+                    <div class="flow-desc">依 <a href="#sec2">貳節六大技術對照</a>選擇合適類型，並依 <a href="#sec7">柒節安裝前討論流程</a>與廠商確認安裝位置與判定閾值。</div>
+                </li>
+                <li>
+                    <div class="flow-title">4. 安裝與試辦導入</div>
+                    <div class="flow-desc">參考 <a href="#sec7">柒節機構試辦案例</a>完成安裝，並依 <a href="#sec8">捌節檢核表</a>確認導入前置作業完備。</div>
+                </li>
+                <li>
+                    <div class="flow-title">5. 日常監測與警報應變</div>
+                    <div class="flow-desc">依 <a href="#sec6">陸節警報分級與 SOP</a>執行日常監看與到場應變，並確實記錄事件。</div>
+                </li>
+                <li>
+                    <div class="flow-title">6. 資料回顧與照護決策調整</div>
+                    <div class="flow-desc">運用 <a href="#sec5">伍節後臺資料</a>檢視個案趨勢，必要時調整用藥、復健計畫或環境配置。</div>
+                </li>
+                <li>
+                    <div class="flow-title">7. 定期複評與持續調校</div>
+                    <div class="flow-desc">個案狀況或跌倒事件發生變化時，重新執行 <a href="#sec7">柒節持續校正流程</a>，並定期回顧 <a href="#sec8">捌節檢核表</a>是否仍符合現況。</div>
+                </li>
+            </ol>
+        </section>
+
+        <section id="tools">
+            <div class="section-head">
+                <h2>相關工具</h2>
+                <span class="note">本頁提及之工具／量表，完整資料請見工具庫</span>
+            </div>
+            <div class="related-box">
+                <h4>本頁提及工具（點擊查看工具庫詳細資料）</h4>
+                <ul>
+                    <li><a href="../tools/library.html">ToF / LiDAR 去識別化深度感測</a></li>
+                    <li><a href="../tools/library.html">毫米波雷達（mmWave FMCW）</a></li>
+                    <li><a href="../tools/library.html">AI 影像骨骼分析</a></li>
+                    <li><a href="../tools/library.html">足底與環境地板感測</a></li>
+                    <li><a href="../tools/library.html">聲音分析式跌倒偵測系統〔新增〕</a></li>
+                    <li><a href="../tools/library.html">紅外線熱感測陣列／環境物聯網感測系統〔新增〕</a></li>
+                    <li><a href="../tools/library.html">Morse 跌倒危險量表（MFS）／Hendrich II／Downton／巴氏量表與 MMSE／TPR</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="related">
+            <div class="section-head">
+                <h2>相關應用類別</h2>
+                <span class="note">延伸閱讀（皆為佔位，內容規劃中）</span>
+            </div>
+            <div class="related-box">
+                <h4>手冊其他應用類別</h4>
+                <ul>
+                    <li><a href="wearable-devices.html">應用類別 B：穿戴式跌倒偵測裝置應用</a></li>
+                    <li><a href="pedaling-device.html">應用類別 C：智慧下肢座式踩踏儀器</a></li>
+                    <li><a href="../index.html">應用類別 D：居家與病房環境改造應用〔佔位〕</a></li>
+                </ul>
+            </div>
+        </section>
+
+    </article>
+
+    <p class="closing-line">―― 本指引文件修訂結束，雙效轉化產出完成 ――</p>
+
+    </main>
+</div>
+
+<footer>
+    <div class="wrap">
+        <div><a href="../index.html">← 返回手冊首頁</a>　|　<a href="../tools/library.html">前往工具庫</a>　|　本頁如有任何問題，請洽 <a href="mailto:flkuo@nhri.edu.tw">flkuo@nhri.edu.tw</a>　｜　© 2026</div>
+    </div>
+</footer>
+
+<script>var SITE_ROOT = "../";</script>
+<script src="../assets/js/search-data.js"></script>
+<script src="../assets/js/search.js"></script>
+<script src="../assets/js/protect.js"></script>
+</body>
+</html>
